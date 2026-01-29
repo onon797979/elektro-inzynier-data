@@ -23,3 +23,18 @@
     ]
   }
 ]
+{
+    "id": "online_vd_percent",
+    "title": "Spadek Napięcia (%)",
+    "description": "Procentowy spadek napięcia w obwodzie 3-fazowym.",
+    "formula": "(100 * (sqrt(3) * I * L * cosphi) / (gamma * S * U))",
+    "unit": "%",
+    "variables": [
+      {"id": "I", "label": "Prąd Ib", "unit": "A"},
+      {"id": "L", "label": "Długość L", "unit": "m"},
+      {"id": "cosphi", "label": "Wsp. mocy", "unit": "φ"},
+      {"id": "gamma", "label": "Konduktywność", "unit": "m/Ωmm²"},
+      {"id": "S", "label": "Przekrój", "unit": "mm²"},
+      {"id": "U", "label": "Napięcie Un", "unit": "V"}
+    ]
+  }
