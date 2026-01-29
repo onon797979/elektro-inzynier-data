@@ -26,12 +26,12 @@
     "id": "online_vd_percent",
     "title": "Spadek Napiecia Proc",
     "description": "Procentowy spadek napiecia w obwodzie 3-fazowym.",
-    "formula": "(100 * (sqrt(3) * I * L * cosphi) / (gamma * S * U))",
+    "formula": "100 * 1.73 * I * L * cosphi / (gamma * S * U)",
     "unit": "%",
     "variables": [
       {"id": "I", "label": "Prad Ib", "unit": "A"},
       {"id": "L", "label": "Dlugosc L", "unit": "m"},
-      {"id": "cosphi", "label": "Wsp. mocy", "unit": "phi"},
+      {"id": "cosphi", "label": "Wsp mocy", "unit": "phi"},
       {"id": "gamma", "label": "Konduktywnosc", "unit": "m/Ohm mm2"},
       {"id": "S", "label": "Przekroj", "unit": "mm2"},
       {"id": "U", "label": "Napiecie Un", "unit": "V"}
