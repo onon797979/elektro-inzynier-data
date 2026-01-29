@@ -1,0 +1,16 @@
+[
+  {
+    "id": "online_cable_weight",
+    "title": "Masa Miedzi w Kablu",
+    "description": "Obliczanie masy czystej miedzi dla celów logistycznych i wyceny złomu.",
+    "formula": "m = S * L * 8.89 / 1000",
+    "unit": "kg"
+  },
+  {
+    "id": "online_lux_calc",
+    "title": "Natężenie Oświetlenia (Uproszczone)",
+    "description": "Szacowanie liczby luksów na powierzchni roboczej.",
+    "formula": "E = (Phi * n) / (A * 1.2)",
+    "unit": "lx"
+  }
+]
