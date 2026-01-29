@@ -1,40 +1,345 @@
 [
   {
-    "id": "online_cable_weight",
-    "title": "Masa Miedzi w Kablu",
-    "description": "Obliczanie masy czystej miedzi dla celów logistycznych.",
-    "formula": "S * L * 8.89 / 1000",
-    "unit": "kg",
+    "id": "basic_ohm",
+    "title": "Prawo Ohma (Prąd)",
+    "description": "Podstawowa zależność prądu od napięcia i rezystancji.",
+    "formula": "U / R",
+    "unit": "A",
     "variables": [
-        {"id": "S", "label": "Przekroj", "unit": "mm2", "defaultValue": "2.5"},
-        {"id": "L", "label": "Dlugosc", "unit": "m", "defaultValue": "100"}
+      {"id": "U", "label": "Napięcie", "unit": "V", "defaultValue": "230"},
+      {"id": "R", "label": "Rezystancja", "unit": "Ohm", "defaultValue": "10"}
     ]
   },
   {
-    "id": "online_lux_calc",
-    "title": "Natezenie Oswietlenia",
-    "description": "Szacowanie liczby luksow na powierzchni roboczej.",
+    "id": "basic_power_dc",
+    "title": "Moc Prądu Stałego",
+    "description": "Obliczanie mocy czynnej w obwodach DC.",
+    "formula": "U * I",
+    "unit": "W",
+    "variables": [
+      {"id": "U", "label": "Napięcie", "unit": "V", "defaultValue": "24"},
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "ac_power_1ph",
+    "title": "Moc Czynna (1-faza)",
+    "description": "Moc w obwodzie jednofazowym AC z uwzględnieniem cos fi.",
+    "formula": "U * I * PF",
+    "unit": "W",
+    "variables": [
+      {"id": "U", "label": "Napięcie", "unit": "V", "defaultValue": "230"},
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "5"},
+      {"id": "PF", "label": "Wsp. Mocy", "unit": "cos", "defaultValue": "0.9"}
+    ]
+  },
+  {
+    "id": "ac_power_3ph",
+    "title": "Moc Czynna (3-fazy)",
+    "description": "Moc w układzie trójfazowym symetrycznym.",
+    "formula": "1.73 * U * I * PF",
+    "unit": "W",
+    "variables": [
+      {"id": "U", "label": "Napięcie Międzyfaz.", "unit": "V", "defaultValue": "400"},
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "10"},
+      {"id": "PF", "label": "Wsp. Mocy", "unit": "cos", "defaultValue": "0.9"}
+    ]
+  },
+  {
+    "id": "cable_vd_1ph",
+    "title": "Spadek Napięcia (1-faza)",
+    "description": "Spadek napięcia w woltach dla obwodu jednofazowego.",
+    "formula": "(2 * L * I * PF) / (Gam * S)",
+    "unit": "V",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "50"},
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "16"},
+      {"id": "PF", "label": "Wsp. Mocy", "unit": "cos", "defaultValue": "1.0"},
+      {"id": "Gam", "label": "Konduktywność", "unit": "m/Ohm mm2", "defaultValue": "56"},
+      {"id": "S", "label": "Przekrój", "unit": "mm2", "defaultValue": "2.5"}
+    ]
+  },
+  {
+    "id": "cable_vd_percent",
+    "title": "Spadek Napięcia Proc (3f)",
+    "description": "Procentowy spadek napięcia w obwodzie 3-fazowym.",
+    "formula": "100 * 1.73 * I * L * PF / (Gam * S * U)",
+    "unit": "%",
+    "variables": [
+      {"id": "I", "label": "Prąd Ib", "unit": "A", "defaultValue": "10"},
+      {"id": "L", "label": "Długość L", "unit": "m", "defaultValue": "50"},
+      {"id": "PF", "label": "Wsp. mocy", "unit": "phi", "defaultValue": "0.9"},
+      {"id": "Gam", "label": "Konduktywność", "unit": "m/Ohm", "defaultValue": "56"},
+      {"id": "S", "label": "Przekrój", "unit": "mm2", "defaultValue": "4"},
+      {"id": "U", "label": "Napięcie Un", "unit": "V", "defaultValue": "400"}
+    ]
+  },
+  {
+    "id": "cable_weight",
+    "title": "Masa Miedzi w Kablu",
+    "description": "Szacunkowa waga czystej miedzi w przewodzie.",
+    "formula": "S * L * 8.89 / 1000",
+    "unit": "kg",
+    "variables": [
+        {"id": "S", "label": "Przekrój Łączny", "unit": "mm2", "defaultValue": "7.5"},
+        {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "motor_sync_speed",
+    "title": "Silnik: Prędkość Synch.",
+    "description": "Prędkość obrotowa pola magnetycznego stojana.",
+    "formula": "(60 * f) / p",
+    "unit": "obr/min",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "50"},
+      {"id": "p", "label": "Liczba par biegunów", "unit": "-", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "motor_slip",
+    "title": "Silnik: Poślizg",
+    "description": "Obliczanie poślizgu silnika indukcyjnego.",
+    "formula": "((Ns - Nr) / Ns) * 100",
+    "unit": "%",
+    "variables": [
+      {"id": "Ns", "label": "Prędkość Synch.", "unit": "rpm", "defaultValue": "1500"},
+      {"id": "Nr", "label": "Prędkość Rzecz.", "unit": "rpm", "defaultValue": "1450"}
+    ]
+  },
+  {
+    "id": "motor_current",
+    "title": "Silnik: Prąd Znamionowy",
+    "description": "Szacowanie prądu silnika 3-fazowego na podstawie mocy.",
+    "formula": "Pn / (1.73 * U * PF * Eff)",
+    "unit": "A",
+    "variables": [
+      {"id": "Pn", "label": "Moc na wale", "unit": "W", "defaultValue": "5500"},
+      {"id": "U", "label": "Napięcie", "unit": "V", "defaultValue": "400"},
+      {"id": "PF", "label": "Cos Fi", "unit": "-", "defaultValue": "0.85"},
+      {"id": "Eff", "label": "Sprawność (0-1)", "unit": "-", "defaultValue": "0.88"}
+    ]
+  },
+  {
+    "id": "motor_torque",
+    "title": "Silnik: Moment Obrotowy",
+    "description": "Moment na wale silnika przy danej mocy i obrotach.",
+    "formula": "9550 * Pkw / n",
+    "unit": "Nm",
+    "variables": [
+      {"id": "Pkw", "label": "Moc", "unit": "kW", "defaultValue": "5.5"},
+      {"id": "n", "label": "Obroty", "unit": "rpm", "defaultValue": "1450"}
+    ]
+  },
+  {
+    "id": "energy_kwh",
+    "title": "Zużycie Energii",
+    "description": "Obliczanie energii zużytej przez urządzenie w czasie.",
+    "formula": "(P * t) / 1000",
+    "unit": "kWh",
+    "variables": [
+      {"id": "P", "label": "Moc", "unit": "W", "defaultValue": "2000"},
+      {"id": "t", "label": "Czas pracy", "unit": "h", "defaultValue": "8"}
+    ]
+  },
+  {
+    "id": "heat_energy",
+    "title": "Moc Grzałki (Prawo Joule'a)",
+    "description": "Moc wydzielana na elemencie rezystancyjnym.",
+    "formula": "I * I * R",
+    "unit": "W",
+    "variables": [
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "10"},
+      {"id": "R", "label": "Rezystancja", "unit": "Ohm", "defaultValue": "23"}
+    ]
+  },
+  {
+    "id": "reactance_xl",
+    "title": "Reaktancja Indukcyjna XL",
+    "description": "Opór bierny cewki dla prądu przemiennego.",
+    "formula": "2 * 3.14 * f * L",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "50"},
+      {"id": "L", "label": "Indukcyjność", "unit": "H", "defaultValue": "0.1"}
+    ]
+  },
+  {
+    "id": "reactance_xc",
+    "title": "Reaktancja Pojemnościowa XC",
+    "description": "Opór bierny kondensatora dla prądu przemiennego.",
+    "formula": "1 / (2 * 3.14 * f * C)",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "50"},
+      {"id": "C", "label": "Pojemność", "unit": "F", "defaultValue": "0.0001"}
+    ]
+  },
+  {
+    "id": "res_parallel",
+    "title": "Rezystory Równoległe (2szt)",
+    "description": "Rezystancja zastępcza dwóch rezystorów połączonych równolegle.",
+    "formula": "(R1 * R2) / (R1 + R2)",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "R1", "label": "Rezystor 1", "unit": "Ohm", "defaultValue": "100"},
+      {"id": "R2", "label": "Rezystor 2", "unit": "Ohm", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "voltage_divider",
+    "title": "Dzielnik Napięcia",
+    "description": "Napięcie wyjściowe na rezystorze R2.",
+    "formula": "Uin * R2 / (R1 + R2)",
+    "unit": "V",
+    "variables": [
+      {"id": "Uin", "label": "Napięcie Wej.", "unit": "V", "defaultValue": "12"},
+      {"id": "R1", "label": "Rezystor R1", "unit": "Ohm", "defaultValue": "1000"},
+      {"id": "R2", "label": "Rezystor R2 (GND)", "unit": "Ohm", "defaultValue": "2000"}
+    ]
+  },
+  {
+    "id": "led_resistor",
+    "title": "Rezystor do LED",
+    "description": "Dobór rezystora ograniczającego prąd diody.",
+    "formula": "(Uzas - Uled) / Iled",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "Uzas", "label": "Napięcie Zasilania", "unit": "V", "defaultValue": "12"},
+      {"id": "Uled", "label": "Napięcie Diody", "unit": "V", "defaultValue": "3.2"},
+      {"id": "Iled", "label": "Prąd Diody", "unit": "A", "defaultValue": "0.02"}
+    ]
+  },
+  {
+    "id": "cap_energy",
+    "title": "Energia Kondensatora",
+    "description": "Energia zgromadzona w polu elektrycznym.",
+    "formula": "0.5 * C * U * U",
+    "unit": "J",
+    "variables": [
+      {"id": "C", "label": "Pojemność", "unit": "F", "defaultValue": "0.001"},
+      {"id": "U", "label": "Napięcie", "unit": "V", "defaultValue": "400"}
+    ]
+  },
+  {
+    "id": "frequency_period",
+    "title": "Częstotliwość z Okresu",
+    "description": "Przeliczenie czasu trwania okresu na herce.",
+    "formula": "1 / T",
+    "unit": "Hz",
+    "variables": [
+      {"id": "T", "label": "Okres", "unit": "s", "defaultValue": "0.02"}
+    ]
+  },
+  {
+    "id": "wavelength",
+    "title": "Długość Fali",
+    "description": "Długość fali elektromagnetycznej w próżni.",
+    "formula": "300 / f",
+    "unit": "m",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "MHz", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "battery_runtime",
+    "title": "Czas Pracy na Baterii",
+    "description": "Szacunkowy czas pracy przy danym obciążeniu (dla Li-Ion/Lead).",
+    "formula": "(Ah * Ubat * 0.85) / Pload",
+    "unit": "h",
+    "variables": [
+      {"id": "Ah", "label": "Pojemność", "unit": "Ah", "defaultValue": "50"},
+      {"id": "Ubat", "label": "Napięcie Bat.", "unit": "V", "defaultValue": "12"},
+      {"id": "Pload", "label": "Moc Obciążenia", "unit": "W", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "battery_charge",
+    "title": "Czas Ładowania Akumulatora",
+    "description": "Czas potrzebny na naładowanie (współczynnik strat 1.4).",
+    "formula": "(Ah / I) * 1.4",
+    "unit": "h",
+    "variables": [
+      {"id": "Ah", "label": "Pojemność", "unit": "Ah", "defaultValue": "60"},
+      {"id": "I", "label": "Prąd Ładowania", "unit": "A", "defaultValue": "6"}
+    ]
+  },
+  {
+    "id": "transformer_ratio",
+    "title": "Przekładnia Transformatora",
+    "description": "Stosunek napięcia pierwotnego do wtórnego.",
+    "formula": "U1 / U2",
+    "unit": "-",
+    "variables": [
+      {"id": "U1", "label": "Napięcie PRI", "unit": "V", "defaultValue": "230"},
+      {"id": "U2", "label": "Napięcie SEC", "unit": "V", "defaultValue": "24"}
+    ]
+  },
+  {
+    "id": "short_circuit_loop",
+    "title": "Prąd Zwarcia (Pętla)",
+    "description": "Spodziewany prąd zwarcia na podstawie impedancji pętli.",
+    "formula": "U / Zs",
+    "unit": "A",
+    "variables": [
+      {"id": "U", "label": "Napięcie F-N", "unit": "V", "defaultValue": "230"},
+      {"id": "Zs", "label": "Impedancja Pętli", "unit": "Ohm", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "lux_calc",
+    "title": "Natężenie Oświetlenia",
+    "description": "Szacowanie liczby luksów (metoda uproszczona).",
     "formula": "Flux * n / (A * 1.2)",
     "unit": "lx",
      "variables": [
-        {"id": "Flux", "label": "Strumien", "unit": "lm", "defaultValue": "3000"},
+        {"id": "Flux", "label": "Strumień lampy", "unit": "lm", "defaultValue": "3000"},
         {"id": "n", "label": "Liczba lamp", "unit": "szt", "defaultValue": "4"},
         {"id": "A", "label": "Powierzchnia", "unit": "m2", "defaultValue": "20"}
     ]
   },
   {
-    "id": "online_vd_percent",
-    "title": "Spadek Napiecia Proc",
-    "description": "Procentowy spadek napiecia w obwodzie 3-fazowym.",
-    "formula": "100 * 1.73 * I * L * PF / (Gam * S * U)",
-    "unit": "%",
+    "id": "pv_string_voltage",
+    "title": "PV: Napięcie Stringu",
+    "description": "Napięcie obwodu otwartego łańcucha paneli fotowoltaicznych.",
+    "formula": "Voc * N",
+    "unit": "V",
     "variables": [
-      {"id": "I", "label": "Prad Ib", "unit": "A", "defaultValue": "10"},
-      {"id": "L", "label": "Dlugosc L", "unit": "m", "defaultValue": "50"},
-      {"id": "PF", "label": "Wsp mocy", "unit": "phi", "defaultValue": "0.9"},
-      {"id": "Gam", "label": "Konduktywnosc", "unit": "m/Ohm", "defaultValue": "56"},
-      {"id": "S", "label": "Przekroj", "unit": "mm2", "defaultValue": "4"},
-      {"id": "U", "label": "Napiecie Un", "unit": "V", "defaultValue": "400"}
+      {"id": "Voc", "label": "Napięcie Voc panelu", "unit": "V", "defaultValue": "41.5"},
+      {"id": "N", "label": "Liczba paneli", "unit": "szt", "defaultValue": "12"}
+    ]
+  },
+  {
+    "id": "pv_power",
+    "title": "PV: Moc Instalacji",
+    "description": "Łączna moc szczytowa instalacji.",
+    "formula": "Pmod * N / 1000",
+    "unit": "kWp",
+    "variables": [
+      {"id": "Pmod", "label": "Moc panelu", "unit": "Wp", "defaultValue": "450"},
+      {"id": "N", "label": "Liczba paneli", "unit": "szt", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "electric_field",
+    "title": "Natężenie Pola Elektr.",
+    "description": "Natężenie pola w kondensatorze płaskim.",
+    "formula": "U / d",
+    "unit": "V/m",
+    "variables": [
+      {"id": "U", "label": "Napięcie", "unit": "V", "defaultValue": "1000"},
+      {"id": "d", "label": "Odległość okładzin", "unit": "m", "defaultValue": "0.01"}
+    ]
+  },
+  {
+    "id": "resonant_freq",
+    "title": "Częstotliwość Rezonansowa",
+    "description": "Częstotliwość rezonansu dla obwodu LC (Wzór Thomsona).",
+    "formula": "1 / (2 * 3.14 * sqrt(L * C))",
+    "unit": "Hz",
+    "variables": [
+      {"id": "L", "label": "Indukcyjność", "unit": "H", "defaultValue": "0.001"},
+      {"id": "C", "label": "Pojemność", "unit": "F", "defaultValue": "0.00001"}
     ]
   }
 ]
