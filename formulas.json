@@ -6,35 +6,35 @@
     "formula": "S * L * 8.89 / 1000",
     "unit": "kg",
     "variables": [
-        {"id": "S", "label": "Przekrój", "unit": "mm²"},
-        {"id": "L", "label": "Długość", "unit": "m"}
+        {"id": "S", "label": "Przekroj", "unit": "mm2"},
+        {"id": "L", "label": "Dlugosc", "unit": "m"}
     ]
   },
   {
     "id": "online_lux_calc",
-    "title": "Natężenie Oświetlenia",
-    "description": "Szacowanie liczby luksów na powierzchni roboczej.",
+    "title": "Natezenie Oswietlenia",
+    "description": "Szacowanie liczby luksow na powierzchni roboczej.",
     "formula": "Phi * n / (A * 1.2)",
     "unit": "lx",
      "variables": [
-        {"id": "Phi", "label": "Strumień lampy", "unit": "lm"},
+        {"id": "Phi", "label": "Strumien lampy", "unit": "lm"},
         {"id": "n", "label": "Liczba lamp", "unit": "szt"},
-        {"id": "A", "label": "Powierzchnia", "unit": "m²"}
+        {"id": "A", "label": "Powierzchnia", "unit": "m2"}
     ]
   },
   {
     "id": "online_vd_percent",
-    "title": "Spadek Napięcia (%)",
-    "description": "Procentowy spadek napięcia w obwodzie 3-fazowym.",
+    "title": "Spadek Napiecia Proc",
+    "description": "Procentowy spadek napiecia w obwodzie 3-fazowym.",
     "formula": "(100 * (sqrt(3) * I * L * cosphi) / (gamma * S * U))",
     "unit": "%",
     "variables": [
-      {"id": "I", "label": "Prąd Ib", "unit": "A"},
-      {"id": "L", "label": "Długość L", "unit": "m"},
-      {"id": "cosphi", "label": "Wsp. mocy", "unit": "φ"},
-      {"id": "gamma", "label": "Konduktywność", "unit": "m/Ωmm²"},
-      {"id": "S", "label": "Przekrój", "unit": "mm²"},
-      {"id": "U", "label": "Napięcie Un", "unit": "V"}
+      {"id": "I", "label": "Prad Ib", "unit": "A"},
+      {"id": "L", "label": "Dlugosc L", "unit": "m"},
+      {"id": "cosphi", "label": "Wsp. mocy", "unit": "phi"},
+      {"id": "gamma", "label": "Konduktywnosc", "unit": "m/Ohm mm2"},
+      {"id": "S", "label": "Przekroj", "unit": "mm2"},
+      {"id": "U", "label": "Napiecie Un", "unit": "V"}
     ]
   }
 ]
