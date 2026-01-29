@@ -2,7 +2,7 @@
   {
     "id": "online_cable_weight",
     "title": "Masa Miedzi w Kablu",
-    "description": "Obliczanie masy czystej miedzi.",
+    "description": "Obliczanie masy czystej miedzi dla celów logistycznych.",
     "formula": "S * L * 8.89 / 1000",
     "unit": "kg",
     "variables": [
@@ -13,11 +13,11 @@
   {
     "id": "online_lux_calc",
     "title": "Natezenie Oswietlenia",
-    "description": "Szacowanie liczby luksow.",
-    "formula": "Phi * n / (A * 1.2)",
+    "description": "Szacowanie liczby luksow na powierzchni roboczej.",
+    "formula": "Flux * n / (A * 1.2)",
     "unit": "lx",
      "variables": [
-        {"id": "Phi", "label": "Strumien", "unit": "lm", "defaultValue": "3000"},
+        {"id": "Flux", "label": "Strumien", "unit": "lm", "defaultValue": "3000"},
         {"id": "n", "label": "Liczba lamp", "unit": "szt", "defaultValue": "4"},
         {"id": "A", "label": "Powierzchnia", "unit": "m2", "defaultValue": "20"}
     ]
@@ -25,14 +25,14 @@
   {
     "id": "online_vd_percent",
     "title": "Spadek Napiecia Proc",
-    "description": "Procentowy spadek napiecia.",
-    "formula": "100 * 1.73 * I * L * cosphi / (gamma * S * U)",
+    "description": "Procentowy spadek napiecia w obwodzie 3-fazowym.",
+    "formula": "100 * 1.73 * I * L * PF / (Gam * S * U)",
     "unit": "%",
     "variables": [
       {"id": "I", "label": "Prad Ib", "unit": "A", "defaultValue": "10"},
       {"id": "L", "label": "Dlugosc L", "unit": "m", "defaultValue": "50"},
-      {"id": "cosphi", "label": "Wsp mocy", "unit": "phi", "defaultValue": "0.9"},
-      {"id": "gamma", "label": "Konduktywnosc", "unit": "m/Ohm", "defaultValue": "56"},
+      {"id": "PF", "label": "Wsp mocy", "unit": "phi", "defaultValue": "0.9"},
+      {"id": "Gam", "label": "Konduktywnosc", "unit": "m/Ohm", "defaultValue": "56"},
       {"id": "S", "label": "Przekroj", "unit": "mm2", "defaultValue": "4"},
       {"id": "U", "label": "Napiecie Un", "unit": "V", "defaultValue": "400"}
     ]
