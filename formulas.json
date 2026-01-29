@@ -21,9 +21,8 @@
         {"id": "n", "label": "Liczba lamp", "unit": "szt"},
         {"id": "A", "label": "Powierzchnia", "unit": "m²"}
     ]
-  }
-]
-{
+  },
+  {
     "id": "online_vd_percent",
     "title": "Spadek Napięcia (%)",
     "description": "Procentowy spadek napięcia w obwodzie 3-fazowym.",
@@ -38,3 +37,4 @@
       {"id": "U", "label": "Napięcie Un", "unit": "V"}
     ]
   }
+]
