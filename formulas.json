@@ -2,19 +2,24 @@
   {
     "id": "online_cable_weight",
     "title": "Masa Miedzi w Kablu",
-    "description": "Oblicza masę miedzi na podstawie przekroju i długości.",
+    "description": "Obliczanie masy czystej miedzi dla celów logistycznych.",
     "formula": "S * L * 8.89 / 1000",
+    "unit": "kg",
     "variables": [
-      {"id": "S", "label": "Przekrój", "unit": "mm²"},
-      {"id": "L", "label": "Długość", "unit": "m"}
-    ],
-    "unit": "kg"
-  }
+        {"id": "S", "label": "Przekrój", "unit": "mm²"},
+        {"id": "L", "label": "Długość", "unit": "m"}
+    ]
+  },
   {
     "id": "online_lux_calc",
-    "title": "Natężenie Oświetlenia (Uproszczone)",
+    "title": "Natężenie Oświetlenia",
     "description": "Szacowanie liczby luksów na powierzchni roboczej.",
-    "formula": "E = (Phi * n) / (A * 1.2)",
-    "unit": "lx"
+    "formula": "Phi * n / (A * 1.2)",
+    "unit": "lx",
+     "variables": [
+        {"id": "Phi", "label": "Strumień lampy", "unit": "lm"},
+        {"id": "n", "label": "Liczba lamp", "unit": "szt"},
+        {"id": "A", "label": "Powierzchnia", "unit": "m²"}
+    ]
   }
 ]
