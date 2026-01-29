@@ -6,8 +6,8 @@
     "formula": "S * L * 8.89 / 1000",
     "unit": "kg",
     "variables": [
-        {"id": "S", "label": "Przekroj", "unit": "mm2"},
-        {"id": "L", "label": "Dlugosc", "unit": "m"}
+        {"id": "S", "label": "Przekroj", "unit": "mm2", "defaultValue": "2.5"},
+        {"id": "L", "label": "Dlugosc", "unit": "m", "defaultValue": "100"}
     ]
   },
   {
@@ -17,9 +17,9 @@
     "formula": "Phi * n / (A * 1.2)",
     "unit": "lx",
      "variables": [
-        {"id": "Phi", "label": "Strumien lampy", "unit": "lm"},
-        {"id": "n", "label": "Liczba lamp", "unit": "szt"},
-        {"id": "A", "label": "Powierzchnia", "unit": "m2"}
+        {"id": "Phi", "label": "Strumien lampy", "unit": "lm", "defaultValue": "3000"},
+        {"id": "n", "label": "Liczba lamp", "unit": "szt", "defaultValue": "4"},
+        {"id": "A", "label": "Powierzchnia", "unit": "m2", "defaultValue": "20"}
     ]
   },
   {
@@ -29,12 +29,12 @@
     "formula": "100 * 1.73 * I * L * cosphi / (gamma * S * U)",
     "unit": "%",
     "variables": [
-      {"id": "I", "label": "Prad Ib", "unit": "A"},
-      {"id": "L", "label": "Dlugosc L", "unit": "m"},
-      {"id": "cosphi", "label": "Wsp mocy", "unit": "phi"},
-      {"id": "gamma", "label": "Konduktywnosc", "unit": "m/Ohm mm2"},
-      {"id": "S", "label": "Przekroj", "unit": "mm2"},
-      {"id": "U", "label": "Napiecie Un", "unit": "V"}
+      {"id": "I", "label": "Prad Ib", "unit": "A", "defaultValue": "10"},
+      {"id": "L", "label": "Dlugosc L", "unit": "m", "defaultValue": "50"},
+      {"id": "cosphi", "label": "Wsp mocy", "unit": "phi", "defaultValue": "0.9"},
+      {"id": "gamma", "label": "Konduktywnosc", "unit": "m/Ohm mm2", "defaultValue": "56"},
+      {"id": "S", "label": "Przekroj", "unit": "mm2", "defaultValue": "4"},
+      {"id": "U", "label": "Napiecie Un", "unit": "V", "defaultValue": "400"}
     ]
   }
 ]
