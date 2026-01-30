@@ -2925,7 +2925,8 @@
     "description": "Liczba kawałków spaghetti (Feynmana problem - zawsze >2).",
     "formula": "3",
     "unit": "kawałki",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "money_inflation_loss",
@@ -2996,7 +2997,8 @@
     "description": "Prawdopodobieństwo trafienia 'szóstki' (1 do X).",
     "formula": "13983816",
     "unit": "1/X",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_moore_law",
