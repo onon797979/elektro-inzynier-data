@@ -3037,7 +3037,8 @@
     "description": "Ile prądu zużywa Twój mózg podczas myślenia?",
     "formula": "20",
     "unit": "W",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_black_hole_earth",
@@ -3045,7 +3046,8 @@
     "description": "Do jakiego rozmiaru trzeba ścisnąć Ziemię, by stała się czarną dziurą?",
     "formula": "0.009",
     "unit": "m",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_lego_tower",
@@ -3079,7 +3081,8 @@
     "description": "Ile ważą wszystkie elektrony tworzące Internet? (~50g).",
     "formula": "0.05",
     "unit": "kg",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_blood_vessels",
@@ -3087,7 +3090,8 @@
     "description": "Gdyby rozciągnąć wszystkie Twoje żyły i tętnice.",
     "formula": "100000",
     "unit": "km",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_dna_length",
@@ -3135,7 +3139,8 @@
     "description": "Szacowana moc potrzebna do topienia metalowych drzwi.",
     "formula": "28000000",
     "unit": "W",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_zombie_infect",
@@ -3223,7 +3228,8 @@
     "description": "Z jaką prędkością musi lecieć, by odwiedzić wszystkie dzieci?",
     "formula": "10000000",
     "unit": "km/h",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_lego_bridge",
@@ -3231,7 +3237,8 @@
     "description": "Ile klocków 2x4 potrzeba, by zbudować most na równiku?",
     "formula": "40075000 / 0.016",
     "unit": "klocków",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_gold_medal",
@@ -3239,7 +3246,8 @@
     "description": "Ile naprawdę złota jest w medalu olimpijskim?",
     "formula": "6",
     "unit": "gramów",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_popcorn_expansion",
@@ -3247,7 +3255,8 @@
     "description": "O ile powiększa się ziarno kukurydzy przy wybuchu?",
     "formula": "45",
     "unit": "razy",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_toilet_paper",
@@ -3278,7 +3287,8 @@
     "description": "Szansa, że żyjemy w symulacji (wg Elona Muska).",
     "formula": "99.9999",
     "unit": "%",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_t_rex_bite",
@@ -3286,7 +3296,8 @@
     "description": "Siła szczęk Tyranozaura.",
     "formula": "57000",
     "unit": "N",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_neutron_star",
@@ -3294,7 +3305,8 @@
     "description": "Ile waży łyżeczka materii z gwiazdy neutronowej?",
     "formula": "6000000000",
     "unit": "ton",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_sound_moon",
@@ -3302,7 +3314,8 @@
     "description": "Czas dotarcia krzyku na Księżycu do kolegi obok.",
     "formula": "99999999",
     "unit": "nigdy (próżnia)",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_banana_radiation",
@@ -3310,7 +3323,8 @@
     "description": "Ile bananów trzeba zjeść naraz, by umrzeć od promieniowania?",
     "formula": "10000000",
     "unit": "szt",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_mario_jump",
@@ -3318,7 +3332,8 @@
     "description": "Przyspieszenie grawitacyjne w świecie Mario.",
     "formula": "50",
     "unit": "m/s2",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_skyrim_map",
@@ -3326,7 +3341,8 @@
     "description": "Czas przejścia mapy Skyrim w poprzek (pieszo).",
     "formula": "2.1",
     "unit": "h",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_quidditch_snitch",
@@ -3334,7 +3350,8 @@
     "description": "Wartość 150 punktów w Quidditchu w przeliczeniu na gole.",
     "formula": "15",
     "unit": "goli",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_chocolate_dog",
@@ -3352,7 +3369,8 @@
     "description": "Z jaką prędkością spada kropla deszczu?",
     "formula": "9",
     "unit": "m/s",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_cat_years",
@@ -3370,7 +3388,8 @@
     "description": "Jak długą linię narysujesz jednym ołówkiem?",
     "formula": "56",
     "unit": "km",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_beer_bubbles",
@@ -3378,7 +3397,8 @@
     "description": "Szacunkowa liczba bąbelków w kuflu piwa.",
     "formula": "2000000",
     "unit": "szt",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_everest_grow",
@@ -3386,7 +3406,8 @@
     "description": "O ile Mount Everest rośnie rocznie?",
     "formula": "4",
     "unit": "mm",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_bamboo_growth",
@@ -3394,7 +3415,8 @@
     "description": "Rekordowy wzrost bambusa na dobę.",
     "formula": "91",
     "unit": "cm",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_human_heat",
@@ -3402,7 +3424,8 @@
     "description": "Moc cieplna wydzielana przez człowieka w spoczynku.",
     "formula": "100",
     "unit": "W",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_shark_teeth",
@@ -3410,7 +3433,8 @@
     "description": "Ile zębów gubi rekin w ciągu życia?",
     "formula": "30000",
     "unit": "szt",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_lightning_width",
@@ -3418,7 +3442,8 @@
     "description": "Średnica kanału głównego wyładowania.",
     "formula": "2.5",
     "unit": "cm",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_eiffel_shrink",
@@ -3426,7 +3451,8 @@
     "description": "O ile kurczy się wieża zimą (termokurczliwość metalu).",
     "formula": "15",
     "unit": "cm",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_honey_expire",
@@ -3434,7 +3460,8 @@
     "description": "Po ilu latach psuje się naturalny miód?",
     "formula": "999999",
     "unit": "nigdy",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_mosquito_teeth",
@@ -3442,7 +3469,8 @@
     "description": "Ile zębów ma komar?",
     "formula": "47",
     "unit": "szt",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_google_energy",
@@ -3460,7 +3488,8 @@
     "description": "Ile kg naskórka zrzucasz w ciągu życia?",
     "formula": "35",
     "unit": "kg",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_caffeine_half_life",
@@ -3478,7 +3507,8 @@
     "description": "Ile waży serce płetwala błękitnego?",
     "formula": "180",
     "unit": "kg",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_space_suit_cost",
@@ -3486,7 +3516,8 @@
     "description": "Koszt jednego pełnego skafandra kosmicznego.",
     "formula": "12000000",
     "unit": "USD",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_ketchup_speed",
@@ -3494,7 +3525,8 @@
     "description": "Z jaką prędkością wypływa dobry ketchup z butelki?",
     "formula": "0.045",
     "unit": "km/h",
-    "variables": []
+    "variables": [
+    ]
   },
   {
     "id": "fun_total_atoms",
