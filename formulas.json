@@ -2835,8 +2835,111 @@
     "unit": "bar",
     "variables": [
     ]
+  },
+  {
+    "id": "life_party_alcohol",
+    "title": "IMPREZA: Rozcieńczanie %",
+    "description": "Ile wody dolać do spirytusu, żeby uzyskać wódkę (C1*V1 = C2*V2).",
+    "formula": "((Vol * Strong) / Weak) - Vol",
+    "unit": "ml (wody)",
+    "variables": [
+      {"id": "Vol", "label": "Ilość spirytusu", "unit": "ml", "defaultValue": "500"},
+      {"id": "Strong", "label": "Moc spirytusu", "unit": "%", "defaultValue": "95"},
+      {"id": "Weak", "label": "Moc docelowa", "unit": "%", "defaultValue": "40"}
+    ]
+  },
+  {
+    "id": "game_mc_stacks",
+    "title": "GRA: Minecraft Stacks",
+    "description": "Ile to stacków (64)?",
+    "formula": "Items / 64",
+    "unit": "stack",
+    "variables": [
+      {"id": "Items", "label": "Liczba przedmiotów", "unit": "szt", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "sci_interstellar",
+    "title": "SCI-FI: Planeta Millera",
+    "description": "Ile lat minęło na Ziemi, gdy Ty byłeś tam godzinę? (1h = 7 lat).",
+    "formula": "hours * 7",
+    "unit": "lat (Ziemia)",
+    "variables": [
+      {"id": "hours", "label": "Czas na planecie", "unit": "h", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "zombie_escape",
+    "title": "SURVIVAL: Ucieczka Zombie",
+    "description": "Ile masz czasu, zanim horda Cię dopadnie? (v_zombie ~ 4 km/h).",
+    "formula": "(Dist / (4 - YourSpeed)) * 60",
+    "unit": "min",
+    "variables": [
+      {"id": "Dist", "label": "Dystans startowy", "unit": "km", "defaultValue": "2"},
+      {"id": "YourSpeed", "label": "Twoja prędkość (chód=5)", "unit": "km/h", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "life_coffee_caffeine",
+    "title": "ŻYCIE: Dawka Kofeiny",
+    "description": "Szacunkowa kofeina w kawie (Robusta ma 2x więcej).",
+    "formula": "Grams * 0.012 * 1000",
+    "unit": "mg",
+    "variables": [
+      {"id": "Grams", "label": "Zmielona kawa", "unit": "g", "defaultValue": "18"}
+    ]
+  },
+  {
+    "id": "phys_jump_moon",
+    "title": "KOSMOS: Skok na Księżycu",
+    "description": "Jak wysoko podskoczyłbyś na Księżycu (g ~ 1.62 m/s2)?",
+    "formula": "Height * 6",
+    "unit": "m",
+    "variables": [
+      {"id": "Height", "label": "Skok na Ziemi", "unit": "m", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "it_programmer_time",
+    "title": "IT: Czas Programisty",
+    "description": "Rzeczywisty czas wykonania zadania (Zasada xPi).",
+    "formula": "Estimate * 3.14",
+    "unit": "godzin",
+    "variables": [
+      {"id": "Estimate", "label": "Ile myślisz, że to zajmie", "unit": "h", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "fun_tnt_power",
+    "title": "EKSPLOZJA: Ekwiwalent TNT",
+    "description": "Przelicz energię w Dżulach na kilogramy trotylu.",
+    "formula": "Joules / 4184000",
+    "unit": "kg TNT",
+    "variables": [
+      {"id": "Joules", "label": "Energia", "unit": "J", "defaultValue": "10000000"}
+    ]
+  },
+  {
+    "id": "fun_spaghetti_break",
+    "title": "FIZ: Złamanie Spaghetti",
+    "description": "Liczba kawałków spaghetti (Feynmana problem - zawsze >2).",
+    "formula": "3",
+    "unit": "kawałki",
+    "variables": []
+  },
+  {
+    "id": "money_inflation_loss",
+    "title": "FIN: Złodziej Inflacja",
+    "description": "Ile realnie straciłeś pieniędzy przez inflację.",
+    "formula": "Cash - (Cash / (1 + (inf/100)))",
+    "unit": "PLN (straty)",
+    "variables": [
+      {"id": "Cash", "label": "Kwota w skarpecie", "unit": "PLN", "defaultValue": "10000"},
+      {"id": "inf", "label": "Inflacja", "unit": "%", "defaultValue": "12"}
+    ]
   }
 ]
+
 
 
 
