@@ -1316,7 +1316,7 @@
     "description": "Formuła testowa na koniec listy.",
     "formula": "1 + 1",
     "unit": "OK",
-    "variables": []
+    "variables": [
     ]
   }
 ]
