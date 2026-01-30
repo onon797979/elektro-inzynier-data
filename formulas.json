@@ -343,3 +343,39 @@
     ]
   }
 ]
+,
+  {
+    "id": "trafo_power_s",
+    "title": "Trafo: Moc Pozorna (S)",
+    "description": "Moc pozorna transformatora 3-fazowego (S = √3 * U * I).",
+    "formula": "1.732 * U * I",
+    "unit": "VA",
+    "variables": [
+      {"id": "U", "label": "Napięcie Międzyfazowe", "unit": "V", "defaultValue": "400"},
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "trafo_power_p",
+    "title": "Trafo: Moc Czynna (P)",
+    "description": "Moc czynna oddawana (P = S * cosφ).",
+    "formula": "1.732 * U * I * PF",
+    "unit": "W",
+    "variables": [
+      {"id": "U", "label": "Napięcie", "unit": "V", "defaultValue": "400"},
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "100"},
+      {"id": "PF", "label": "Cos φ", "unit": "-", "defaultValue": "0.8"}
+    ]
+  },
+  {
+    "id": "trafo_power_q",
+    "title": "Trafo: Moc Bierna (Q)",
+    "description": "Moc bierna (Q = S * sinφ). Obliczana z cosφ.",
+    "formula": "1.732 * U * I * sqrt(1 - PF^2)",
+    "unit": "var",
+    "variables": [
+      {"id": "U", "label": "Napięcie", "unit": "V", "defaultValue": "400"},
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "100"},
+      {"id": "PF", "label": "Cos φ", "unit": "-", "defaultValue": "0.8"}
+    ]
+  }
