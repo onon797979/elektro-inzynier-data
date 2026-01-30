@@ -3536,8 +3536,242 @@
     "unit": "szt",
     "variables": [
     ]
+  },
+  {
+    "id": "fun_up_house",
+    "title": "FILM: Dom z 'Odlot'",
+    "description": "Ile balonów z helem uniesie Twój dom? (14g udźwigu/balon).",
+    "formula": "(HouseKg * 1000) / 14",
+    "unit": "balonów",
+    "variables": [
+      {"id": "HouseKg", "label": "Waga domu", "unit": "kg", "defaultValue": "50000"}
+    ]
+  },
+  {
+    "id": "phys_gravity_train",
+    "title": "FIZ: Tunel przez Ziemię",
+    "description": "Czas spadania tunelem przez środek Ziemi na drugą stronę.",
+    "formula": "42.2",
+    "unit": "min",
+    "variables": [
+    ]
+  },
+  {
+    "id": "surv_tsunami_speed",
+    "title": "KAT: Prędkość Tsunami",
+    "description": "Prędkość fali na otwartym oceanie (v = sqrt(g*h)).",
+    "formula": "3.6 * sqrt(9.81 * Depth)",
+    "unit": "km/h",
+    "variables": [
+      {"id": "Depth", "label": "Głębokość oceanu", "unit": "m", "defaultValue": "4000"}
+    ]
+  },
+  {
+    "id": "fun_human_value",
+    "title": "CHEM: Wartość Człowieka",
+    "description": "Rynkowa wartość pierwiastków w Twoim ciele (Węgiel, Wapń itd.).",
+    "formula": "160",
+    "unit": "USD",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_brain_storage",
+    "title": "BIO: Pojemność Mózgu",
+    "description": "Szacunkowa pojemność pamięci ludzkiego mózgu w Petabajtach.",
+    "formula": "2.5",
+    "unit": "PB",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_sneeze_speed",
+    "title": "BIO: Prędkość Kichnięcia",
+    "description": "Z jaką prędkością wylatuje powietrze podczas kichania?",
+    "formula": "160",
+    "unit": "km/h",
+    "variables": [
+    ]
+  },
+  {
+    "id": "sci_death_star",
+    "title": "SCI-FI: Gwiazda Śmierci",
+    "description": "Energia potrzebna do wysadzenia planety Ziemia.",
+    "formula": "224000000000000000000000000000000",
+    "unit": "J",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_toaster_lightning",
+    "title": "FIZ: Piorun w Tosterze",
+    "description": "Ile tostów zrobisz na energii jednego pioruna? (5 mld J).",
+    "formula": "5000000000 / (800 * 120)",
+    "unit": "tostów",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_mp3_year",
+    "title": "MUZYKA: Pojemność Życia",
+    "description": "Ile GB zajęłoby nagranie całego Twojego życia w MP3?",
+    "formula": "(Years * 365 * 24) * 0.06",
+    "unit": "GB",
+    "variables": [
+      {"id": "Years", "label": "Lata życia", "unit": "lat", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "surv_nuclear_blast",
+    "title": "KAT: Wybuch Jądrowy",
+    "description": "Promień całkowitego zniszczenia (dla bomby 1MT).",
+    "formula": "3.5",
+    "unit": "km",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_lego_foot_pain",
+    "title": "BÓL: Nadepnięcie na LEGO",
+    "description": "Nacisk na stopę (klocek 2x2). Mała powierzchnia = wielki ból.",
+    "formula": "(Mass * 9.81) / 0.00025",
+    "unit": "Pa",
+    "variables": [
+      {"id": "Mass", "label": "Twoja waga", "unit": "kg", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "fun_vampire_blood",
+    "title": "WAMPIRY: Czas Picia",
+    "description": "Ile czasu zajmie wampirowi wypicie człowieka (przez słomkę).",
+    "formula": "5 / (Speed / 60)",
+    "unit": "min",
+    "variables": [
+      {"id": "Speed", "label": "Szybkość picia", "unit": "L/h", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "fun_smartphone_gold",
+    "title": "TECH: Złoto w Telefonie",
+    "description": "Ile złota odzyskasz z 1000 smartfonów?",
+    "formula": "Phones * 0.034",
+    "unit": "g złota",
+    "variables": [
+      {"id": "Phones", "label": "Liczba telefonów", "unit": "szt", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "fun_kardashev_1",
+    "title": "KOSMOS: Skala Kardaszewa I",
+    "description": "Moc cywilizacji Typu I (wykorzystuje całą energię planety).",
+    "formula": "1.74e17",
+    "unit": "W",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_hair_strength",
+    "title": "BIO: Siła Włosów",
+    "description": "Ile kg utrzymałby warkocz zrobiony ze wszystkich Twoich włosów?",
+    "formula": "12000",
+    "unit": "kg",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_wifi_wall",
+    "title": "IT: Tłumienie WiFi",
+    "description": "Ile sygnału tracisz przez ściany (Beton ~12dB).",
+    "formula": "Walls * 12",
+    "unit": "dB straty",
+    "variables": [
+      {"id": "Walls", "label": "Liczba ścian", "unit": "szt", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "fun_thanos_snap",
+    "title": "MARVEL: Pstryknięcie Thanosa",
+    "description": "Jaka jest szansa, że przeżyjesz?",
+    "formula": "50",
+    "unit": "%",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_minecraft_world",
+    "title": "GRA: Świat Minecrafta",
+    "description": "Powierzchnia mapy Minecrafta w porównaniu do Ziemi.",
+    "formula": "3600000000 / 510000000",
+    "unit": "x Ziemia",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_quidditch_speed",
+    "title": "FILM: Błyskawica (Miotła)",
+    "description": "Przyspieszenie miotły Firebolt (0-150 mph w 10s).",
+    "formula": "(67 - 0) / 10",
+    "unit": "m/s2",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_pencil_sharpen",
+    "title": "BIURO: Ostrzenie Ołówka",
+    "description": "Ile ołówka tracisz przy każdym ostrzeniu?",
+    "formula": "0.5",
+    "unit": "cm",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_pyramid_blocks",
+    "title": "BUD: Piramida Cheopsa",
+    "description": "Liczba bloków skalnych użytych do budowy.",
+    "formula": "2300000",
+    "unit": "szt",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_hubble_detect",
+    "title": "KOSMOS: Czułość Hubble'a",
+    "description": "Hubble zobaczyłby świetlika z odległości:",
+    "formula": "16000",
+    "unit": "km",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_ant_fall",
+    "title": "FIZ: Spadająca Mrówka",
+    "description": "Z jakiej wysokości mrówka musi spaść, żeby zginąć?",
+    "formula": "9999999",
+    "unit": "Nie zginie",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_lotr_walk",
+    "title": "FILM: Do Mordoru",
+    "description": "Dystans z Shire do Mordoru (w jedną stronę).",
+    "formula": "2850",
+    "unit": "km",
+    "variables": [
+    ]
+  },
+  {
+    "id": "fun_blue_screen",
+    "title": "IT: Czas BSOD",
+    "description": "Ile czasu życia tracisz czekając na restart Windowsa?",
+    "formula": "Crashes * 5",
+    "unit": "min",
+    "variables": [
+      {"id": "Crashes", "label": "Liczba awarii", "unit": "szt", "defaultValue": "10"}
+    ]
   }
 ]
+
 
 
 
