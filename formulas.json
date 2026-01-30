@@ -3769,8 +3769,672 @@
     "variables": [
       {"id": "Crashes", "label": "Liczba awarii", "unit": "szt", "defaultValue": "10"}
     ]
+  },
+  {
+    "id": "fin_compound_interest",
+    "title": "FINANSE: Procent Składany",
+    "description": "Magia finansów. Oblicz, ile zarobisz dzięki reinwestowaniu odsetek (A = P(1+r)^t).",
+    "formula": "P * ((1 + (r / 100)) ^ t)",
+    "unit": "PLN (Razem)",
+    "variables": [
+      {"id": "P", "label": "Kapitał początkowy", "unit": "PLN", "defaultValue": "10000"},
+      {"id": "r", "label": "Oprocentowanie roczne", "unit": "%", "defaultValue": "5"},
+      {"id": "t", "label": "Liczba lat", "unit": "lat", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "fin_rule_72",
+    "title": "FINANSE: Reguła 72",
+    "description": "Szybki sposób na policzenie, po ilu latach podwoisz swój majątek przy danej stopie zwrotu.",
+    "formula": "72 / r",
+    "unit": "lat",
+    "variables": [
+      {"id": "r", "label": "Oprocentowanie (np. 8 dla 8%)", "unit": "%", "defaultValue": "8"}
+    ]
+  },
+  {
+    "id": "surv_horizon_dist",
+    "title": "SURVIVAL: Odległość Horyzontu",
+    "description": "Jak daleko sięga Twój wzrok na morzu lub równinie? (d ≈ 3.57 * √h).",
+    "formula": "3.57 * sqrt(h)",
+    "unit": "km",
+    "variables": [
+      {"id": "h", "label": "Wysokość oczu nad ziemią", "unit": "m", "defaultValue": "1.70"}
+    ]
+  },
+  {
+    "id": "surv_cold_wind",
+    "title": "POGODA: Temp. Odczuwalna (Wiatr)",
+    "description": "Uproszczony wzór na Wind Chill. Jak zimno jest naprawdę, gdy wieje wiatr?",
+    "formula": "13.12 + (0.6215 * T) - (11.37 * (V ^ 0.16)) + (0.3965 * T * (V ^ 0.16))",
+    "unit": "°C",
+    "variables": [
+      {"id": "T", "label": "Temperatura powietrza", "unit": "°C", "defaultValue": "-5"},
+      {"id": "V", "label": "Prędkość wiatru", "unit": "km/h", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "audio_wavelength",
+    "title": "AUDIO: Długość Fali",
+    "description": "Oblicza fizyczną długość fali dźwiękowej dla danej częstotliwości (λ = v / f). Ważne przy adaptacji akustycznej.",
+    "formula": "343 / f",
+    "unit": "m",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "audio_bpm_delay",
+    "title": "AUDIO: Opóźnienie (BPM to ms)",
+    "description": "Przelicznik tempa utworu na czas opóźnienia (dla efektów Delay/Reverb).",
+    "formula": "60000 / BPM",
+    "unit": "ms (ćwierćnuta)",
+    "variables": [
+      {"id": "BPM", "label": "Tempo utworu", "unit": "BPM", "defaultValue": "120"}
+    ]
+  },
+  {
+    "id": "auto_braking_dist",
+    "title": "AUTO: Droga Hamowania",
+    "description": "Szacunkowa droga hamowania na suchym asfalcie (bez czasu reakcji!). Wzór fizyczny.",
+    "formula": "(v * v) / (2 * 0.7 * 9.81 * 12.96)",
+    "unit": "m",
+    "variables": [
+      {"id": "v", "label": "Prędkość", "unit": "km/h", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "it_data_transfer",
+    "title": "IT: Czas Przesyłania Danych",
+    "description": "Ile czasu zajmie pobranie pliku przy danej prędkości łącza?",
+    "formula": "(Size * 1024 * 8) / Speed",
+    "unit": "sekund",
+    "variables": [
+      {"id": "Size", "label": "Rozmiar pliku", "unit": "GB", "defaultValue": "50"},
+      {"id": "Speed", "label": "Prędkość łącza", "unit": "Mb/s", "defaultValue": "300"}
+    ]
+  },
+  {
+    "id": "photo_rule_500",
+    "title": "FOTO: Reguła 500 (Gwiazdy)",
+    "description": "Maksymalny czas naświetlania, aby gwiazdy pozostały punktami (nie rozmazały się).",
+    "formula": "500 / (Focal * Crop)",
+    "unit": "sekund",
+    "variables": [
+      {"id": "Focal", "label": "Ogniskowa obiektywu", "unit": "mm", "defaultValue": "16"},
+      {"id": "Crop", "label": "Crop Factor (1.0 FullFrame, 1.5 APS-C)", "unit": "x", "defaultValue": "1.5"}
+    ]
+  },
+  {
+    "id": "life_pizza_deal",
+    "title": "ŻYCIE: Opłacalność Pizzy",
+    "description": "Oblicza cenę za 1 cm² pizzy. Pomaga wybrać, czy brać dwie małe, czy jedną dużą.",
+    "formula": "Price / (3.1415 * (Diameter / 2) * (Diameter / 2))",
+    "unit": "PLN/cm2",
+    "variables": [
+      {"id": "Price", "label": "Cena pizzy", "unit": "PLN", "defaultValue": "40"},
+      {"id": "Diameter", "label": "Średnica", "unit": "cm", "defaultValue": "32"}
+    ]
+  },
+  {
+    "id": "health_bmi_calc",
+    "title": "ZDROWIE: BMI",
+    "description": "Wskaźnik Body Mass Index. (Norma: 18.5 - 24.9).",
+    "formula": "Weight / ((Height / 100) * (Height / 100))",
+    "unit": "BMI",
+    "variables": [
+      {"id": "Weight", "label": "Waga", "unit": "kg", "defaultValue": "80"},
+      {"id": "Height", "label": "Wzrost", "unit": "cm", "defaultValue": "180"}
+    ]
+  },
+  {
+    "id": "mech_kinetic_energy",
+    "title": "FIZ: Energia Kinetyczna",
+    "description": "Energia poruszającego się obiektu (np. pocisku, samochodu). Ek = 0.5 * m * v^2.",
+    "formula": "0.5 * m * v * v",
+    "unit": "J",
+    "variables": [
+      {"id": "m", "label": "Masa", "unit": "kg", "defaultValue": "1000"},
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "game_edpi",
+    "title": "GAMING: eDPI (Czułość Myszki)",
+    "description": "Efektywne DPI. Pozwala porównać czułość myszki między graczami niezależnie od sprzętu.",
+    "formula": "DPI * Sens",
+    "unit": "eDPI",
+    "variables": [
+      {"id": "DPI", "label": "DPI Myszki", "unit": "dpi", "defaultValue": "800"},
+      {"id": "Sens", "label": "Czułość w grze", "unit": "-", "defaultValue": "1.5"}
+    ]
+  },
+  {
+    "id": "screen_ppi",
+    "title": "TECH: Gęstość Pikseli (PPI)",
+    "description": "Jak ostry jest Twój ekran? (Retina to >300 PPI).",
+    "formula": "sqrt((W * W) + (H * H)) / Inch",
+    "unit": "PPI",
+    "variables": [
+      {"id": "W", "label": "Rozdzielczość Pozioma", "unit": "px", "defaultValue": "1920"},
+      {"id": "H", "label": "Rozdzielczość Pionowa", "unit": "px", "defaultValue": "1080"},
+      {"id": "Inch", "label": "Przekątna", "unit": "cal", "defaultValue": "24"}
+    ]
+  },
+  {
+    "id": "cook_egg_boil",
+    "title": "KUCHNIA: Idealne Jajko",
+    "description": "Fizyczny wzór Charlesa Williamsa na czas gotowania jajka na miękko.",
+    "formula": "10 * ln((100 - 4) / (100 - 65)) * (M ^ 0.66)",
+    "unit": "min (orientacyjnie)",
+    "variables": [
+      {"id": "M", "label": "Waga jajka", "unit": "g", "defaultValue": "60"}
+    ]
+  },
+  {
+    "id": "sport_1rm_epley",
+    "title": "SPORT: Maksymalny Ciężar (1RM)",
+    "description": "Wzór Epleya. Oblicza ile wyciśniesz raz, na podstawie serii powtórzeń.",
+    "formula": "Weight * (1 + (Reps / 30))",
+    "unit": "kg (max)",
+    "variables": [
+      {"id": "Weight", "label": "Ciężar w serii", "unit": "kg", "defaultValue": "80"},
+      {"id": "Reps", "label": "Liczba powtórzeń", "unit": "szt", "defaultValue": "8"}
+    ]
+  },
+  {
+    "id": "acoustics_rt60",
+    "title": "AUDIO: Pogłos (Sabine)",
+    "description": "Czas pogłosu w pomieszczeniu (RT60). Uproszczony dla betonu.",
+    "formula": "(0.161 * Vol) / (Area * 0.05)",
+    "unit": "sekund",
+    "variables": [
+      {"id": "Vol", "label": "Objętość pokoju", "unit": "m3", "defaultValue": "50"},
+      {"id": "Area", "label": "Powierzchnia ścian", "unit": "m2", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "photo_timelapse",
+    "title": "FOTO: Długość Timelapse",
+    "description": "Ile sekund wideo wyjdzie z nagrywania przez X minut?",
+    "formula": "(RealTimeMin * 60) / Interval / FPS",
+    "unit": "sekund wideo",
+    "variables": [
+      {"id": "RealTimeMin", "label": "Czas nagrywania", "unit": "min", "defaultValue": "60"},
+      {"id": "Interval", "label": "Co ile sekund zdjęcie", "unit": "s", "defaultValue": "5"},
+      {"id": "FPS", "label": "Klatkaż wideo", "unit": "fps", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "car_stopping_gforce",
+    "title": "AUTO: Przeciążenie Hamowania",
+    "description": "Jakie przeciążenie G działa na pasażerów przy awaryjnym hamowaniu?",
+    "formula": "((Speed / 3.6) / Time) / 9.81",
+    "unit": "G",
+    "variables": [
+      {"id": "Speed", "label": "Prędkość początkowa", "unit": "km/h", "defaultValue": "100"},
+      {"id": "Time", "label": "Czas zatrzymania", "unit": "s", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "astro_roche_limit",
+    "title": "KOSMOS: Granica Roche'a",
+    "description": "Odległość, przy której księżyc zostanie rozerwany przez grawitację planety.",
+    "formula": "Radius * 2.44",
+    "unit": "km",
+    "variables": [
+      {"id": "Radius", "label": "Promień planety", "unit": "km", "defaultValue": "6371"}
+    ]
+  },
+  {
+    "id": "net_raid5_cap",
+    "title": "IT: Pojemność RAID 5",
+    "description": "Efektywna pojemność macierzy dyskowej RAID 5 (N-1).",
+    "formula": "(N - 1) * Size",
+    "unit": "TB",
+    "variables": [
+      {"id": "N", "label": "Liczba dysków", "unit": "szt", "defaultValue": "4"},
+      {"id": "Size", "label": "Rozmiar dysku", "unit": "TB", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "phys_doppler",
+    "title": "FIZ: Efekt Dopplera",
+    "description": "Zmiana częstotliwości dźwięku, gdy obiekt się zbliża (np. karetka).",
+    "formula": "Freq * (340 / (340 - Velocity))",
+    "unit": "Hz (słyszalne)",
+    "variables": [
+      {"id": "Freq", "label": "Częstotliwość źródła", "unit": "Hz", "defaultValue": "1000"},
+      {"id": "Velocity", "label": "Prędkość obiektu", "unit": "m/s", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "renov_tiles",
+    "title": "REMONT: Płytki + Zapas",
+    "description": "Ile m2 płytek kupić uwzględniając 10% na docinki/straty.",
+    "formula": "(W * L) * 1.1",
+    "unit": "m2",
+    "variables": [
+      {"id": "W", "label": "Szerokość podłogi", "unit": "m", "defaultValue": "3"},
+      {"id": "L", "label": "Długość podłogi", "unit": "m", "defaultValue": "4"}
+    ]
+  },
+  {
+    "id": "renov_paint",
+    "title": "REMONT: Zużycie Farby",
+    "description": "Ile litrów farby na dwukrotne malowanie (wydajność śr. 12m2/l).",
+    "formula": "((W + L) * 2 * H * 2) / 12",
+    "unit": "Litrów",
+    "variables": [
+      {"id": "W", "label": "Szerokość pokoju", "unit": "m", "defaultValue": "4"},
+      {"id": "L", "label": "Długość pokoju", "unit": "m", "defaultValue": "5"},
+      {"id": "H", "label": "Wysokość pokoju", "unit": "m", "defaultValue": "2.6"}
+    ]
+  },
+  {
+    "id": "hvac_btu_calc",
+    "title": "KLIMA: Moc Klimatyzatora",
+    "description": "Uproszczony dobór mocy chłodniczej do powierzchni (100W/m2).",
+    "formula": "(Area * 100) / 1000",
+    "unit": "kW",
+    "variables": [
+      {"id": "Area", "label": "Powierzchnia pokoju", "unit": "m2", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "coffee_ratio",
+    "title": "KAWA: Ratio Parzenia",
+    "description": "Ile kawy zmielić na daną ilość wody (Standard 6g/100ml).",
+    "formula": "Water * 0.06",
+    "unit": "g kawy",
+    "variables": [
+      {"id": "Water", "label": "Ilość wody", "unit": "ml", "defaultValue": "250"}
+    ]
+  },
+  {
+    "id": "dive_max_depth",
+    "title": "NURKOWANIE: Ciśnienie parcjalne O2",
+    "description": "Prawo Daltona. Oblicza ppO2. Norma bezpieczeństwa < 1.4 bar.",
+    "formula": "((Depth / 10) + 1) * (O2 / 100)",
+    "unit": "bar (ppO2)",
+    "variables": [
+      {"id": "Depth", "label": "Głębokość", "unit": "m", "defaultValue": "30"},
+      {"id": "O2", "label": "% Tlenu w butli (Nitrox)", "unit": "%", "defaultValue": "21"}
+    ]
+  },
+  {
+    "id": "eco_fuel_trip",
+    "title": "AUTO: Koszt Podróży",
+    "description": "Ile realnie wydasz na paliwo na tej trasie.",
+    "formula": "(Dist / 100) * Burn * Price",
+    "unit": "PLN",
+    "variables": [
+      {"id": "Dist", "label": "Dystans", "unit": "km", "defaultValue": "350"},
+      {"id": "Burn", "label": "Spalanie", "unit": "l/100km", "defaultValue": "7.5"},
+      {"id": "Price", "label": "Cena paliwa", "unit": "PLN/l", "defaultValue": "6.50"}
+    ]
+  },
+  {
+    "id": "elec_led_resistor",
+    "title": "ELEKTRO: Rezystor do LED",
+    "description": "Jaki opornik wpiąć szeregowo do diody LED? R = (Vz - Vd) / I.",
+    "formula": "(Vsource - Vled) / (I / 1000)",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "Vsource", "label": "Napięcie zasilania", "unit": "V", "defaultValue": "5"},
+      {"id": "Vled", "label": "Napięcie diody", "unit": "V", "defaultValue": "2"},
+      {"id": "I", "label": "Prąd diody", "unit": "mA", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "garden_water_vol",
+    "title": "OGRÓD: Deszczówka",
+    "description": "Ile wody zbierzesz z dachu podczas deszczu 10mm?",
+    "formula": "RoofArea * RainMM",
+    "unit": "Litrów",
+    "variables": [
+      {"id": "RoofArea", "label": "Powierzchnia dachu", "unit": "m2", "defaultValue": "100"},
+      {"id": "RainMM", "label": "Opad deszczu", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "space_time_dilation",
+    "title": "FIZ: Dylatacja Czasu",
+    "description": "O ile wolniej płynie czas przy prędkości bliskiej światła? (Lorentz).",
+    "formula": "1 / sqrt(1 - ((v * v) / (299792 * 299792)))",
+    "unit": "x wolniej",
+    "variables": [
+      {"id": "v", "label": "Prędkość statku", "unit": "km/s", "defaultValue": "100000"}
+    ]
+  },
+  {
+    "id": "solar_panel_yield",
+    "title": "OZE: Uzysk z Paneli PV",
+    "description": "Szacunkowa energia wyprodukowana w słoneczny dzień (sprawność ~15%).",
+    "formula": "Power * Hours * 0.85",
+    "unit": "Wh",
+    "variables": [
+      {"id": "Power", "label": "Moc instalacji", "unit": "W", "defaultValue": "3000"},
+      {"id": "Hours", "label": "Godziny słońca", "unit": "h", "defaultValue": "6"}
+    ]
+  },
+  {
+    "id": "tv_optimal_dist",
+    "title": "RTV: Odległość od TV 4K",
+    "description": "Idealna odległość od telewizora 4K (1.5x przekątna ekranu).",
+    "formula": "(Inches * 2.54 * 1.5) / 100",
+    "unit": "m",
+    "variables": [
+      {"id": "Inches", "label": "Rozmiar TV", "unit": "cali", "defaultValue": "65"}
+    ]
+  },
+  {
+    "id": "print_3d_cost",
+    "title": "DRUK 3D: Koszt Wydruku",
+    "description": "Ile kosztuje materiał na wydruk?",
+    "formula": "(Weight / 1000) * Price",
+    "unit": "PLN",
+    "variables": [
+      {"id": "Weight", "label": "Waga modelu", "unit": "g", "defaultValue": "150"},
+      {"id": "Price", "label": "Cena filamentu", "unit": "PLN/kg", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "beer_alcohol_abv",
+    "title": "PIWOWARSTWO: Moc Piwa",
+    "description": "Oblicz % alkoholu na podstawie gęstości początkowej (OG) i końcowej (FG).",
+    "formula": "(OG - FG) * 131.25",
+    "unit": "% alk.",
+    "variables": [
+      {"id": "OG", "label": "Gęstość startowa (np. 1.050)", "unit": "SG", "defaultValue": "1.048"},
+      {"id": "FG", "label": "Gęstość końcowa (np. 1.010)", "unit": "SG", "defaultValue": "1.010"}
+    ]
+  },
+  {
+    "id": "social_dunbar",
+    "title": "PSYCHO: Liczba Dunbara",
+    "description": "Maksymalna teoretyczna liczba znajomych, z którymi utrzymasz relację.",
+    "formula": "150",
+    "unit": "znajomych",
+    "variables": [
+    ]
+  },
+  {
+    "id": "youtube_earnings",
+    "title": "YOUTUBE: Szacowane Zarobki",
+    "description": "Ile zarobisz z wyświetleń przy średnim RPM (Revenue Per Mille).",
+    "formula": "(Views / 1000) * RPM",
+    "unit": "PLN",
+    "variables": [
+      {"id": "Views", "label": "Liczba wyświetleń", "unit": "szt", "defaultValue": "100000"},
+      {"id": "RPM", "label": "Stawka za 1000 wyś.", "unit": "PLN", "defaultValue": "3.5"}
+    ]
+  },
+  {
+    "id": "run_pace_calc",
+    "title": "BIEGANIE: Tempo (Pace)",
+    "description": "Średnie tempo biegu w minutach na kilometr.",
+    "formula": "Minutes / Dist",
+    "unit": "min/km",
+    "variables": [
+      {"id": "Minutes", "label": "Czas biegu", "unit": "min", "defaultValue": "50"},
+      {"id": "Dist", "label": "Dystans", "unit": "km", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "wifi_range_fspl",
+    "title": "IT: Tłumienie WiFi (FSPL)",
+    "description": "Strata sygnału w wolnej przestrzeni (Free Space Path Loss). Im mniej dBm, tym gorzej.",
+    "formula": "20 * log10(Dist) + 20 * log10(Freq) + 32.44",
+    "unit": "dB (straty)",
+    "variables": [
+      {"id": "Dist", "label": "Odległość", "unit": "km", "defaultValue": "0.1"},
+      {"id": "Freq", "label": "Częstotliwość", "unit": "MHz", "defaultValue": "2400"}
+    ]
+  },
+  {
+    "id": "hydraulics_pipe_vol",
+    "title": "HYDRAULIKA: Woda w Rurze",
+    "description": "Ile litrów wody mieści 1 metr rury o danej średnicy?",
+    "formula": "3.14 * ((Dia / 2000) ^ 2) * 1000",
+    "unit": "L/mb",
+    "variables": [
+      {"id": "Dia", "label": "Średnica rury", "unit": "mm", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "mechanic_torque_hp",
+    "title": "AUTO: Moment a Moc",
+    "description": "Przelicz Moment Obrotowy (Nm) na Konie Mechaniczne (KM).",
+    "formula": "(Torque * RPM) / 7024",
+    "unit": "KM",
+    "variables": [
+      {"id": "Torque", "label": "Moment obrotowy", "unit": "Nm", "defaultValue": "300"},
+      {"id": "RPM", "label": "Obroty silnika", "unit": "obr/min", "defaultValue": "4000"}
+    ]
+  },
+  {
+    "id": "wood_moisture",
+    "title": "STOLARKA: Zmiana Wymiaru",
+    "description": "O ile skurczy się deska przy schnięciu? (Śr. skurcz 0.25% na 1% wilgotności).",
+    "formula": "Width * ((StartM - EndM) * 0.0025)",
+    "unit": "mm (skurcz)",
+    "variables": [
+      {"id": "Width", "label": "Szerokość deski", "unit": "mm", "defaultValue": "150"},
+      {"id": "StartM", "label": "Wilgotność początkowa", "unit": "%", "defaultValue": "20"},
+      {"id": "EndM", "label": "Wilgotność końcowa", "unit": "%", "defaultValue": "8"}
+    ]
+  },
+  {
+    "id": "crypto_roi",
+    "title": "KRYPTO: Zwrot z Inwestycji",
+    "description": "Procentowy zysk lub strata (ROI).",
+    "formula": "((Current - Buy) / Buy) * 100",
+    "unit": "%",
+    "variables": [
+      {"id": "Buy", "label": "Cena zakupu", "unit": "$", "defaultValue": "30000"},
+      {"id": "Current", "label": "Cena obecna", "unit": "$", "defaultValue": "45000"}
+    ]
+  },
+  {
+    "id": "stairs_comfort",
+    "title": "BUD: Wygodne Schody",
+    "description": "Zasada wygodnych schodów: 2 * Wysokość + Głębokość = 63cm.",
+    "formula": "63 - (2 * H)",
+    "unit": "cm (wymagana głębokość)",
+    "variables": [
+      {"id": "H", "label": "Wysokość stopnia", "unit": "cm", "defaultValue": "17"}
+    ]
+  },
+  {
+    "id": "battery_liion_life",
+    "title": "ELEKTRO: Żywotność 18650",
+    "description": "Ile czasu podziała urządzenie na ogniwie Li-Ion?",
+    "formula": "(Cap * 0.85) / Load",
+    "unit": "h",
+    "variables": [
+      {"id": "Cap", "label": "Pojemność ogniwa", "unit": "mAh", "defaultValue": "3000"},
+      {"id": "Load", "label": "Pobór prądu", "unit": "mA", "defaultValue": "500"}
+    ]
+  },
+  {
+    "id": "project_pm_risk",
+    "title": "BIZNES: Ryzyko Projektu",
+    "description": "Wartość oczekiwana ryzyka (EMV).",
+    "formula": "Cost * (Prob / 100)",
+    "unit": "PLN (rezerwa)",
+    "variables": [
+      {"id": "Cost", "label": "Koszt awarii", "unit": "PLN", "defaultValue": "50000"},
+      {"id": "Prob", "label": "Prawdopodobieństwo", "unit": "%", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "travel_luggage_vol",
+    "title": "PODRÓŻ: Objętość Walizki",
+    "description": "Ile litrów ma Twoja walizka?",
+    "formula": "(H * W * D) / 1000",
+    "unit": "Litrów",
+    "variables": [
+      {"id": "H", "label": "Wysokość", "unit": "cm", "defaultValue": "55"},
+      {"id": "W", "label": "Szerokość", "unit": "cm", "defaultValue": "40"},
+      {"id": "D", "label": "Głębokość", "unit": "cm", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "laser_pointer_spot",
+    "title": "LASER: Rozmiar Plamki",
+    "description": "Jak duża będzie kropka lasera w dużej odległości (Rozbieżność wiązki).",
+    "formula": "Dist * (Div / 1000)",
+    "unit": "m (średnica)",
+    "variables": [
+      {"id": "Dist", "label": "Odległość", "unit": "m", "defaultValue": "1000"},
+      {"id": "Div", "label": "Rozbieżność (mrad)", "unit": "mrad", "defaultValue": "1.5"}
+    ]
+  },
+  {
+    "id": "human_body_surface",
+    "title": "MED: Powierzchnia Ciała",
+    "description": "Wzór Mostellera. Przydatne do dawkowania leków.",
+    "formula": "sqrt((W * H) / 3600)",
+    "unit": "m2",
+    "variables": [
+      {"id": "W", "label": "Waga", "unit": "kg", "defaultValue": "80"},
+      {"id": "H", "label": "Wzrost", "unit": "cm", "defaultValue": "180"}
+    ]
+  },
+  {
+    "id": "esport_reaction_time",
+    "title": "GAMING: Czas Reakcji (Ping)",
+    "description": "Całkowite opóźnienie: Twój mózg + Input Lag + Ping.",
+    "formula": "Brain + Hardware + Ping",
+    "unit": "ms",
+    "variables": [
+      {"id": "Brain", "label": "Reakcja biologiczna", "unit": "ms", "defaultValue": "200"},
+      {"id": "Hardware", "label": "Input Lag (Monitor+Mysz)", "unit": "ms", "defaultValue": "10"},
+      {"id": "Ping", "label": "Ping internetu", "unit": "ms", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "dog_food_calc",
+    "title": "PIES: Karma",
+    "description": "Ile karmy dziennie? (Szacunek 2-3% wagi ciała).",
+    "formula": "Weight * 1000 * 0.025",
+    "unit": "g",
+    "variables": [
+      {"id": "Weight", "label": "Waga psa", "unit": "kg", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "perfume_dilution",
+    "title": "CHEM: Własne Perfumy",
+    "description": "Ile spirytusu dolać do olejku zapachowego, by uzyskać Eau de Parfum (15%).",
+    "formula": "(Oil / 0.15) - Oil",
+    "unit": "ml spirytusu",
+    "variables": [
+      {"id": "Oil", "label": "Ilość olejku", "unit": "ml", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "tires_diameter",
+    "title": "AUTO: Średnica Koła",
+    "description": "Pełna wysokość koła w mm (Felga + Opona).",
+    "formula": "(Rim * 25.4) + (2 * (Width * (Profile / 100)))",
+    "unit": "mm",
+    "variables": [
+      {"id": "Rim", "label": "Rozmiar felgi", "unit": "cali", "defaultValue": "16"},
+      {"id": "Width", "label": "Szerokość opony", "unit": "mm", "defaultValue": "205"},
+      {"id": "Profile", "label": "Profil opony", "unit": "%", "defaultValue": "55"}
+    ]
+  },
+  {
+    "id": "book_shelf_space",
+    "title": "DOM: Miejsce na Książki",
+    "description": "Ile metrów bieżących półki zajmie Twoja kolekcja (śr. 2.5cm/książka).",
+    "formula": "(Books * 2.5) / 100",
+    "unit": "m",
+    "variables": [
+      {"id": "Books", "label": "Liczba książek", "unit": "szt", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "drone_max_range",
+    "title": "DRON: Zasięg Lotu",
+    "description": "Teoretyczny zasięg w jedną stronę (połowa baterii minus zapas).",
+    "formula": "((Speed * (Time / 60)) / 2) * 0.8",
+    "unit": "km",
+    "variables": [
+      {"id": "Speed", "label": "Prędkość przelotowa", "unit": "km/h", "defaultValue": "40"},
+      {"id": "Time", "label": "Czas baterii", "unit": "min", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "crowd_density",
+    "title": "BEZPIECZEŃSTWO: Tłum",
+    "description": "Ile osób zmieści się na placu? (Metoda Jacobsa: tłok = 4 os/m2).",
+    "formula": "Area * 4",
+    "unit": "osób",
+    "variables": [
+      {"id": "Area", "label": "Powierzchnia placu", "unit": "m2", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "telescope_magnification",
+    "title": "ASTRO: Powiększenie Teleskopu",
+    "description": "Jakie powiększenie daje dany okular?",
+    "formula": "FocalTel / FocalEye",
+    "unit": "x",
+    "variables": [
+      {"id": "FocalTel", "label": "Ogniskowa teleskopu", "unit": "mm", "defaultValue": "900"},
+      {"id": "FocalEye", "label": "Ogniskowa okularu", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "download_time_real",
+    "title": "INTERNET: Czas pobierania (Realny)",
+    "description": "Czas pobrania z uwzględnieniem 10% narzutu protokołu TCP/IP.",
+    "formula": "((Size * 1024 * 8) / Speed) * 1.1",
+    "unit": "s",
+    "variables": [
+      {"id": "Size", "label": "Plik", "unit": "GB", "defaultValue": "10"},
+      {"id": "Speed", "label": "Łącze", "unit": "Mb/s", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "paper_weight_ream",
+    "title": "BIURO: Waga Papieru",
+    "description": "Ile waży ryza papieru (500 kartek) A4 o danej gramaturze?",
+    "formula": "0.06237 * Grammage * 500 / 1000",
+    "unit": "kg",
+    "variables": [
+      {"id": "Grammage", "label": "Gramatura", "unit": "g/m2", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "aquarium_glass",
+    "title": "AKWARYSTYKA: Grubość Szyby",
+    "description": "Minimalna bezpieczna grubość szyby (uproszczona).",
+    "formula": "sqrt(Height) * Length * 0.02",
+    "unit": "mm (szacunkowo)",
+    "variables": [
+      {"id": "Height", "label": "Wysokość akwarium", "unit": "cm", "defaultValue": "50"},
+      {"id": "Length", "label": "Długość akwarium", "unit": "cm", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "bike_cadence_speed",
+    "title": "ROWER: Prędkość z Kadencji",
+    "description": "Jak szybko jedziesz kręcąc pedałami z daną prędkością?",
+    "formula": "(RPM * TeethFront / TeethRear) * WheelCirc * 0.00006",
+    "unit": "km/h",
+    "variables": [
+      {"id": "RPM", "label": "Kadencja", "unit": "obr/min", "defaultValue": "90"},
+      {"id": "TeethFront", "label": "Zęby przód", "unit": "szt", "defaultValue": "50"},
+      {"id": "TeethRear", "label": "Zęby tył", "unit": "szt", "defaultValue": "15"},
+      {"id": "WheelCirc", "label": "Obwód koła", "unit": "mm", "defaultValue": "2096"}
+    ]
   }
 ]
+
 
 
 
