@@ -1853,8 +1853,459 @@
       {"id": "Pitch", "label": "Skok paska (GT2=2)", "unit": "mm", "defaultValue": "2"},
       {"id": "Teeth", "label": "Zęby zębatki", "unit": "szt", "defaultValue": "20"}
     ]
+  },
+  {
+    "id": "acous_speed_temp",
+    "title": "AKU: Prędkość Dźwięku (Temp)",
+    "description": "Zależność prędkości dźwięku od temperatury powietrza.",
+    "formula": "331.3 + (0.606 * T)",
+    "unit": "m/s",
+    "variables": [
+      {"id": "T", "label": "Temperatura", "unit": "C", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "acous_room_mode",
+    "title": "AKU: Rezonans Pomieszczenia",
+    "description": "Pierwszy mod własny pomieszczenia (fala stojąca).",
+    "formula": "343 / (2 * L)",
+    "unit": "Hz",
+    "variables": [
+      {"id": "L", "label": "Długość pokoju", "unit": "m", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "acous_rt60_sabine",
+    "title": "AKU: Pogłos RT60 (Sabine)",
+    "description": "Szacunkowy czas pogłosu.",
+    "formula": "(0.161 * V) / (A * alpha)",
+    "unit": "s",
+    "variables": [
+      {"id": "V", "label": "Kubatura", "unit": "m3", "defaultValue": "50"},
+      {"id": "A", "label": "Powierzchnia ścian", "unit": "m2", "defaultValue": "80"},
+      {"id": "alpha", "label": "Wsp. pochłaniania (0-1)", "unit": "-", "defaultValue": "0.2"}
+    ]
+  },
+  {
+    "id": "ele_filter_rc_lowpass",
+    "title": "ELE: Filtr DP (RC)",
+    "description": "Częstotliwość odcięcia filtra dolnoprzepustowego.",
+    "formula": "1 / (2 * 3.14159 * R * C)",
+    "unit": "Hz",
+    "variables": [
+      {"id": "R", "label": "Rezystancja", "unit": "Ohm", "defaultValue": "1000"},
+      {"id": "C", "label": "Pojemność", "unit": "F", "defaultValue": "0.00001"}
+    ]
+  },
+  {
+    "id": "ele_adc_resolution",
+    "title": "ELE: Rozdzielczość ADC",
+    "description": "Najmniejsza zmiana napięcia wykrywana przez przetwornik.",
+    "formula": "Vref / (2 ^ Bits)",
+    "unit": "V",
+    "variables": [
+      {"id": "Vref", "label": "Napięcie referencyjne", "unit": "V", "defaultValue": "5"},
+      {"id": "Bits", "label": "Rozdzielczość bitowa", "unit": "bit", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "ele_adc_value",
+    "title": "ELE: Wartość Cyfrowa ADC",
+    "description": "Wartość odczytana przez mikrokontroler.",
+    "formula": "(Vin / Vref) * (2 ^ Bits)",
+    "unit": "dec",
+    "variables": [
+      {"id": "Vin", "label": "Napięcie wejściowe", "unit": "V", "defaultValue": "2.5"},
+      {"id": "Vref", "label": "Napięcie ref.", "unit": "V", "defaultValue": "5"},
+      {"id": "Bits", "label": "Bity ADC", "unit": "bit", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "ele_slew_rate",
+    "title": "ELE: Slew Rate (Wzm. Op.)",
+    "description": "Minimalna szybkość narastania dla danej częstotliwości.",
+    "formula": "2 * 3.14159 * f * Vpeak / 1000000",
+    "unit": "V/us",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "20000"},
+      {"id": "Vpeak", "label": "Amplituda (szczyt)", "unit": "V", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "opt_snell_law",
+    "title": "OPTYKA: Prawo Snella",
+    "description": "Kąt załamania światła (n1*sin(a) = n2*sin(b)).",
+    "formula": "asin((n1 * sin(deg * 0.01745)) / n2) * 57.296",
+    "unit": "st",
+    "variables": [
+      {"id": "n1", "label": "Wsp. załamania 1", "unit": "-", "defaultValue": "1.0"},
+      {"id": "n2", "label": "Wsp. załamania 2", "unit": "-", "defaultValue": "1.33"},
+      {"id": "deg", "label": "Kąt padania", "unit": "st", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "opt_photon_energy",
+    "title": "FIZ: Energia Fotonu",
+    "description": "Energia fotonu o danej częstotliwości (E = h*f).",
+    "formula": "6.626e-34 * f",
+    "unit": "J",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "500000000000000"}
+    ]
+  },
+  {
+    "id": "fluid_archimedes",
+    "title": "HYD: Siła Wyporu",
+    "description": "Siła działająca na ciało zanurzone (F = ρ*g*V).",
+    "formula": "ro * 9.81 * V",
+    "unit": "N",
+    "variables": [
+      {"id": "ro", "label": "Gęstość cieczy", "unit": "kg/m3", "defaultValue": "1000"},
+      {"id": "V", "label": "Objętość zanurzona", "unit": "m3", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "fluid_hydrostatic",
+    "title": "HYD: Ciśnienie Hydrostat.",
+    "description": "Ciśnienie słupa cieczy (P = ρ*g*h).",
+    "formula": "ro * 9.81 * h",
+    "unit": "Pa",
+    "variables": [
+      {"id": "ro", "label": "Gęstość cieczy", "unit": "kg/m3", "defaultValue": "1000"},
+      {"id": "h", "label": "Wysokość słupa", "unit": "m", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "fluid_torricelli",
+    "title": "HYD: Prawo Torricellego",
+    "description": "Prędkość wypływu cieczy ze zbiornika.",
+    "formula": "sqrt(2 * 9.81 * h)",
+    "unit": "m/s",
+    "variables": [
+      {"id": "h", "label": "Wysokość słupa cieczy", "unit": "m", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "struct_beam_stress",
+    "title": "WYTRZ: Naprężenie Zginające",
+    "description": "Maksymalne naprężenie w belce (σ = M*y/I).",
+    "formula": "(M * y) / I",
+    "unit": "Pa",
+    "variables": [
+      {"id": "M", "label": "Moment gnący", "unit": "Nm", "defaultValue": "1000"},
+      {"id": "y", "label": "Odl. od osi obojętnej", "unit": "m", "defaultValue": "0.05"},
+      {"id": "I", "label": "Moment bezwładności", "unit": "m4", "defaultValue": "0.00001"}
+    ]
+  },
+  {
+    "id": "struct_shear_stress",
+    "title": "WYTRZ: Naprężenie Ścinające",
+    "description": "Średnie ścinanie (τ = F / A).",
+    "formula": "F / A",
+    "unit": "Pa",
+    "variables": [
+      {"id": "F", "label": "Siła tnąca", "unit": "N", "defaultValue": "5000"},
+      {"id": "A", "label": "Pole przekroju", "unit": "m2", "defaultValue": "0.001"}
+    ]
+  },
+  {
+    "id": "auto_braking_dist",
+    "title": "AUTO: Droga Hamowania",
+    "description": "Teoretyczna droga hamowania (s = v² / 2μg).",
+    "formula": "(v * v) / (2 * mu * 9.81)",
+    "unit": "m",
+    "variables": [
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "27.7"},
+      {"id": "mu", "label": "Wsp. tarcia", "unit": "-", "defaultValue": "0.7"}
+    ]
+  },
+  {
+    "id": "auto_kinetic_energy",
+    "title": "AUTO: Energia Zderzenia",
+    "description": "Energia kinetyczna pojazdu w ruchu.",
+    "formula": "0.5 * m * (v/3.6) * (v/3.6)",
+    "unit": "J",
+    "variables": [
+      {"id": "m", "label": "Masa pojazdu", "unit": "kg", "defaultValue": "1500"},
+      {"id": "v", "label": "Prędkość", "unit": "km/h", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "fin_cagr",
+    "title": "FIN: CAGR (Wzrost Roczny)",
+    "description": "Średnia roczna stopa wzrostu.",
+    "formula": "((EndVal / StartVal) ^ (1/n) - 1) * 100",
+    "unit": "%",
+    "variables": [
+      {"id": "StartVal", "label": "Wartość początkowa", "unit": "PLN", "defaultValue": "1000"},
+      {"id": "EndVal", "label": "Wartość końcowa", "unit": "PLN", "defaultValue": "2000"},
+      {"id": "n", "label": "Lata", "unit": "lat", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "fin_rule_of_72_inflate",
+    "title": "FIN: Inflacja (Reguła 72)",
+    "description": "Po ilu latach pieniądze stracą połowę wartości.",
+    "formula": "72 / inflation",
+    "unit": "lat",
+    "variables": [
+      {"id": "inflation", "label": "Inflacja roczna", "unit": "%", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "astro_hubble_law",
+    "title": "ASTRO: Prawo Hubble'a",
+    "description": "Prędkość ucieczki galaktyki (v = H0 * d).",
+    "formula": "70 * d",
+    "unit": "km/s",
+    "variables": [
+      {"id": "d", "label": "Odległość (Mpc)", "unit": "Mpc", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "astro_schwarzschild",
+    "title": "ASTRO: Promień Schwarzschilda",
+    "description": "Promień horyzontu zdarzeń czarnej dziury.",
+    "formula": "(2 * 6.67e-11 * M) / (299792458^2)",
+    "unit": "m",
+    "variables": [
+      {"id": "M", "label": "Masa obiektu", "unit": "kg", "defaultValue": "5.97e24"}
+    ]
+  },
+  {
+    "id": "ele_pcb_via_current",
+    "title": "ELE: Prąd Przelotki (Via)",
+    "description": "Szacunkowy prąd maksymalny przelotki PCB.",
+    "formula": "0.5 * d * 3.14 * 0.035 * 100",
+    "unit": "A",
+    "variables": [
+      {"id": "d", "label": "Średnica otworu", "unit": "mm", "defaultValue": "0.3"}
+    ]
+  },
+  {
+    "id": "net_bandwidth_delay",
+    "title": "IT: BDP (Bandwidth-Delay)",
+    "description": "Ilość danych 'w locie' w sieci (R * RTT).",
+    "formula": "(Speed * 1000000) * (RTT / 1000) / 8",
+    "unit": "Bajtow",
+    "variables": [
+      {"id": "Speed", "label": "Przepustowość", "unit": "Mbps", "defaultValue": "100"},
+      {"id": "RTT", "label": "Opóźnienie (Ping)", "unit": "ms", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "therm_dew_point_approx",
+    "title": "TERM: Punkt Rosy (Uproszcz.)",
+    "description": "Temperatura skraplania pary wodnej.",
+    "formula": "T - ((100 - RH) / 5)",
+    "unit": "C",
+    "variables": [
+      {"id": "T", "label": "Temperatura pow.", "unit": "C", "defaultValue": "20"},
+      {"id": "RH", "label": "Wilgotność", "unit": "%", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "light_candela_lumen",
+    "title": "ŚWIATŁO: Kandela na Lumen",
+    "description": "Przeliczenie przy danym kącie świecenia.",
+    "formula": "2 * 3.14159 * cd * (1 - cos((deg/2)*0.01745))",
+    "unit": "lm",
+    "variables": [
+      {"id": "cd", "label": "Światłość", "unit": "cd", "defaultValue": "100"},
+      {"id": "deg", "label": "Kąt świecenia", "unit": "st", "defaultValue": "45"}
+    ]
+  },
+  {
+    "id": "ele_inductor_reactance",
+    "title": "ELE: Reaktancja Cewki XL",
+    "description": "Opór bierny cewki (XL = 2πfL).",
+    "formula": "2 * 3.14159 * f * L",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "50"},
+      {"id": "L", "label": "Indukcyjność", "unit": "H", "defaultValue": "0.01"}
+    ]
+  },
+  {
+    "id": "ele_capacitor_reactance",
+    "title": "ELE: Reaktancja Kond. XC",
+    "description": "Opór bierny kondensatora (XC = 1/2πfC).",
+    "formula": "1 / (2 * 3.14159 * f * C)",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "50"},
+      {"id": "C", "label": "Pojemność", "unit": "F", "defaultValue": "0.0001"}
+    ]
+  },
+  {
+    "id": "math_circle_sector",
+    "title": "MAT: Pole Wycinka Koła",
+    "description": "Pole fragmentu koła o kącie alpha.",
+    "formula": "3.14159 * r * r * (deg / 360)",
+    "unit": "m2",
+    "variables": [
+      {"id": "r", "label": "Promień", "unit": "m", "defaultValue": "5"},
+      {"id": "deg", "label": "Kąt wycinka", "unit": "st", "defaultValue": "90"}
+    ]
+  },
+  {
+    "id": "math_cylinder_surface",
+    "title": "MAT: Powierzchnia Walca",
+    "description": "Całkowite pole powierzchni walca (2πr² + 2πrh).",
+    "formula": "(2 * 3.14159 * r * r) + (2 * 3.14159 * r * h)",
+    "unit": "m2",
+    "variables": [
+      {"id": "r", "label": "Promień", "unit": "m", "defaultValue": "1"},
+      {"id": "h", "label": "Wysokość", "unit": "m", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "phys_relativistic_mass",
+    "title": "FIZ: Masa Relatywistyczna",
+    "description": "Wzrost masy przy prędkościach bliskich c.",
+    "formula": "m / sqrt(1 - (v*v / 299792458^2))",
+    "unit": "kg",
+    "variables": [
+      {"id": "m", "label": "Masa spoczynkowa", "unit": "kg", "defaultValue": "1"},
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "100000000"}
+    ]
+  },
+  {
+    "id": "phys_wien_law",
+    "title": "FIZ: Prawo Wiena",
+    "description": "Długość fali maks. promieniowania ciała doskonale czarnego.",
+    "formula": "0.002897 / T",
+    "unit": "m",
+    "variables": [
+      {"id": "T", "label": "Temperatura", "unit": "K", "defaultValue": "5000"}
+    ]
+  },
+  {
+    "id": "chem_ideal_gas_volume",
+    "title": "CHEM: Objętość Gazu (V)",
+    "description": "Objętość z równania Clapeyrona (V = nRT/P).",
+    "formula": "(n * 8.314 * T) / P",
+    "unit": "m3",
+    "variables": [
+      {"id": "n", "label": "Liczba moli", "unit": "mol", "defaultValue": "1"},
+      {"id": "T", "label": "Temperatura", "unit": "K", "defaultValue": "293"},
+      {"id": "P", "label": "Ciśnienie", "unit": "Pa", "defaultValue": "101325"}
+    ]
+  },
+  {
+    "id": "sport_bmi_calc",
+    "title": "ZDROWIE: BMI Index",
+    "description": "Wskaźnik masy ciała.",
+    "formula": "mass / (h * h)",
+    "unit": "BMI",
+    "variables": [
+      {"id": "mass", "label": "Waga", "unit": "kg", "defaultValue": "75"},
+      {"id": "h", "label": "Wzrost", "unit": "m", "defaultValue": "1.80"}
+    ]
+  },
+  {
+    "id": "sport_bmr_mifflin",
+    "title": "ZDROWIE: BMR (Mifflin)",
+    "description": "Podstawowa przemiana materii (Mężczyzna).",
+    "formula": "(10 * W) + (6.25 * H) - (5 * A) + 5",
+    "unit": "kcal",
+    "variables": [
+      {"id": "W", "label": "Waga", "unit": "kg", "defaultValue": "80"},
+      {"id": "H", "label": "Wzrost", "unit": "cm", "defaultValue": "180"},
+      {"id": "A", "label": "Wiek", "unit": "lat", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "ele_transformer_current",
+    "title": "ELE: Przekładnia Prądowa",
+    "description": "Prąd wtórny transformatora (I2 = I1 * U1 / U2).",
+    "formula": "(I1 * U1) / U2",
+    "unit": "A",
+    "variables": [
+      {"id": "I1", "label": "Prąd PRI", "unit": "A", "defaultValue": "2"},
+      {"id": "U1", "label": "Napięcie PRI", "unit": "V", "defaultValue": "230"},
+      {"id": "U2", "label": "Napięcie SEC", "unit": "V", "defaultValue": "12"}
+    ]
+  },
+  {
+    "id": "ele_battery_internal_res",
+    "title": "ELE: Rezystancja Wew. Bat.",
+    "description": "Pomiar Rw baterii (spadek napięcia pod obciążeniem).",
+    "formula": "(Voc - Vload) / I",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "Voc", "label": "Napięcie jałowe", "unit": "V", "defaultValue": "12.6"},
+      {"id": "Vload", "label": "Napięcie obciąż.", "unit": "V", "defaultValue": "11.5"},
+      {"id": "I", "label": "Prąd obciąż.", "unit": "A", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mech_flow_velocity",
+    "title": "MECH: Prędkość w Przewodzie",
+    "description": "Prędkość medium w rurze (v = Q / A).",
+    "formula": "(Q / 60000) / (3.14159 * (d/2000)^2)",
+    "unit": "m/s",
+    "variables": [
+      {"id": "Q", "label": "Przepływ", "unit": "L/min", "defaultValue": "50"},
+      {"id": "d", "label": "Średnica rury", "unit": "mm", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "ele_res_color_code",
+    "title": "ELE: Rezystor z Kodu (3p)",
+    "description": "Wartość rezystora z pasków (A B x 10^C).",
+    "formula": "((A * 10) + B) * (10 ^ C)",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "A", "label": "Pasek 1 (Cyfra)", "unit": "-", "defaultValue": "1"},
+      {"id": "B", "label": "Pasek 2 (Cyfra)", "unit": "-", "defaultValue": "0"},
+      {"id": "C", "label": "Pasek 3 (Mnożnik 10^x)", "unit": "-", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "photo_dof_hyperfocal",
+    "title": "FOTO: Hiperfogalna",
+    "description": "Odległość hiperfokalna obiektywu.",
+    "formula": "(f * f) / (N * 0.03) + f",
+    "unit": "mm",
+    "variables": [
+      {"id": "f", "label": "Ogniskowa", "unit": "mm", "defaultValue": "50"},
+      {"id": "N", "label": "Przysłona f/", "unit": "-", "defaultValue": "8"}
+    ]
+  },
+  {
+    "id": "geo_slope_degrees",
+    "title": "GEO: Nachylenie (Stopnie)",
+    "description": "Przeliczenie procentów na stopnie.",
+    "formula": "atan(proc / 100) * 57.296",
+    "unit": "st",
+    "variables": [
+      {"id": "proc", "label": "Nachylenie", "unit": "%", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "phys_lorentz_factor",
+    "title": "FIZ: Czynnik Lorentza",
+    "description": "Dylatacja czasu w STW.",
+    "formula": "1 / sqrt(1 - (v*v / 299792458^2))",
+    "unit": "-",
+    "variables": [
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "100000000"}
+    ]
+  },
+  {
+    "id": "ele_power_efficiency",
+    "title": "ELE: Sprawność Zasilacza",
+    "description": "Sprawność energetyczna (Pout / Pin).",
+    "formula": "(Pout / Pin) * 100",
+    "unit": "%",
+    "variables": [
+      {"id": "Pout", "label": "Moc wyjściowa", "unit": "W", "defaultValue": "90"},
+      {"id": "Pin", "label": "Moc pobierana", "unit": "W", "defaultValue": "100"}
+    ]
   }
 ]
+
     
 
 
