@@ -2303,8 +2303,339 @@
       {"id": "Pout", "label": "Moc wyjściowa", "unit": "W", "defaultValue": "90"},
       {"id": "Pin", "label": "Moc pobierana", "unit": "W", "defaultValue": "100"}
     ]
+  },
+  {
+    "id": "geo_horizon_dist",
+    "title": "GEO: Odległość Horyzontu",
+    "description": "Jak daleko widać z danej wysokości (dla Ziemi).",
+    "formula": "3.57 * sqrt(h)",
+    "unit": "km",
+    "variables": [
+      {"id": "h", "label": "Wysokość oczu", "unit": "m", "defaultValue": "1.70"}
+    ]
+  },
+  {
+    "id": "fun_pizza_area",
+    "title": "FUN: Opłacalność Pizzy",
+    "description": "Powierzchnia pizzy (sprawdź, czy 2 małe > 1 duża).",
+    "formula": "3.14159 * (d / 2) * (d / 2)",
+    "unit": "cm2",
+    "variables": [
+      {"id": "d", "label": "Średnica pizzy", "unit": "cm", "defaultValue": "42"}
+    ]
+  },
+  {
+    "id": "space_light_years",
+    "title": "KOSMOS: Lata Świetlne",
+    "description": "Przelicznik lat świetlnych na kilometry.",
+    "formula": "ly * 9460730472580",
+    "unit": "km",
+    "variables": [
+      {"id": "ly", "label": "Lata świetlne", "unit": "ly", "defaultValue": "4.2"}
+    ]
+  },
+  {
+    "id": "space_orbital_velocity",
+    "title": "KOSMOS: Prędkość Orbitalna",
+    "description": "Prędkość potrzebna do utrzymania orbity kołowej.",
+    "formula": "sqrt((6.67e-11 * M) / (R + h))",
+    "unit": "m/s",
+    "variables": [
+      {"id": "M", "label": "Masa planety", "unit": "kg", "defaultValue": "5.97e24"},
+      {"id": "R", "label": "Promień planety", "unit": "m", "defaultValue": "6371000"},
+      {"id": "h", "label": "Wysokość orbity", "unit": "m", "defaultValue": "400000"}
+    ]
+  },
+  {
+    "id": "tele_fiber_latency",
+    "title": "TELE: Opóźnienie Światłowodu",
+    "description": "Teoretyczne opóźnienie światła w szkle.",
+    "formula": "(L * 1000) / 200000000",
+    "unit": "ms",
+    "variables": [
+      {"id": "L", "label": "Dystans kabla", "unit": "km", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "tele_link_budget",
+    "title": "TELE: Budżet Łącza (Link)",
+    "description": "Szacowany poziom sygnału odbiornika (RX Power).",
+    "formula": "Tx + Ga - Loss + Gr",
+    "unit": "dBm",
+    "variables": [
+      {"id": "Tx", "label": "Moc nadajnika", "unit": "dBm", "defaultValue": "20"},
+      {"id": "Ga", "label": "Zysk ant. nad.", "unit": "dBi", "defaultValue": "5"},
+      {"id": "Loss", "label": "Tłumienie trasy", "unit": "dB", "defaultValue": "100"},
+      {"id": "Gr", "label": "Zysk ant. odb.", "unit": "dBi", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "oze_wind_power",
+    "title": "OZE: Moc Turbiny Wiatrowej",
+    "description": "Teoretyczna moc wiatru (P = 0.5 * ρ * A * v³).",
+    "formula": "0.5 * 1.225 * 3.14 * (r*r) * v * v * v",
+    "unit": "W",
+    "variables": [
+      {"id": "r", "label": "Promień łopat", "unit": "m", "defaultValue": "10"},
+      {"id": "v", "label": "Prędkość wiatru", "unit": "m/s", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "oze_wind_betz",
+    "title": "OZE: Limit Betza (Max)",
+    "description": "Maksymalna możliwa do uzyskania moc (59.3%).",
+    "formula": "0.593 * (0.5 * 1.225 * 3.14 * r * r * v * v * v)",
+    "unit": "W",
+    "variables": [
+      {"id": "r", "label": "Promień łopat", "unit": "m", "defaultValue": "10"},
+      {"id": "v", "label": "Prędkość wiatru", "unit": "m/s", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "ele_quality_factor",
+    "title": "ELE: Dobroć Cewki (Q)",
+    "description": "Współczynnik dobroci dla cewki (Q = XL / R).",
+    "formula": "(2 * 3.14159 * f * L) / R",
+    "unit": "-",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "1000"},
+      {"id": "L", "label": "Indukcyjność", "unit": "H", "defaultValue": "0.01"},
+      {"id": "R", "label": "Rezystancja drutu", "unit": "Ohm", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "ele_delta_star_r",
+    "title": "ELE: Trójkąt -> Gwiazda",
+    "description": "Przeliczenie rezystora Ra (Symetryczne).",
+    "formula": "R / 3",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "R", "label": "Rezystor Trójkąta", "unit": "Ohm", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "photo_megapixels",
+    "title": "FOTO: Megapixele",
+    "description": "Liczba megapikseli z rozdzielczości.",
+    "formula": "(w * h) / 1000000",
+    "unit": "MP",
+    "variables": [
+      {"id": "w", "label": "Szerokość", "unit": "px", "defaultValue": "6000"},
+      {"id": "h", "label": "Wysokość", "unit": "px", "defaultValue": "4000"}
+    ]
+  },
+  {
+    "id": "photo_time_lapse",
+    "title": "FOTO: Długość Time-Lapse",
+    "description": "Długość gotowego filmu (klatki / fps).",
+    "formula": "Photos / fps",
+    "unit": "s",
+    "variables": [
+      {"id": "Photos", "label": "Liczba zdjęć", "unit": "szt", "defaultValue": "600"},
+      {"id": "fps", "label": "Klatkaż filmu", "unit": "fps", "defaultValue": "24"}
+    ]
+  },
+  {
+    "id": "acous_speaker_parallel",
+    "title": "AUDIO: Głośniki Równolegle",
+    "description": "Impedancja 2 głośników równolegle.",
+    "formula": "(Z1 * Z2) / (Z1 + Z2)",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "Z1", "label": "Głośnik 1", "unit": "Ohm", "defaultValue": "8"},
+      {"id": "Z2", "label": "Głośnik 2", "unit": "Ohm", "defaultValue": "8"}
+    ]
+  },
+  {
+    "id": "it_monitor_aspect",
+    "title": "IT: Proporcje Ekranu",
+    "description": "Współczynnik proporcji (np. 1.77 to 16:9).",
+    "formula": "w / h",
+    "unit": ":1",
+    "variables": [
+      {"id": "w", "label": "Szerokość", "unit": "px", "defaultValue": "1920"},
+      {"id": "h", "label": "Wysokość", "unit": "px", "defaultValue": "1080"}
+    ]
+  },
+  {
+    "id": "hyd_tank_fill_time",
+    "title": "HYD: Czas Napełniania",
+    "description": "Czas napełniania zbiornika.",
+    "formula": "Vol / (Flow / 60)",
+    "unit": "h",
+    "variables": [
+      {"id": "Vol", "label": "Pojemność zbiornika", "unit": "L", "defaultValue": "1000"},
+      {"id": "Flow", "label": "Przepływ", "unit": "L/min", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "mech_beam_deflection",
+    "title": "MECH: Ugięcie Belki (Środek)",
+    "description": "Ugięcie belki swobodnie podpartej (siła skupiona).",
+    "formula": "(F * L * L * L) / (48 * E * I)",
+    "unit": "m",
+    "variables": [
+      {"id": "F", "label": "Siła", "unit": "N", "defaultValue": "1000"},
+      {"id": "L", "label": "Długość belki", "unit": "m", "defaultValue": "2"},
+      {"id": "E", "label": "Moduł Younga", "unit": "Pa", "defaultValue": "210000000000"},
+      {"id": "I", "label": "Moment bezwładności", "unit": "m4", "defaultValue": "0.00005"}
+    ]
+  },
+  {
+    "id": "ele_battery_c_rate",
+    "title": "ELE: C-Rate Baterii",
+    "description": "Przeliczenie C-rate na prąd.",
+    "formula": "Ah * C",
+    "unit": "A",
+    "variables": [
+      {"id": "Ah", "label": "Pojemność", "unit": "Ah", "defaultValue": "2.5"},
+      {"id": "C", "label": "Współczynnik C", "unit": "-", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "fin_break_even_point",
+    "title": "FIN: Próg Rentowności (BEP)",
+    "description": "Przychód pokrywający koszty.",
+    "formula": "FixedCost / ((Price - VarCost) / Price)",
+    "unit": "PLN",
+    "variables": [
+      {"id": "FixedCost", "label": "Koszty stałe", "unit": "PLN", "defaultValue": "10000"},
+      {"id": "Price", "label": "Cena produktu", "unit": "PLN", "defaultValue": "100"},
+      {"id": "VarCost", "label": "Koszt zmienny", "unit": "PLN", "defaultValue": "60"}
+    ]
+  },
+  {
+    "id": "phys_impact_force",
+    "title": "FIZ: Siła Uderzenia (Średnia)",
+    "description": "Średnia siła przy zderzeniu (F = mv / t).",
+    "formula": "(m * v) / t",
+    "unit": "N",
+    "variables": [
+      {"id": "m", "label": "Masa", "unit": "kg", "defaultValue": "1000"},
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "10"},
+      {"id": "t", "label": "Czas hamowania", "unit": "s", "defaultValue": "0.1"}
+    ]
+  },
+  {
+    "id": "chem_dilution",
+    "title": "CHEM: Rozcieńczanie (C1V1)",
+    "description": "Wymagana objętość koncentratu (V1 = C2V2 / C1).",
+    "formula": "(C2 * V2) / C1",
+    "unit": "ml",
+    "variables": [
+      {"id": "C1", "label": "Stężenie wyjściowe", "unit": "%", "defaultValue": "95"},
+      {"id": "C2", "label": "Stężenie docelowe", "unit": "%", "defaultValue": "70"},
+      {"id": "V2", "label": "Objętość docelowa", "unit": "ml", "defaultValue": "500"}
+    ]
+  },
+  {
+    "id": "ele_trace_resistance",
+    "title": "ELE: Rezystancja Ścieżki PCB",
+    "description": "Opór ścieżki miedzianej.",
+    "formula": "(0.0000000168 * L) / (W * T)",
+    "unit": "Ohm",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "0.1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.0005"},
+      {"id": "T", "label": "Grubość miedzi", "unit": "m", "defaultValue": "0.000035"}
+    ]
+  },
+  {
+    "id": "sport_hr_max",
+    "title": "SPORT: Tętno Maksymalne",
+    "description": "Wzór Tanaka (dokładniejszy niż 220-wiek).",
+    "formula": "208 - (0.7 * age)",
+    "unit": "bpm",
+    "variables": [
+      {"id": "age", "label": "Wiek", "unit": "lat", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "sport_vo2_max_run",
+    "title": "SPORT: VO2max (Bieg)",
+    "description": "Szacunek VO2max z testu Coopera (dystans w 12min).",
+    "formula": "(Dist - 504.9) / 44.73",
+    "unit": "ml/kg/min",
+    "variables": [
+      {"id": "Dist", "label": "Dystans 12min", "unit": "m", "defaultValue": "2400"}
+    ]
+  },
+  {
+    "id": "hvac_ac_power_btu",
+    "title": "HVAC: Klimatyzacja (kW->BTU)",
+    "description": "Przelicznik mocy chłodniczej kW na BTU/h.",
+    "formula": "kW * 3412",
+    "unit": "BTU/h",
+    "variables": [
+      {"id": "kW", "label": "Moc urządzenia", "unit": "kW", "defaultValue": "3.5"}
+    ]
+  },
+  {
+    "id": "ele_power_loss_cable",
+    "title": "ELE: Straty Mocy w Kablu",
+    "description": "Moc tracona na grzanie przewodów (I²R).",
+    "formula": "I * I * R",
+    "unit": "W",
+    "variables": [
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "10"},
+      {"id": "R", "label": "Rezystancja kabla", "unit": "Ohm", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "geo_slope_ratio",
+    "title": "GEO: Nachylenie (1:X)",
+    "description": "Przeliczenie nachylenia % na stosunek 1:X.",
+    "formula": "100 / proc",
+    "unit": "1:X",
+    "variables": [
+      {"id": "proc", "label": "Nachylenie", "unit": "%", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "math_golden_ratio",
+    "title": "MAT: Złoty Podział",
+    "description": "Obliczanie dłuższego odcinka (a = b * 1.618).",
+    "formula": "b * 1.61803",
+    "unit": "m",
+    "variables": [
+      {"id": "b", "label": "Krótszy bok", "unit": "m", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "it_file_transfer_speed",
+    "title": "IT: Prędkość Rzeczywista",
+    "description": "Jaka była prędkość transferu (MB/s).",
+    "formula": "Size / Time",
+    "unit": "MB/s",
+    "variables": [
+      {"id": "Size", "label": "Rozmiar pliku", "unit": "MB", "defaultValue": "1024"},
+      {"id": "Time", "label": "Czas kopiowania", "unit": "s", "defaultValue": "15"}
+    ]
+  },
+  {
+    "id": "phys_centripetal_acc",
+    "title": "FIZ: Przysp. Dośrodkowe",
+    "description": "Przyspieszenie w ruchu po okręgu.",
+    "formula": "(v * v) / r",
+    "unit": "m/s2",
+    "variables": [
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "10"},
+      {"id": "r", "label": "Promień skrętu", "unit": "m", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "ele_capacitor_energy_joules",
+    "title": "ELE: Energia Kondensatora (mJ)",
+    "description": "Energia w milijulach (dla małych pojemności).",
+    "formula": "0.5 * (C/1000000) * V * V * 1000",
+    "unit": "mJ",
+    "variables": [
+      {"id": "C", "label": "Pojemność", "unit": "uF", "defaultValue": "470"},
+      {"id": "V", "label": "Napięcie", "unit": "V", "defaultValue": "25"}
+    ]
   }
 ]
+
 
     
 
