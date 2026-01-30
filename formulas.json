@@ -783,8 +783,547 @@
       {"id": "z1", "label": "Zęby małe", "unit": "szt", "defaultValue": "20"},
       {"id": "z2", "label": "Zęby duże", "unit": "szt", "defaultValue": "40"}
     ]
+  },
+  {
+    "id": "radio_freespace_path_loss",
+    "title": "RADIO: Tłumienie (FSPL)",
+    "description": "Tłumienie sygnału w wolnej przestrzeni (dla MHz i km).",
+    "formula": "32.44 + (20 * log10(f)) + (20 * log10(d))",
+    "unit": "dB",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "MHz", "defaultValue": "2400"},
+      {"id": "d", "label": "Odległość", "unit": "km", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "radio_fresnel_zone",
+    "title": "RADIO: Strefa Fresnela (1.)",
+    "description": "Promień pierwszej strefy Fresnela (ważne dla WiFi).",
+    "formula": "17.32 * sqrt(d / (4 * f / 1000))",
+    "unit": "m",
+    "variables": [
+      {"id": "d", "label": "Odległość", "unit": "km", "defaultValue": "2"},
+      {"id": "f", "label": "Częstotliwość", "unit": "MHz", "defaultValue": "2400"}
+    ]
+  },
+  {
+    "id": "radio_vswr_coeff",
+    "title": "RADIO: Wsp. Odbicia (Gamma)",
+    "description": "Współczynnik odbicia na podstawie VSWR.",
+    "formula": "(VSWR - 1) / (VSWR + 1)",
+    "unit": "-",
+    "variables": [
+      {"id": "VSWR", "label": "WFS (SWR)", "unit": "-", "defaultValue": "1.5"}
+    ]
+  },
+  {
+    "id": "radio_return_loss",
+    "title": "RADIO: Tłumienie Odbicia",
+    "description": "Return Loss (RL) na podstawie VSWR.",
+    "formula": "-20 * log10((VSWR - 1) / (VSWR + 1))",
+    "unit": "dB",
+    "variables": [
+      {"id": "VSWR", "label": "WFS (SWR)", "unit": "-", "defaultValue": "1.5"}
+    ]
+  },
+  {
+    "id": "ele_skin_depth",
+    "title": "ELE: Głębokość Wnikania",
+    "description": "Głębokość naskórkowa dla miedzi (uproszczone).",
+    "formula": "66 / sqrt(f)",
+    "unit": "mm",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "ele_ne555_freq",
+    "title": "ELE: Timer 555 (Astable)",
+    "description": "Częstotliwość generatora na układzie 555.",
+    "formula": "1.44 / ((R1 + (2 * R2)) * C)",
+    "unit": "Hz",
+    "variables": [
+      {"id": "R1", "label": "Rezystor R1", "unit": "Ohm", "defaultValue": "1000"},
+      {"id": "R2", "label": "Rezystor R2", "unit": "Ohm", "defaultValue": "10000"},
+      {"id": "C", "label": "Kondensator", "unit": "F", "defaultValue": "0.00001"}
+    ]
+  },
+  {
+    "id": "ele_dbm_to_mw",
+    "title": "ELE: dBm na mW",
+    "description": "Konwersja mocy sygnału.",
+    "formula": "10 ^ (dBm / 10)",
+    "unit": "mW",
+    "variables": [
+      {"id": "dBm", "label": "Moc w dBm", "unit": "dBm", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "ele_mw_to_dbm",
+    "title": "ELE: mW na dBm",
+    "description": "Konwersja mocy na decybele.",
+    "formula": "10 * log10(mW)",
+    "unit": "dBm",
+    "variables": [
+      {"id": "mW", "label": "Moc w mW", "unit": "mW", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mech_stress",
+    "title": "MECH: Naprężenie (Rozciąganie)",
+    "description": "Naprężenie normalne (σ = F / A).",
+    "formula": "F / A",
+    "unit": "Pa",
+    "variables": [
+      {"id": "F", "label": "Siła", "unit": "N", "defaultValue": "1000"},
+      {"id": "A", "label": "Pole przekroju", "unit": "m2", "defaultValue": "0.0005"}
+    ]
+  },
+  {
+    "id": "mech_strain",
+    "title": "MECH: Odkształcenie Względne",
+    "description": "Wydłużenie względne (ε = ΔL / L).",
+    "formula": "dL / L",
+    "unit": "-",
+    "variables": [
+      {"id": "dL", "label": "Wydłużenie", "unit": "mm", "defaultValue": "2"},
+      {"id": "L", "label": "Długość oryg.", "unit": "mm", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "mech_young_modulus",
+    "title": "MECH: Moduł Younga",
+    "description": "Moduł sprężystości wzdłużnej (E = σ / ε).",
+    "formula": "Stress / Strain",
+    "unit": "Pa",
+    "variables": [
+      {"id": "Stress", "label": "Naprężenie", "unit": "Pa", "defaultValue": "200000000"},
+      {"id": "Strain", "label": "Odkształcenie", "unit": "-", "defaultValue": "0.001"}
+    ]
+  },
+  {
+    "id": "mech_thermal_expansion",
+    "title": "MECH: Rozszerzalność Cieplna",
+    "description": "Zmiana długości pod wpływem temperatury (ΔL = L * α * ΔT).",
+    "formula": "L * alpha * dT",
+    "unit": "mm",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "mm", "defaultValue": "1000"},
+      {"id": "alpha", "label": "Wsp. rozszerzalności", "unit": "1/K", "defaultValue": "0.000012"},
+      {"id": "dT", "label": "Zmiana temp.", "unit": "K", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mech_belt_length",
+    "title": "MECH: Długość Pasa",
+    "description": "Przybliżona długość pasa napędowego (dwa koła).",
+    "formula": "(2 * C) + (1.57 * (D + d)) + ((D - d) * (D - d) / (4 * C))",
+    "unit": "mm",
+    "variables": [
+      {"id": "C", "label": "Rozstaw osi", "unit": "mm", "defaultValue": "500"},
+      {"id": "D", "label": "Średnica duża", "unit": "mm", "defaultValue": "200"},
+      {"id": "d", "label": "Średnica mała", "unit": "mm", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mech_rotational_energy",
+    "title": "MECH: Energia Kinetyczna Obr.",
+    "description": "Energia w ruchu obrotowym (Ek = 0.5 * I * ω²).",
+    "formula": "0.5 * I * w * w",
+    "unit": "J",
+    "variables": [
+      {"id": "I", "label": "Moment bezwładności", "unit": "kg*m2", "defaultValue": "10"},
+      {"id": "w", "label": "Prędkość kątowa", "unit": "rad/s", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "phys_ideal_gas_p",
+    "title": "FIZ: Gaz Doskonały (Ciśnienie)",
+    "description": "Ciśnienie z równania Clapeyrona (P = nRT / V).",
+    "formula": "(n * 8.314 * T) / V",
+    "unit": "Pa",
+    "variables": [
+      {"id": "n", "label": "Liczba moli", "unit": "mol", "defaultValue": "2"},
+      {"id": "T", "label": "Temperatura", "unit": "K", "defaultValue": "300"},
+      {"id": "V", "label": "Objętość", "unit": "m3", "defaultValue": "0.1"}
+    ]
+  },
+  {
+    "id": "phys_newton_2",
+    "title": "FIZ: II Zasada Dynamiki",
+    "description": "Siła potrzebna do przyspieszenia ciała (F = m * a).",
+    "formula": "m * a",
+    "unit": "N",
+    "variables": [
+      {"id": "m", "label": "Masa", "unit": "kg", "defaultValue": "1000"},
+      {"id": "a", "label": "Przyspieszenie", "unit": "m/s2", "defaultValue": "2.5"}
+    ]
+  },
+  {
+    "id": "phys_free_fall",
+    "title": "FIZ: Czas Spadania",
+    "description": "Czas spadku swobodnego z wysokości h.",
+    "formula": "sqrt((2 * h) / 9.81)",
+    "unit": "s",
+    "variables": [
+      {"id": "h", "label": "Wysokość", "unit": "m", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "phys_pendulum",
+    "title": "FIZ: Wahadło Matematyczne",
+    "description": "Okres drgań wahadła (T = 2π√(L/g)).",
+    "formula": "2 * 3.14159 * sqrt(L / 9.81)",
+    "unit": "s",
+    "variables": [
+      {"id": "L", "label": "Długość linki", "unit": "m", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "hvac_heat_loss",
+    "title": "HVAC: Przenikanie Ciepła",
+    "description": "Straty ciepła przez ścianę (Q = U * A * ΔT).",
+    "formula": "U * A * dT",
+    "unit": "W",
+    "variables": [
+      {"id": "U", "label": "Wsp. przenikania U", "unit": "W/m2K", "defaultValue": "0.2"},
+      {"id": "A", "label": "Powierzchnia", "unit": "m2", "defaultValue": "20"},
+      {"id": "dT", "label": "Różnica temp.", "unit": "K", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "hvac_air_change",
+    "title": "HVAC: Kubatura Wymiany",
+    "description": "Wymagana wydajność wentylacji (V = n * Kubatura).",
+    "formula": "n * Vroom",
+    "unit": "m3/h",
+    "variables": [
+      {"id": "n", "label": "Wymian na godzinę", "unit": "1/h", "defaultValue": "3"},
+      {"id": "Vroom", "label": "Objętość pokoju", "unit": "m3", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "hvac_power",
+    "title": "HVAC: Moc Nagrzewnicy",
+    "description": "Moc do ogrzania powietrza (P = V * 1.2 * 1005 * dT / 3600).",
+    "formula": "(Flow * 1.2 * 1005 * dT) / 3600",
+    "unit": "W",
+    "variables": [
+      {"id": "Flow", "label": "Przepływ", "unit": "m3/h", "defaultValue": "500"},
+      {"id": "dT", "label": "Podgrzanie", "unit": "K", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "fin_loan_payment",
+    "title": "FIN: Rata Kredytu (Prosta)",
+    "description": "Uproszczona rata miesięczna (bez % składanego).",
+    "formula": "(K * (1 + (p/100))) / m",
+    "unit": "PLN",
+    "variables": [
+      {"id": "K", "label": "Kwota kredytu", "unit": "PLN", "defaultValue": "10000"},
+      {"id": "p", "label": "Oprocentowanie całk.", "unit": "%", "defaultValue": "10"},
+      {"id": "m", "label": "Liczba miesięcy", "unit": "mc", "defaultValue": "12"}
+    ]
+  },
+  {
+    "id": "fin_break_even",
+    "title": "FIN: Próg Rentowności (BEP)",
+    "description": "Ile sztuk trzeba sprzedać, by wyjść na zero.",
+    "formula": "Fixed / (Price - VarCost)",
+    "unit": "szt",
+    "variables": [
+      {"id": "Fixed", "label": "Koszty stałe", "unit": "PLN", "defaultValue": "5000"},
+      {"id": "Price", "label": "Cena za sztukę", "unit": "PLN", "defaultValue": "100"},
+      {"id": "VarCost", "label": "Koszt zmienny szt.", "unit": "PLN", "defaultValue": "60"}
+    ]
+  },
+  {
+    "id": "it_shannon_capacity",
+    "title": "IT: Twierdzenie Shannona",
+    "description": "Maksymalna przepustowość łącza w szumie.",
+    "formula": "B * log2(1 + (S/N))",
+    "unit": "bps",
+    "variables": [
+      {"id": "B", "label": "Pasmo", "unit": "Hz", "defaultValue": "1000000"},
+      {"id": "S", "label": "Moc sygnału", "unit": "W", "defaultValue": "0.01"},
+      {"id": "N", "label": "Moc szumu", "unit": "W", "defaultValue": "0.00001"}
+    ]
+  },
+  {
+    "id": "it_raid5_capacity",
+    "title": "IT: Pojemność RAID 5",
+    "description": "Użyteczna pojemność macierzy RAID 5.",
+    "formula": "(N - 1) * Size",
+    "unit": "TB",
+    "variables": [
+      {"id": "N", "label": "Liczba dysków", "unit": "szt", "defaultValue": "4"},
+      {"id": "Size", "label": "Rozmiar dysku", "unit": "TB", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "it_raid10_capacity",
+    "title": "IT: Pojemność RAID 10",
+    "description": "Użyteczna pojemność macierzy RAID 10.",
+    "formula": "(N / 2) * Size",
+    "unit": "TB",
+    "variables": [
+      {"id": "N", "label": "Liczba dysków", "unit": "szt", "defaultValue": "4"},
+      {"id": "Size", "label": "Rozmiar dysku", "unit": "TB", "defaultValue": "4"}
+    ]
+  },
+  {
+    "id": "chem_molar_mass",
+    "title": "CHEM: Liczba Moli",
+    "description": "Przeliczenie masy na mole (n = m / M).",
+    "formula": "m / M",
+    "unit": "mol",
+    "variables": [
+      {"id": "m", "label": "Masa próbki", "unit": "g", "defaultValue": "18"},
+      {"id": "M", "label": "Masa molowa", "unit": "g/mol", "defaultValue": "18"}
+    ]
+  },
+  {
+    "id": "chem_ph",
+    "title": "CHEM: pH Roztworu",
+    "description": "pH z stężenia jonów H+ (-log[H+]).",
+    "formula": "-log10(H)",
+    "unit": "pH",
+    "variables": [
+      {"id": "H", "label": "Stężenie H+", "unit": "mol/dm3", "defaultValue": "0.0001"}
+    ]
+  },
+  {
+    "id": "hyd_bernoulli",
+    "title": "HYD: Ciśnienie Dynamiczne",
+    "description": "Ciśnienie wynikające z prędkości cieczy (q = 0.5 * ρ * v²).",
+    "formula": "0.5 * ro * v * v",
+    "unit": "Pa",
+    "variables": [
+      {"id": "ro", "label": "Gęstość", "unit": "kg/m3", "defaultValue": "1000"},
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "hyd_pump_power",
+    "title": "HYD: Moc Pompy",
+    "description": "Moc hydrauliczna pompy (P = Q * p).",
+    "formula": "(Q * p) / 600",
+    "unit": "kW",
+    "variables": [
+      {"id": "Q", "label": "Przepływ", "unit": "L/min", "defaultValue": "100"},
+      {"id": "p", "label": "Ciśnienie", "unit": "bar", "defaultValue": "200"}
+    ]
+  },
+  {
+    "id": "math_hypotenuse",
+    "title": "MAT: Przekątna Prostokąta",
+    "description": "Długość przekątnej (d = √(a² + b²)).",
+    "formula": "sqrt(a*a + b*b)",
+    "unit": "m",
+    "variables": [
+      {"id": "a", "label": "Bok A", "unit": "m", "defaultValue": "1920"},
+      {"id": "b", "label": "Bok B", "unit": "m", "defaultValue": "1080"}
+    ]
+  },
+  {
+    "id": "math_cone_vol",
+    "title": "MAT: Objętość Stożka",
+    "description": "Objętość stożka (V = 1/3 * π * r² * h).",
+    "formula": "(1/3) * 3.14159 * r * r * h",
+    "unit": "m3",
+    "variables": [
+      {"id": "r", "label": "Promień podst.", "unit": "m", "defaultValue": "2"},
+      {"id": "h", "label": "Wysokość", "unit": "m", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "photo_exposure",
+    "title": "FOTO: Wartość Ekspozycji (EV)",
+    "description": "EV dla danej przysłony i czasu.",
+    "formula": "log2((N * N) / t)",
+    "unit": "EV",
+    "variables": [
+      {"id": "N", "label": "Przysłona (f/)", "unit": "-", "defaultValue": "2.8"},
+      {"id": "t", "label": "Czas naświetlania", "unit": "s", "defaultValue": "0.01"}
+    ]
+  },
+  {
+    "id": "acous_wavelength",
+    "title": "AKU: Długość Fali Dźwięk.",
+    "description": "Długość fali dla dźwięku w powietrzu (λ = v / f).",
+    "formula": "343 / f",
+    "unit": "m",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "Hz", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "ele_inductor_energy",
+    "title": "ELE: Energia w Cewce",
+    "description": "Energia pola magnetycznego (E = 0.5 * L * I²).",
+    "formula": "0.5 * L * I * I",
+    "unit": "J",
+    "variables": [
+      {"id": "L", "label": "Indukcyjność", "unit": "H", "defaultValue": "0.1"},
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "phys_torque_power",
+    "title": "FIZ: Moc z Momentu",
+    "description": "Moc mechaniczna (P = M * ω).",
+    "formula": "M * (rpm * 2 * 3.14159 / 60)",
+    "unit": "W",
+    "variables": [
+      {"id": "M", "label": "Moment", "unit": "Nm", "defaultValue": "50"},
+      {"id": "rpm", "label": "Obroty", "unit": "obr/min", "defaultValue": "1400"}
+    ]
+  },
+  {
+    "id": "build_stair_angle",
+    "title": "BUD: Kąt Nachylenia Schodów",
+    "description": "Kąt nachylenia biegu schodów.",
+    "formula": "atan(h / w) * 57.296",
+    "unit": "stopni",
+    "variables": [
+      {"id": "h", "label": "Wysokość stopnia", "unit": "cm", "defaultValue": "17"},
+      {"id": "w", "label": "Głębokość stopnia", "unit": "cm", "defaultValue": "29"}
+    ]
+  },
+  {
+    "id": "ele_parallel_cap",
+    "title": "ELE: Kondensatory Równolegle",
+    "description": "Pojemność zastępcza równoległa.",
+    "formula": "C1 + C2",
+    "unit": "uF",
+    "variables": [
+      {"id": "C1", "label": "Kondensator 1", "unit": "uF", "defaultValue": "100"},
+      {"id": "C2", "label": "Kondensator 2", "unit": "uF", "defaultValue": "47"}
+    ]
+  },
+  {
+    "id": "ele_series_ind",
+    "title": "ELE: Cewki Szeregowo",
+    "description": "Indukcyjność zastępcza szeregowa.",
+    "formula": "L1 + L2",
+    "unit": "mH",
+    "variables": [
+      {"id": "L1", "label": "Cewka 1", "unit": "mH", "defaultValue": "10"},
+      {"id": "L2", "label": "Cewka 2", "unit": "mH", "defaultValue": "22"}
+    ]
+  },
+  {
+    "id": "light_distance",
+    "title": "ŚWIATŁO: Prawo Odwrotnych Kwadratów",
+    "description": "Spadek natężenia światła wraz z odległością.",
+    "formula": "I / (d * d)",
+    "unit": "lx",
+    "variables": [
+      {"id": "I", "label": "Jasność źródła", "unit": "cd", "defaultValue": "1000"},
+      {"id": "d", "label": "Odległość", "unit": "m", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "ele_charge",
+    "title": "ELE: Ładunek Elektryczny",
+    "description": "Ładunek przepływający w czasie (Q = I * t).",
+    "formula": "I * t",
+    "unit": "C",
+    "variables": [
+      {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "5"},
+      {"id": "t", "label": "Czas", "unit": "s", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mech_leverage",
+    "title": "MECH: Dźwignia Dwustronna",
+    "description": "Siła potrzebna do podniesienia ciężaru (F1 * r1 = F2 * r2).",
+    "formula": "(F2 * r2) / r1",
+    "unit": "N",
+    "variables": [
+      {"id": "F2", "label": "Ciężar", "unit": "N", "defaultValue": "1000"},
+      {"id": "r2", "label": "Ramię ciężaru", "unit": "m", "defaultValue": "0.5"},
+      {"id": "r1", "label": "Ramię siły", "unit": "m", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "gas_consumption",
+    "title": "AUTO: Koszt Gazu (LPG)",
+    "description": "Koszt przejazdu na gazie.",
+    "formula": "(Dist / 100) * (GasBurn * 1.15) * Price",
+    "unit": "PLN",
+    "variables": [
+      {"id": "Dist", "label": "Dystans", "unit": "km", "defaultValue": "100"},
+      {"id": "GasBurn", "label": "Spalanie Benzyny", "unit": "l/100km", "defaultValue": "8"},
+      {"id": "Price", "label": "Cena LPG", "unit": "PLN", "defaultValue": "3.00"}
+    ]
+  },
+  {
+    "id": "solar_panel_tilt",
+    "title": "OZE: Optymalny Kąt PV (Zima)",
+    "description": "Szacunkowy kąt paneli na zimę (Szer. Geo + 15).",
+    "formula": "Lat + 15",
+    "unit": "stopni",
+    "variables": [
+      {"id": "Lat", "label": "Szerokość Geo.", "unit": "st", "defaultValue": "52"}
+    ]
+  },
+  {
+    "id": "pump_head",
+    "title": "HYD: Wysokość Podnoszenia",
+    "description": "Przeliczenie ciśnienia na słup wody.",
+    "formula": "Bar * 10.197",
+    "unit": "m H2O",
+    "variables": [
+      {"id": "Bar", "label": "Ciśnienie", "unit": "bar", "defaultValue": "2.5"}
+    ]
+  },
+  {
+    "id": "ele_power_factor",
+    "title": "ELE: Współczynnik Mocy",
+    "description": "Obliczanie cos fi z mocy czynnej i pozornej.",
+    "formula": "P / S",
+    "unit": "cos",
+    "variables": [
+      {"id": "P", "label": "Moc Czynna", "unit": "W", "defaultValue": "800"},
+      {"id": "S", "label": "Moc Pozorna", "unit": "VA", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "mechanic_work",
+    "title": "MECH: Praca Mechaniczna",
+    "description": "Praca wykonana przez siłę (W = F * s).",
+    "formula": "F * s",
+    "unit": "J",
+    "variables": [
+      {"id": "F", "label": "Siła", "unit": "N", "defaultValue": "50"},
+      {"id": "s", "label": "Przesunięcie", "unit": "m", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "net_mask_hosts",
+    "title": "IT: Ilość Hostów w Podsieci",
+    "description": "Liczba użytecznych adresów IP.",
+    "formula": "(2 ^ (32 - Mask)) - 2",
+    "unit": "hostów",
+    "variables": [
+      {"id": "Mask", "label": "Maska (CIDR /xx)", "unit": "bit", "defaultValue": "24"}
+    ]
+  },
+  {
+    "id": "final_test_formula",
+    "title": "TEST: Sprawdzenie Listy",
+    "description": "Formuła testowa na koniec listy.",
+    "formula": "1 + 1",
+    "unit": "OK",
+    "variables": []
+    ]
   }
 ]
+    
+
+
+
   
 
 
