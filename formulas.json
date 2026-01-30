@@ -341,8 +341,7 @@
       {"id": "L", "label": "Indukcyjność", "unit": "H", "defaultValue": "0.001"},
       {"id": "C", "label": "Pojemność", "unit": "F", "defaultValue": "0.00001"}
     ]
-  }
-],
+  },
   {
     "id": "trafo_power_s",
     "title": "Trafo: Moc Pozorna (S)",
