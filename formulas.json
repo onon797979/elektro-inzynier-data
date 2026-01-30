@@ -3056,8 +3056,457 @@
     "variables": [
       {"id": "N", "label": "Liczba klocków", "unit": "szt", "defaultValue": "1000"}
     ]
+  },
+  {
+    "id": "fun_drake_eq",
+    "title": "KOSMOS: Równanie Drake'a",
+    "description": "Szacunkowa liczba cywilizacji w naszej galaktyce.",
+    "formula": "R * fp * ne * fl * fi * fc * L",
+    "unit": "cywilizacji",
+    "variables": [
+      {"id": "R", "label": "Gwiazdy powstające/rok", "unit": "-", "defaultValue": "1"},
+      {"id": "fp", "label": "% gwiazd z planetami", "unit": "0-1", "defaultValue": "0.5"},
+      {"id": "ne", "label": "Planety 'Ziemio-podobne'", "unit": "-", "defaultValue": "2"},
+      {"id": "fl", "label": "% z życiem", "unit": "0-1", "defaultValue": "1"},
+      {"id": "fi", "label": "% inteligentne", "unit": "0-1", "defaultValue": "0.01"},
+      {"id": "fc", "label": "% z komunikacją", "unit": "0-1", "defaultValue": "0.01"},
+      {"id": "L", "label": "Czas trwania cyw.", "unit": "lat", "defaultValue": "10000"}
+    ]
+  },
+  {
+    "id": "fun_internet_weight",
+    "title": "TECH: Waga Internetu",
+    "description": "Ile ważą wszystkie elektrony tworzące Internet? (~50g).",
+    "formula": "0.05",
+    "unit": "kg",
+    "variables": []
+  },
+  {
+    "id": "fun_blood_vessels",
+    "title": "BIO: Długość Naczyń Krwionośnych",
+    "description": "Gdyby rozciągnąć wszystkie Twoje żyły i tętnice.",
+    "formula": "100000",
+    "unit": "km",
+    "variables": []
+  },
+  {
+    "id": "fun_dna_length",
+    "title": "BIO: Długość DNA",
+    "description": "Długość DNA w jednym człowieku (do Słońca i z powrotem!).",
+    "formula": "Cells * 2",
+    "unit": "m",
+    "variables": [
+      {"id": "Cells", "label": "Liczba komórek (biliony)", "unit": "x10^12", "defaultValue": "37"}
+    ]
+  },
+  {
+    "id": "fun_cloud_weight",
+    "title": "POGODA: Waga Chmury",
+    "description": "Ile waży przeciętna chmura Cumulus? (500 ton).",
+    "formula": "Volume * 0.5",
+    "unit": "g",
+    "variables": [
+      {"id": "Volume", "label": "Objętość (1km3=1mld m3)", "unit": "m3", "defaultValue": "1000000000"}
+    ]
+  },
+  {
+    "id": "fun_ant_biomass",
+    "title": "NATURA: Masa Mrówek",
+    "description": "Łączna waga wszystkich mrówek na Ziemi vs ludzie.",
+    "formula": "Ants * 0.000005",
+    "unit": "kg",
+    "variables": [
+      {"id": "Ants", "label": "Liczba mrówek", "unit": "szt", "defaultValue": "10000000000000000"}
+    ]
+  },
+  {
+    "id": "fun_warp_speed",
+    "title": "SCI-FI: Prędkość Warp (Star Trek)",
+    "description": "Przelicznik Warp Factor na krotność prędkości światła (TNG).",
+    "formula": "W ^ 3.3333 + 0.5",
+    "unit": "x c (prędkość światła)",
+    "variables": [
+      {"id": "W", "label": "Warp Factor (1-9)", "unit": "-", "defaultValue": "9"}
+    ]
+  },
+  {
+    "id": "fun_lightsaber_power",
+    "title": "SCI-FI: Moc Miecza Świetlnego",
+    "description": "Szacowana moc potrzebna do topienia metalowych drzwi.",
+    "formula": "28000000",
+    "unit": "W",
+    "variables": []
+  },
+  {
+    "id": "fun_zombie_infect",
+    "title": "SURVIVAL: Infekcja Zombie",
+    "description": "Czas do pełnej infekcji populacji (model wykładniczy).",
+    "formula": "log10(Pop) / log10(R0)",
+    "unit": "dni",
+    "variables": [
+      {"id": "Pop", "label": "Populacja", "unit": "osób", "defaultValue": "7000000000"},
+      {"id": "R0", "label": "Wskaźnik zarażania", "unit": "osób/dzień", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "fun_password_crack",
+    "title": "SEC: Łamanie Hasła",
+    "description": "Czas ataku Brute Force (dla 8 znaków a-z).",
+    "formula": "(26 ^ Chars) / Speed",
+    "unit": "sekund",
+    "variables": [
+      {"id": "Chars", "label": "Długość hasła", "unit": "znaków", "defaultValue": "8"},
+      {"id": "Speed", "label": "Prędkość ataku", "unit": "h/s", "defaultValue": "1000000000"}
+    ]
+  },
+  {
+    "id": "fun_bitcoin_energy",
+    "title": "KRYPTO: Kopanie Bitcoina",
+    "description": "Ile energii zużywa sieć BTC rocznie (porównanie do kraju).",
+    "formula": "130",
+    "unit": "TWh/rok",
+    "variables": []
+  },
+  {
+    "id": "fun_paper_moon",
+    "title": "MAT: Papier do Księżyca",
+    "description": "Ile razy złożyć kartkę, by dosięgła Księżyca?",
+    "formula": "42",
+    "unit": "złożenia",
+    "variables": []
+  },
+  {
+    "id": "fun_heartbeats",
+    "title": "BIO: Uderzenia Serca",
+    "description": "Ile razy uderzy Twoje serce w ciągu życia?",
+    "formula": "Years * 365 * 24 * 60 * BPM",
+    "unit": "uderzeń",
+    "variables": [
+      {"id": "Years", "label": "Długość życia", "unit": "lat", "defaultValue": "80"},
+      {"id": "BPM", "label": "Średnie tętno", "unit": "bpm", "defaultValue": "70"}
+    ]
+  },
+  {
+    "id": "fun_nails_growth",
+    "title": "BIO: Wzrost Paznokci",
+    "description": "Ile metrów paznokci wyprodukujesz przez całe życie?",
+    "formula": "Years * 0.036",
+    "unit": "m",
+    "variables": [
+      {"id": "Years", "label": "Lata życia", "unit": "lat", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "fun_blinking_time",
+    "title": "BIO: Czas Mrugania",
+    "description": "Ile czasu w życiu spędzasz z zamkniętymi oczami (nie śpiąc)?",
+    "formula": "(Years * 365 * 16 * 0.2) / 3600",
+    "unit": "godzin",
+    "variables": [
+      {"id": "Years", "label": "Wiek", "unit": "lat", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "fun_godzilla_pressure",
+    "title": "SCI-FI: Ciśnienie Godzilli",
+    "description": "Nacisk stopy Godzilli na asfalt (czy się zapadnie?).",
+    "formula": "(Mass * 1000 * 9.81) / Area",
+    "unit": "Pa",
+    "variables": [
+      {"id": "Mass", "label": "Masa Godzilli", "unit": "ton", "defaultValue": "90000"},
+      {"id": "Area", "label": "Powierzchnia stóp", "unit": "m2", "defaultValue": "400"}
+    ]
+  },
+  {
+    "id": "fun_santa_speed",
+    "title": "ŚWIĘTA: Prędkość Mikołaja",
+    "description": "Z jaką prędkością musi lecieć, by odwiedzić wszystkie dzieci?",
+    "formula": "10000000",
+    "unit": "km/h",
+    "variables": []
+  },
+  {
+    "id": "fun_lego_bridge",
+    "title": "BUD: Most z LEGO",
+    "description": "Ile klocków 2x4 potrzeba, by zbudować most na równiku?",
+    "formula": "40075000 / 0.016",
+    "unit": "klocków",
+    "variables": []
+  },
+  {
+    "id": "fun_gold_medal",
+    "title": "SPORT: Złoty Medal",
+    "description": "Ile naprawdę złota jest w medalu olimpijskim?",
+    "formula": "6",
+    "unit": "gramów",
+    "variables": []
+  },
+  {
+    "id": "fun_popcorn_expansion",
+    "title": "FIZ: Ekspansja Popcornu",
+    "description": "O ile powiększa się ziarno kukurydzy przy wybuchu?",
+    "formula": "45",
+    "unit": "razy",
+    "variables": []
+  },
+  {
+    "id": "fun_toilet_paper",
+    "title": "DOM: Zapas Papieru",
+    "description": "Na ile dni starczy zapas papieru?",
+    "formula": "(Rolls * Sheets) / (Visits * SheetsPerWipe)",
+    "unit": "dni",
+    "variables": [
+      {"id": "Rolls", "label": "Liczba rolek", "unit": "szt", "defaultValue": "10"},
+      {"id": "Sheets", "label": "Listków w rolce", "unit": "szt", "defaultValue": "150"},
+      {"id": "Visits", "label": "Wizyt dziennie", "unit": "szt", "defaultValue": "3"},
+      {"id": "SheetsPerWipe", "label": "Listków na wizytę", "unit": "szt", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "fun_alcohol_sober",
+    "title": "IMPREZA: Trzeźwienie",
+    "description": "Szacunkowy czas spalania alkoholu (0.1 promila/h).",
+    "formula": "Promille / 0.1",
+    "unit": "h",
+    "variables": [
+      {"id": "Promille", "label": "Ilość promili", "unit": "%", "defaultValue": "1.5"}
+    ]
+  },
+  {
+    "id": "fun_matrix_sim",
+    "title": "TECH: Symulacja",
+    "description": "Szansa, że żyjemy w symulacji (wg Elona Muska).",
+    "formula": "99.9999",
+    "unit": "%",
+    "variables": []
+  },
+  {
+    "id": "fun_t_rex_bite",
+    "title": "NATURA: Ugryzienie T-Rexa",
+    "description": "Siła szczęk Tyranozaura.",
+    "formula": "57000",
+    "unit": "N",
+    "variables": []
+  },
+  {
+    "id": "fun_neutron_star",
+    "title": "KOSMOS: Łyżeczka Gwiazdy",
+    "description": "Ile waży łyżeczka materii z gwiazdy neutronowej?",
+    "formula": "6000000000",
+    "unit": "ton",
+    "variables": []
+  },
+  {
+    "id": "fun_sound_moon",
+    "title": "FIZ: Dźwięk na Księżycu",
+    "description": "Czas dotarcia krzyku na Księżycu do kolegi obok.",
+    "formula": "99999999",
+    "unit": "nigdy (próżnia)",
+    "variables": []
+  },
+  {
+    "id": "fun_banana_radiation",
+    "title": "FIZ: Śmierć od Bananów",
+    "description": "Ile bananów trzeba zjeść naraz, by umrzeć od promieniowania?",
+    "formula": "10000000",
+    "unit": "szt",
+    "variables": []
+  },
+  {
+    "id": "fun_mario_jump",
+    "title": "GRY: Grawitacja Mario",
+    "description": "Przyspieszenie grawitacyjne w świecie Mario.",
+    "formula": "50",
+    "unit": "m/s2",
+    "variables": []
+  },
+  {
+    "id": "fun_skyrim_map",
+    "title": "GRY: Skyrim",
+    "description": "Czas przejścia mapy Skyrim w poprzek (pieszo).",
+    "formula": "2.1",
+    "unit": "h",
+    "variables": []
+  },
+  {
+    "id": "fun_quidditch_snitch",
+    "title": "FILM: Złoty Znicz",
+    "description": "Wartość 150 punktów w Quidditchu w przeliczeniu na gole.",
+    "formula": "15",
+    "unit": "goli",
+    "variables": []
+  },
+  {
+    "id": "fun_chocolate_dog",
+    "title": "WET: Czekolada i Pies",
+    "description": "Dawka niebezpieczna teobrominy (zależna od wagi psa).",
+    "formula": "Weight * 20",
+    "unit": "mg teobrominy",
+    "variables": [
+      {"id": "Weight", "label": "Waga psa", "unit": "kg", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "fun_rain_speed",
+    "title": "POGODA: Prędkość Kropli",
+    "description": "Z jaką prędkością spada kropla deszczu?",
+    "formula": "9",
+    "unit": "m/s",
+    "variables": []
+  },
+  {
+    "id": "fun_cat_years",
+    "title": "DOM: Kocie Lata",
+    "description": "Wiek kota w ludzkich latach (uproszczony).",
+    "formula": "24 + (Age - 2) * 4",
+    "unit": "lat ludzkich",
+    "variables": [
+      {"id": "Age", "label": "Wiek kota (>2)", "unit": "lat", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "fun_pencil_line",
+    "title": "BIURO: Ołówek",
+    "description": "Jak długą linię narysujesz jednym ołówkiem?",
+    "formula": "56",
+    "unit": "km",
+    "variables": []
+  },
+  {
+    "id": "fun_beer_bubbles",
+    "title": "IMPREZA: Bąbelki w Piwie",
+    "description": "Szacunkowa liczba bąbelków w kuflu piwa.",
+    "formula": "2000000",
+    "unit": "szt",
+    "variables": []
+  },
+  {
+    "id": "fun_everest_grow",
+    "title": "GEO: Wzrost Everestu",
+    "description": "O ile Mount Everest rośnie rocznie?",
+    "formula": "4",
+    "unit": "mm",
+    "variables": []
+  },
+  {
+    "id": "fun_bamboo_growth",
+    "title": "NATURA: Bambus",
+    "description": "Rekordowy wzrost bambusa na dobę.",
+    "formula": "91",
+    "unit": "cm",
+    "variables": []
+  },
+  {
+    "id": "fun_human_heat",
+    "title": "FIZ: Człowiek Grzejnik",
+    "description": "Moc cieplna wydzielana przez człowieka w spoczynku.",
+    "formula": "100",
+    "unit": "W",
+    "variables": []
+  },
+  {
+    "id": "fun_shark_teeth",
+    "title": "NATURA: Zęby Rekina",
+    "description": "Ile zębów gubi rekin w ciągu życia?",
+    "formula": "30000",
+    "unit": "szt",
+    "variables": []
+  },
+  {
+    "id": "fun_lightning_width",
+    "title": "POGODA: Grubość Pioruna",
+    "description": "Średnica kanału głównego wyładowania.",
+    "formula": "2.5",
+    "unit": "cm",
+    "variables": []
+  },
+  {
+    "id": "fun_eiffel_shrink",
+    "title": "BUD: Wieża Eiffla",
+    "description": "O ile kurczy się wieża zimą (termokurczliwość metalu).",
+    "formula": "15",
+    "unit": "cm",
+    "variables": []
+  },
+  {
+    "id": "fun_honey_expire",
+    "title": "KUCHNIA: Data Ważności Miodu",
+    "description": "Po ilu latach psuje się naturalny miód?",
+    "formula": "999999",
+    "unit": "nigdy",
+    "variables": []
+  },
+  {
+    "id": "fun_mosquito_teeth",
+    "title": "NATURA: Zęby Komara",
+    "description": "Ile zębów ma komar?",
+    "formula": "47",
+    "unit": "szt",
+    "variables": []
+  },
+  {
+    "id": "fun_google_energy",
+    "title": "TECH: Wyszukanie Google",
+    "description": "Ile energii zużywa jedno zapytanie w Google? (0.3Wh).",
+    "formula": "Searches * 0.3",
+    "unit": "Wh",
+    "variables": [
+      {"id": "Searches", "label": "Liczba zapytań", "unit": "szt", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "fun_human_skin",
+    "title": "BIO: Skóra",
+    "description": "Ile kg naskórka zrzucasz w ciągu życia?",
+    "formula": "35",
+    "unit": "kg",
+    "variables": []
+  },
+  {
+    "id": "fun_caffeine_half_life",
+    "title": "BIO: Półtrwanie Kofeiny",
+    "description": "Ile kofeiny zostaje we krwi po 5 godzinach?",
+    "formula": "Dose * 0.5",
+    "unit": "mg",
+    "variables": [
+      {"id": "Dose", "label": "Dawka początkowa", "unit": "mg", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "fun_blue_whale_heart",
+    "title": "NATURA: Serce Wieloryba",
+    "description": "Ile waży serce płetwala błękitnego?",
+    "formula": "180",
+    "unit": "kg",
+    "variables": []
+  },
+  {
+    "id": "fun_space_suit_cost",
+    "title": "KOSMOS: Skafander NASA",
+    "description": "Koszt jednego pełnego skafandra kosmicznego.",
+    "formula": "12000000",
+    "unit": "USD",
+    "variables": []
+  },
+  {
+    "id": "fun_ketchup_speed",
+    "title": "KUCHNIA: Prędkość Ketchupu",
+    "description": "Z jaką prędkością wypływa dobry ketchup z butelki?",
+    "formula": "0.045",
+    "unit": "km/h",
+    "variables": []
+  },
+  {
+    "id": "fun_total_atoms",
+    "title": "FIZ: Atomy w Ciele",
+    "description": "Szacunkowa liczba atomów w ciele człowieka.",
+    "formula": "7000000000000000000000000000",
+    "unit": "szt",
+    "variables": [
+    ]
   }
 ]
+
 
 
 
