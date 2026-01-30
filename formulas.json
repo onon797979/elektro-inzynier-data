@@ -2937,8 +2937,126 @@
       {"id": "Cash", "label": "Kwota w skarpecie", "unit": "PLN", "defaultValue": "10000"},
       {"id": "inf", "label": "Inflacja", "unit": "%", "defaultValue": "12"}
     ]
+  },
+  {
+    "id": "fun_donut_height",
+    "title": "FIZ: Energia Pączka",
+    "description": "Na jaką wysokość wejdziesz na energii z 1 pączka (100% sprawności)?",
+    "formula": "(Kcal * 4184) / (Mass * 9.81)",
+    "unit": "m",
+    "variables": [
+      {"id": "Kcal", "label": "Kalorie pączka", "unit": "kcal", "defaultValue": "300"},
+      {"id": "Mass", "label": "Twoja waga", "unit": "kg", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "fun_drive_sun",
+    "title": "KOSMOS: Podróż na Słońce",
+    "description": "Ile lat jechałbyś na Słońce samochodem?",
+    "formula": "(149600000 / Speed) / 24 / 365",
+    "unit": "lat",
+    "variables": [
+      {"id": "Speed", "label": "Prędkość auta", "unit": "km/h", "defaultValue": "120"}
+    ]
+  },
+  {
+    "id": "fun_human_battery",
+    "title": "MATRIX: Ludzka Bateria",
+    "description": "Ilu ludzi potrzeba do zasilenia urządzenia (człowiek to ~100W grzejnik).",
+    "formula": "Watts / 100",
+    "unit": "ludzi",
+    "variables": [
+      {"id": "Watts", "label": "Moc urządzenia", "unit": "W", "defaultValue": "2000"}
+    ]
+  },
+  {
+    "id": "fun_thunder_dist",
+    "title": "POGODA: Gdzie jest burza?",
+    "description": "Odległość uderzenia pioruna (czas od błysku do grzmotu).",
+    "formula": "t * 340",
+    "unit": "m",
+    "variables": [
+      {"id": "t", "label": "Sekundy od błysku", "unit": "s", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "fun_pizza_vol",
+    "title": "MAT: Objętość Pizzy",
+    "description": "Wzór matematyczny: V = pi * z * z * a (gdzie z=promień, a=grubość).",
+    "formula": "3.14159 * z * z * a",
+    "unit": "cm3",
+    "variables": [
+      {"id": "z", "label": "Promień (z)", "unit": "cm", "defaultValue": "15"},
+      {"id": "a", "label": "Grubość (a)", "unit": "cm", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "fun_lotto_prob",
+    "title": "STAT: Szansa w Lotto",
+    "description": "Prawdopodobieństwo trafienia 'szóstki' (1 do X).",
+    "formula": "13983816",
+    "unit": "1/X",
+    "variables": []
+  },
+  {
+    "id": "fun_moore_law",
+    "title": "IT: Prawo Moore'a",
+    "description": "Szacunkowa liczba tranzystorów (podwaja się co 2 lata).",
+    "formula": "Base * (2 ^ (Years / 2))",
+    "unit": "tranzystorów",
+    "variables": [
+      {"id": "Base", "label": "Stan początkowy", "unit": "szt", "defaultValue": "50000"},
+      {"id": "Years", "label": "Lata od startu", "unit": "lat", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "fun_water_gold",
+    "title": "CHEM: Złoto w Oceanie",
+    "description": "Ile złota jest w danej objętości oceanu (stężenie ~0.000004 ppm).",
+    "formula": "Liters * 0.000000004",
+    "unit": "g złota",
+    "variables": [
+      {"id": "Liters", "label": "Objętość wody", "unit": "L", "defaultValue": "1000000"}
+    ]
+  },
+  {
+    "id": "fun_sharks_coconut",
+    "title": "STAT: Rekin vs Kokos",
+    "description": "Kokosy zabijają 15x więcej ludzi niż rekiny. Ryzyko śmierci.",
+    "formula": "Sharks * 15",
+    "unit": "ofiar kokosów",
+    "variables": [
+      {"id": "Sharks", "label": "Ofiary rekinów", "unit": "osób", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "fun_brain_power",
+    "title": "BIO: Moc Mózgu",
+    "description": "Ile prądu zużywa Twój mózg podczas myślenia?",
+    "formula": "20",
+    "unit": "W",
+    "variables": []
+  },
+  {
+    "id": "fun_black_hole_earth",
+    "title": "FIZ: Ziemia jako Czarna Dziura",
+    "description": "Do jakiego rozmiaru trzeba ścisnąć Ziemię, by stała się czarną dziurą?",
+    "formula": "0.009",
+    "unit": "m",
+    "variables": []
+  },
+  {
+    "id": "fun_lego_tower",
+    "title": "BUD: Wieża LEGO",
+    "description": "Wysokość wieży z klocków (płytka = 3.2mm, cegła = 9.6mm).",
+    "formula": "N * 0.0096",
+    "unit": "m",
+    "variables": [
+      {"id": "N", "label": "Liczba klocków", "unit": "szt", "defaultValue": "1000"}
+    ]
   }
 ]
+
 
 
 
