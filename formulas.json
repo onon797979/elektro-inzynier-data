@@ -444,5 +444,345 @@
       {"id": "h", "label": "Rozdz. Wysokość", "unit": "px", "defaultValue": "1080"},
       {"id": "d", "label": "Przekątna", "unit": "cal", "defaultValue": "24"}
     ]
-  }
+  },
+  {
+    "id": "geom_circle_area",
+    "title": "GEO: Pole Koła",
+    "description": "Pole powierzchni koła (π * r²).",
+    "formula": "3.14159 * r * r",
+    "unit": "m2",
+    "variables": [
+      {"id": "r", "label": "Promień", "unit": "m", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "geom_circle_circ",
+    "title": "GEO: Obwód Koła",
+    "description": "Długość obwodu koła (2 * π * r).",
+    "formula": "2 * 3.14159 * r",
+    "unit": "m",
+    "variables": [
+      {"id": "r", "label": "Promień", "unit": "m", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "geom_triangle_area",
+    "title": "GEO: Pole Trójkąta",
+    "description": "Pole trójkąta z podstawy i wysokości.",
+    "formula": "0.5 * a * h",
+    "unit": "m2",
+    "variables": [
+      {"id": "a", "label": "Podstawa", "unit": "m", "defaultValue": "10"},
+      {"id": "h", "label": "Wysokość", "unit": "m", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "geom_pythagoras",
+    "title": "GEO: Twierdzenie Pitagorasa",
+    "description": "Obliczanie przeciwprostokątnej (c = √(a² + b²)).",
+    "formula": "sqrt(a*a + b*b)",
+    "unit": "m",
+    "variables": [
+      {"id": "a", "label": "Bok A", "unit": "m", "defaultValue": "3"},
+      {"id": "b", "label": "Bok B", "unit": "m", "defaultValue": "4"}
+    ]
+  },
+  {
+    "id": "geom_cylinder_vol",
+    "title": "GEO: Objętość Walca",
+    "description": "Objętość walca (V = π * r² * h).",
+    "formula": "3.14159 * r * r * h",
+    "unit": "m3",
+    "variables": [
+      {"id": "r", "label": "Promień", "unit": "m", "defaultValue": "2"},
+      {"id": "h", "label": "Wysokość", "unit": "m", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "geom_sphere_vol",
+    "title": "GEO: Objętość Kuli",
+    "description": "Objętość kuli (V = 4/3 * π * r³).",
+    "formula": "(4/3) * 3.14159 * r * r * r",
+    "unit": "m3",
+    "variables": [
+      {"id": "r", "label": "Promień", "unit": "m", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "therm_c_to_f",
+    "title": "TERM: Celsjusz na Fahrenheit",
+    "description": "Konwersja temperatury.",
+    "formula": "(T * 1.8) + 32",
+    "unit": "°F",
+    "variables": [
+      {"id": "T", "label": "Temp. Celsjusz", "unit": "°C", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "therm_f_to_c",
+    "title": "TERM: Fahrenheit na Celsjusz",
+    "description": "Konwersja temperatury.",
+    "formula": "(T - 32) / 1.8",
+    "unit": "°C",
+    "variables": [
+      {"id": "T", "label": "Temp. Fahrenheit", "unit": "°F", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "therm_heat_energy",
+    "title": "TERM: Ciepło Właściwe",
+    "description": "Energia potrzebna do ogrzania substancji (Q = m * c * ΔT).",
+    "formula": "m * c * dT",
+    "unit": "J",
+    "variables": [
+      {"id": "m", "label": "Masa", "unit": "kg", "defaultValue": "1"},
+      {"id": "c", "label": "Ciepło wł.", "unit": "J/kgK", "defaultValue": "4186"},
+      {"id": "dT", "label": "Różnica Temp.", "unit": "K", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mech_potential_energy",
+    "title": "MECH: Energia Potencjalna",
+    "description": "Energia ciężkości (Ep = m * g * h).",
+    "formula": "m * 9.81 * h",
+    "unit": "J",
+    "variables": [
+      {"id": "m", "label": "Masa", "unit": "kg", "defaultValue": "10"},
+      {"id": "h", "label": "Wysokość", "unit": "m", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mech_spring_force",
+    "title": "MECH: Siła Sprężyny (Hooke)",
+    "description": "Siła rozciągania sprężyny (F = k * x).",
+    "formula": "k * x",
+    "unit": "N",
+    "variables": [
+      {"id": "k", "label": "Stała sprężystości", "unit": "N/m", "defaultValue": "500"},
+      {"id": "x", "label": "Rozciągnięcie", "unit": "m", "defaultValue": "0.1"}
+    ]
+  },
+  {
+    "id": "mech_centrifugal",
+    "title": "MECH: Siła Odśrodkowa",
+    "description": "Siła działająca w ruchu po okręgu (F = m * v² / r).",
+    "formula": "m * v * v / r",
+    "unit": "N",
+    "variables": [
+      {"id": "m", "label": "Masa", "unit": "kg", "defaultValue": "80"},
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "20"},
+      {"id": "r", "label": "Promień", "unit": "m", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "phys_density",
+    "title": "FIZ: Gęstość",
+    "description": "Obliczanie gęstości materiału (ρ = m / V).",
+    "formula": "m / V",
+    "unit": "kg/m3",
+    "variables": [
+      {"id": "m", "label": "Masa", "unit": "kg", "defaultValue": "100"},
+      {"id": "V", "label": "Objętość", "unit": "m3", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "hyd_flow_rate",
+    "title": "HYD: Przepływ Cieczy",
+    "description": "Natężenie przepływu (Q = v * A).",
+    "formula": "v * A",
+    "unit": "m3/s",
+    "variables": [
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "2"},
+      {"id": "A", "label": "Przekrój rury", "unit": "m2", "defaultValue": "0.05"}
+    ]
+  },
+  {
+    "id": "hyd_pipe_vol",
+    "title": "HYD: Pojemność Rury",
+    "description": "Ile litrów wody mieści się w rurze (Litr = V * 1000).",
+    "formula": "(3.14159 * (d/2000) * (d/2000) * L) * 1000",
+    "unit": "L",
+    "variables": [
+      {"id": "d", "label": "Średnica wew.", "unit": "mm", "defaultValue": "50"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "ele_rc_time",
+    "title": "ELE: Stała Czasowa RC",
+    "description": "Czas ładowania kondensatora (τ = R * C).",
+    "formula": "R * C",
+    "unit": "s",
+    "variables": [
+      {"id": "R", "label": "Rezystancja", "unit": "Ohm", "defaultValue": "10000"},
+      {"id": "C", "label": "Pojemność", "unit": "F", "defaultValue": "0.00047"}
+    ]
+  },
+  {
+    "id": "ele_decibel_volt",
+    "title": "ELE: Decybele (Napięcie)",
+    "description": "Wzmocnienie napięciowe w dB (20 * log(U2/U1)).",
+    "formula": "20 * log10(U2 / U1)",
+    "unit": "dB",
+    "variables": [
+      {"id": "U2", "label": "Napięcie Wyj.", "unit": "V", "defaultValue": "10"},
+      {"id": "U1", "label": "Napięcie Wej.", "unit": "V", "defaultValue": "0.775"}
+    ]
+  },
+  {
+    "id": "ele_decibel_power",
+    "title": "ELE: Decybele (Moc)",
+    "description": "Wzmocnienie mocy w dB (10 * log(P2/P1)).",
+    "formula": "10 * log10(P2 / P1)",
+    "unit": "dB",
+    "variables": [
+      {"id": "P2", "label": "Moc Wyj.", "unit": "W", "defaultValue": "100"},
+      {"id": "P1", "label": "Moc Wej.", "unit": "W", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "ele_battery_series",
+    "title": "ELE: Baterie Szeregowo",
+    "description": "Napięcie baterii połączonych szeregowo.",
+    "formula": "U * n",
+    "unit": "V",
+    "variables": [
+      {"id": "U", "label": "Napięcie ogniwa", "unit": "V", "defaultValue": "1.5"},
+      {"id": "n", "label": "Ilość ogniw", "unit": "szt", "defaultValue": "4"}
+    ]
+  },
+  {
+    "id": "build_tiles",
+    "title": "BUD: Kalkulator Płytek",
+    "description": "Szacunkowa liczba płytek (z zapasem 10%).",
+    "formula": "(Area / (w * h)) * 1.1",
+    "unit": "szt",
+    "variables": [
+      {"id": "Area", "label": "Powierzchnia", "unit": "m2", "defaultValue": "20"},
+      {"id": "w", "label": "Szerokość płytki", "unit": "m", "defaultValue": "0.6"},
+      {"id": "h", "label": "Długość płytki", "unit": "m", "defaultValue": "0.6"}
+    ]
+  },
+  {
+    "id": "build_paint",
+    "title": "BUD: Zużycie Farby",
+    "description": "Ile litrów farby potrzeba (na 2 warstwy).",
+    "formula": "(Area / Efficiency) * 2",
+    "unit": "L",
+    "variables": [
+      {"id": "Area", "label": "Powierzchnia", "unit": "m2", "defaultValue": "50"},
+      {"id": "Efficiency", "label": "Wydajność farby", "unit": "m2/L", "defaultValue": "12"}
+    ]
+  },
+  {
+    "id": "finance_roi",
+    "title": "FIN: Zwrot z Inwestycji (ROI)",
+    "description": "Procentowy zwrot z inwestycji.",
+    "formula": "((Gain - Cost) / Cost) * 100",
+    "unit": "%",
+    "variables": [
+      {"id": "Gain", "label": "Przychód", "unit": "PLN", "defaultValue": "15000"},
+      {"id": "Cost", "label": "Koszt", "unit": "PLN", "defaultValue": "10000"}
+    ]
+  },
+  {
+    "id": "finance_vat_brutto",
+    "title": "FIN: Cena Brutto z Netto",
+    "description": "Obliczanie kwoty brutto z podatkiem VAT.",
+    "formula": "Netto * (1 + (VAT / 100))",
+    "unit": "PLN",
+    "variables": [
+      {"id": "Netto", "label": "Kwota Netto", "unit": "PLN", "defaultValue": "100"},
+      {"id": "VAT", "label": "Stawka VAT", "unit": "%", "defaultValue": "23"}
+    ]
+  },
+  {
+    "id": "phys_sound_speed",
+    "title": "FIZ: Droga Dźwięku",
+    "description": "Jak daleko jest burza? (v = 343 m/s).",
+    "formula": "343 * t",
+    "unit": "m",
+    "variables": [
+      {"id": "t", "label": "Czas od błysku", "unit": "s", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "ele_antenna_dipole",
+    "title": "ELE: Długość Dipola",
+    "description": "Długość półfalowego dipola (L = 142.5 / f).",
+    "formula": "142.5 / f",
+    "unit": "m",
+    "variables": [
+      {"id": "f", "label": "Częstotliwość", "unit": "MHz", "defaultValue": "145"}
+    ]
+  },
+  {
+    "id": "car_fuel_cons",
+    "title": "AUTO: Spalanie (l/100km)",
+    "description": "Średnie spalanie paliwa.",
+    "formula": "(Liters / Dist) * 100",
+    "unit": "l/100km",
+    "variables": [
+      {"id": "Liters", "label": "Zużyte paliwo", "unit": "L", "defaultValue": "45"},
+      {"id": "Dist", "label": "Dystans", "unit": "km", "defaultValue": "650"}
+    ]
+  },
+  {
+    "id": "car_trip_cost",
+    "title": "AUTO: Koszt Podróży",
+    "description": "Ile kosztuje przejazd trasy.",
+    "formula": "(Dist / 100) * Burns * Price",
+    "unit": "PLN",
+    "variables": [
+      {"id": "Dist", "label": "Dystans", "unit": "km", "defaultValue": "300"},
+      {"id": "Burns", "label": "Spalanie", "unit": "l/100km", "defaultValue": "7.5"},
+      {"id": "Price", "label": "Cena paliwa", "unit": "PLN/L", "defaultValue": "6.50"}
+    ]
+  },
+  {
+    "id": "ele_led_strip_power",
+    "title": "ELE: Moc Taśmy LED",
+    "description": "Całkowita moc taśmy LED.",
+    "formula": "P_per_m * Length",
+    "unit": "W",
+    "variables": [
+      {"id": "P_per_m", "label": "Moc na metr", "unit": "W/m", "defaultValue": "14.4"},
+      {"id": "Length", "label": "Długość taśmy", "unit": "m", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "ele_battery_capacity_wh",
+    "title": "ELE: Pojemność w Wh",
+    "description": "Przeliczenie mAh na Wh (często używane w powerbankach).",
+    "formula": "(mAh * V) / 1000",
+    "unit": "Wh",
+    "variables": [
+      {"id": "mAh", "label": "Pojemność", "unit": "mAh", "defaultValue": "10000"},
+      {"id": "V", "label": "Napięcie", "unit": "V", "defaultValue": "3.7"}
+    ]
+  },
+  {
+    "id": "mech_gear_ratio",
+    "title": "MECH: Przełożenie Przekładni",
+    "description": "Przełożenie z liczby zębów (i = z2 / z1).",
+    "formula": "z2 / z1",
+    "unit": "-",
+    "variables": [
+      {"id": "z1", "label": "Zęby Wejściowe", "unit": "szt", "defaultValue": "20"},
+      {"id": "z2", "label": "Zęby Wyjściowe", "unit": "szt", "defaultValue": "60"}
+    ]
+  },
+  {
+    "id": "mech_output_rpm",
+    "title": "MECH: Obroty na Wyjściu",
+    "description": "Obroty po przekładni (n2 = n1 / i).",
+    "formula": "n1 / (z2 / z1)",
+    "unit": "rpm",
+    "variables": [
+      {"id": "n1", "label": "Obroty silnika", "unit": "rpm", "defaultValue": "1400"},
+      {"id": "z1", "label": "Zęby małe", "unit": "szt", "defaultValue": "20"},
+      {"id": "z2", "label": "Zęby duże", "unit": "szt", "defaultValue": "40"}
+    ]
+  },
 ]
+
