@@ -783,6 +783,8 @@
       {"id": "z1", "label": "Zęby małe", "unit": "szt", "defaultValue": "20"},
       {"id": "z2", "label": "Zęby duże", "unit": "szt", "defaultValue": "40"}
     ]
+  }
+]
   
 
 
