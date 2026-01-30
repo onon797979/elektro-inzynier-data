@@ -292,10 +292,10 @@
     "description": "Szacowanie liczby luksów (metoda uproszczona).",
     "formula": "Flux * n / (A * 1.2)",
     "unit": "lx",
-     "variables": [
-        {"id": "Flux", "label": "Strumień lampy", "unit": "lm", "defaultValue": "3000"},
-        {"id": "n", "label": "Liczba lamp", "unit": "szt", "defaultValue": "4"},
-        {"id": "A", "label": "Powierzchnia", "unit": "m2", "defaultValue": "20"}
+    "variables": [
+       {"id": "Flux", "label": "Strumień lampy", "unit": "lm", "defaultValue": "3000"},
+       {"id": "n", "label": "Liczba lamp", "unit": "szt", "defaultValue": "4"},
+       {"id": "A", "label": "Powierzchnia", "unit": "m2", "defaultValue": "20"}
     ]
   },
   {
