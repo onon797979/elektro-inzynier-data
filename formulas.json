@@ -2633,8 +2633,211 @@
       {"id": "C", "label": "Pojemność", "unit": "uF", "defaultValue": "470"},
       {"id": "V", "label": "Napięcie", "unit": "V", "defaultValue": "25"}
     ]
+  },
+  {
+    "id": "fun_weight_mars",
+    "title": "CIEKAWE: Waga na Marsie",
+    "description": "Ile wskazałaby waga, gdybyś stanął na Czerwonej Planecie.",
+    "formula": "mass * 0.377",
+    "unit": "kg",
+    "variables": [
+      {"id": "mass", "label": "Twoja waga na Ziemi", "unit": "kg", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "fun_weight_moon",
+    "title": "CIEKAWE: Waga na Księżycu",
+    "description": "Na Księżycu czułbyś się znacznie lżejszy (grawitacja ~1/6).",
+    "formula": "mass * 0.165",
+    "unit": "kg",
+    "variables": [
+      {"id": "mass", "label": "Twoja waga na Ziemi", "unit": "kg", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "fun_dog_years",
+    "title": "CIEKAWE: Psie Lata",
+    "description": "Klasyczny przelicznik wieku psa na ludzki (x7).",
+    "formula": "age * 7",
+    "unit": "lat(ludzkich)",
+    "variables": [
+      {"id": "age", "label": "Wiek psa", "unit": "lat", "defaultValue": "4"}
+    ]
+  },
+  {
+    "id": "fun_earth_spin",
+    "title": "CIEKAWE: Prędkość obrotu Ziemi",
+    "description": "Z jaką prędkością pędzisz w tej chwili wokół osi Ziemi?",
+    "formula": "1674 * cos(lat * 0.01745)",
+    "unit": "km/h",
+    "variables": [
+      {"id": "lat", "label": "Twoja szerokość geo.", "unit": "stopni", "defaultValue": "52"}
+    ]
+  },
+  {
+    "id": "fun_banana_dose",
+    "title": "CIEKAWE: Dawka Bananowa",
+    "description": "Banany są promieniotwórcze! (BED - Banana Equivalent Dose).",
+    "formula": "n * 0.1",
+    "unit": "uSv",
+    "variables": [
+      {"id": "n", "label": "Liczba zjedzonych bananów", "unit": "szt", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "fun_blood_volume",
+    "title": "CIEKAWE: Ile mam krwi?",
+    "description": "Szacunkowa ilość krwi w organizmie dorosłego człowieka.",
+    "formula": "weight * 0.07",
+    "unit": "L",
+    "variables": [
+      {"id": "weight", "label": "Waga ciała", "unit": "kg", "defaultValue": "75"}
+    ]
+  },
+  {
+    "id": "fun_money_stack",
+    "title": "CIEKAWE: Wysokość Pieniędzy",
+    "description": "Jak wysoki byłby stos banknotów (jeden banknot ~0.1mm).",
+    "formula": "(Amount / Nom) * 0.0001",
+    "unit": "m",
+    "variables": [
+      {"id": "Amount", "label": "Kwota", "unit": "PLN", "defaultValue": "1000000"},
+      {"id": "Nom", "label": "Nominał banknotu", "unit": "PLN", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "fun_energy_mass",
+    "title": "CIEKAWE: Energia E=mc²",
+    "description": "Ile czystej energii drzemie w Twoim ciele?",
+    "formula": "m * 299792458 * 299792458",
+    "unit": "J",
+    "variables": [
+      {"id": "m", "label": "Masa obiektu", "unit": "kg", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "fun_boiling_altitude",
+    "title": "CIEKAWE: Wrzenie w Górach",
+    "description": "Temp. wrzenia wody spada wraz z wysokością (uproszczone).",
+    "formula": "100 - (h / 300)",
+    "unit": "C",
+    "variables": [
+      {"id": "h", "label": "Wysokość n.p.m.", "unit": "m", "defaultValue": "2500"}
+    ]
+  },
+  {
+    "id": "fun_book_read_time",
+    "title": "CIEKAWE: Czas Czytania",
+    "description": "Ile zajmie przeczytanie książki (średnio 250 słów/stronę).",
+    "formula": "(Pages * 250) / Speed",
+    "unit": "min",
+    "variables": [
+      {"id": "Pages", "label": "Liczba stron", "unit": "stron", "defaultValue": "400"},
+      {"id": "Speed", "label": "Prędkość czytania", "unit": "słów/min", "defaultValue": "200"}
+    ]
+  },
+  {
+    "id": "fun_smartphone_cost",
+    "title": "CIEKAWE: Koszt Ładowania",
+    "description": "Ile kosztuje naładowanie telefonu od 0 do 100%.",
+    "formula": "(Wh / 1000) * Price",
+    "unit": "PLN",
+    "variables": [
+      {"id": "Wh", "label": "Bateria (np. 5000mAh*3.7V=18.5Wh)", "unit": "Wh", "defaultValue": "18.5"},
+      {"id": "Price", "label": "Cena prądu", "unit": "PLN/kWh", "defaultValue": "1.20"}
+    ]
+  },
+  {
+    "id": "fun_hair_growth",
+    "title": "CIEKAWE: Wzrost Włosów",
+    "description": "Ile urosną Ci włosy przez dany czas (średnio 0.35 mm/dobę).",
+    "formula": "days * 0.35",
+    "unit": "mm",
+    "variables": [
+      {"id": "days", "label": "Liczba dni", "unit": "dni", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "fun_ant_strength",
+    "title": "CIEKAWE: Siła Mrówki",
+    "description": "Ile mógłbyś podnieść, gdybyś miał siłę mrówki (x50 masy).",
+    "formula": "mass * 50",
+    "unit": "kg",
+    "variables": [
+      {"id": "mass", "label": "Twoja waga", "unit": "kg", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "fun_coffee_survival",
+    "title": "CIEKAWE: Śmiertelna Kawa",
+    "description": "Teoretyczna dawka śmiertelna kofeiny (LD50 ~150mg/kg).",
+    "formula": "(mass * 150) / 95",
+    "unit": "filiżanek",
+    "variables": [
+      {"id": "mass", "label": "Waga ciała", "unit": "kg", "defaultValue": "75"}
+    ]
+  },
+  {
+    "id": "fun_light_nanosecond",
+    "title": "CIEKAWE: Stopa Świetlna",
+    "description": "Jaki dystans pokonuje światło w czasie jednego cyklu procesora 1GHz?",
+    "formula": "0.29979 * t",
+    "unit": "m",
+    "variables": [
+      {"id": "t", "label": "Czas", "unit": "ns", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "fun_zombie_walk",
+    "title": "CIEKAWE: Zombie Spacer",
+    "description": "Jak daleko zajdzie Zombie bez odpoczynku (v=0.5 m/s).",
+    "formula": "(hours * 3600 * 0.5) / 1000",
+    "unit": "km",
+    "variables": [
+      {"id": "hours", "label": "Czas marszu", "unit": "h", "defaultValue": "24"}
+    ]
+  },
+  {
+    "id": "fun_water_intake",
+    "title": "ZDROWIE: Woda (Zapotrzebowanie)",
+    "description": "Zalecana dzienna ilość wody (30ml na kg masy ciała).",
+    "formula": "weight * 0.03",
+    "unit": "L",
+    "variables": [
+      {"id": "weight", "label": "Waga ciała", "unit": "kg", "defaultValue": "70"}
+    ]
+  },
+  {
+    "id": "fun_paper_fold",
+    "title": "CIEKAWE: Składanie Papieru",
+    "description": "Grubość kartki składanej na pół N razy (0.1mm start).",
+    "formula": "0.0001 * (2 ^ N)",
+    "unit": "m",
+    "variables": [
+      {"id": "N", "label": "Liczba złożeń", "unit": "razy", "defaultValue": "42"}
+    ]
+  },
+  {
+    "id": "fun_breathes_lifetime",
+    "title": "CIEKAWE: Oddechy Życia",
+    "description": "Ile razy weźmiesz oddech w ciągu życia (śr. 16/min).",
+    "formula": "years * 365 * 24 * 60 * 16",
+    "unit": "oddechów",
+    "variables": [
+      {"id": "years", "label": "Długość życia", "unit": "lat", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "fun_titanic_depth",
+    "title": "CIEKAWE: Ciśnienie na Titanicu",
+    "description": "Ciśnienie wody na głębokości wraku (~3800m).",
+    "formula": "(3800 * 1025 * 9.81) / 100000",
+    "unit": "bar",
+    "variables": [
+    ]
   }
 ]
+
 
 
     
