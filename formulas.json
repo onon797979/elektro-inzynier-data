@@ -377,4 +377,72 @@
       {"id": "PF", "label": "Cos φ", "unit": "-", "defaultValue": "0.8"}
     ]
   },
-  
+  {
+    "id": "mech_hyd_force",
+    "title": "MECH: Siła Siłownika",
+    "description": "Siła pchająca siłownika hydraulicznego (F = P * A).",
+    "formula": "P * A * 10",
+    "unit": "N",
+    "variables": [
+      {"id": "P", "label": "Ciśnienie", "unit": "bar", "defaultValue": "100"},
+      {"id": "A", "label": "Powierzchnia Tłoka", "unit": "cm2", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "mech_kinetic_energy",
+    "title": "MECH: Energia Kinetyczna",
+    "description": "Energia ciała w ruchu (Ek = 0.5 * m * v^2).",
+    "formula": "0.5 * m * v * v",
+    "unit": "J",
+    "variables": [
+      {"id": "m", "label": "Masa", "unit": "kg", "defaultValue": "50"},
+      {"id": "v", "label": "Prędkość", "unit": "m/s", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "build_slope",
+    "title": "BUD: Nachylenie Terenu",
+    "description": "Obliczanie spadku w procentach (H / L * 100).",
+    "formula": "(H / L) * 100",
+    "unit": "%",
+    "variables": [
+      {"id": "H", "label": "Różnica wys.", "unit": "m", "defaultValue": "1"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "build_concrete",
+    "title": "BUD: Objętość Betonu",
+    "description": "Ilość betonu na wylewkę (a * b * h).",
+    "formula": "a * b * h",
+    "unit": "m3",
+    "variables": [
+      {"id": "a", "label": "Długość", "unit": "m", "defaultValue": "5"},
+      {"id": "b", "label": "Szerokość", "unit": "m", "defaultValue": "4"},
+      {"id": "h", "label": "Grubość", "unit": "m", "defaultValue": "0.15"}
+    ]
+  },
+  {
+    "id": "it_download_time",
+    "title": "IT: Czas Pobierania",
+    "description": "Czas transferu pliku (T = Size / Speed).",
+    "formula": "(Size * 8) / Speed",
+    "unit": "s",
+    "variables": [
+      {"id": "Size", "label": "Rozmiar Pliku", "unit": "MB", "defaultValue": "1000"},
+      {"id": "Speed", "label": "Prędkość Łącza", "unit": "Mbps", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "it_dpi_calc",
+    "title": "IT: Zagęszczenie Pixeli (DPI)",
+    "description": "Kalkulator PPI/DPI dla ekranów.",
+    "formula": "sqrt((w * w) + (h * h)) / d",
+    "unit": "ppi",
+    "variables": [
+      {"id": "w", "label": "Rozdz. Szerokość", "unit": "px", "defaultValue": "1920"},
+      {"id": "h", "label": "Rozdz. Wysokość", "unit": "px", "defaultValue": "1080"},
+      {"id": "d", "label": "Przekątna", "unit": "cal", "defaultValue": "24"}
+    ]
+  }
+]
