@@ -376,4 +376,4 @@
       {"id": "I", "label": "Prąd", "unit": "A", "defaultValue": "100"},
       {"id": "PF", "label": "Cos φ", "unit": "-", "defaultValue": "0.8"}
     ]
-  },
+  
