@@ -5965,7 +5965,6 @@
     "formula": "3.14159 * sqrt(6371000 / 9.81) / 60",
     "unit": "min (Czas)",
     "variables": [
-      
     ]
   },
   {
