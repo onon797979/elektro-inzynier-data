@@ -5967,6 +5967,122 @@
     "variables": [
       
     ]
+  },
+  {
+    "id": "thermo_carnot_efficiency",
+    "title": "TERMODYNAMIKA: Sprawność Silnika Carnota",
+    "description": "Teoretyczna, absolutnie maksymalna sprawność jakiegokolwiek silnika cieplnego pracującego w zamkniętym cyklu między dwoma rezerwuarami o różnych temperaturach. Zgodnie z drugą zasadą termodynamiki, żaden rzeczywisty silnik zbudowany przez człowieka nie może przekroczyć tej sprawności z uwagi na nieodwracalny wzrost entropii. Równanie to boleśnie udowadnia, dlaczego najnowocześniejsze elektrownie węglowe i jądrowe marnują bezpowrotnie ponad 60% energii cieplnej uchodzącej do chłodni kominowych. Temperatury w skali Celsjusza są w locie konwertowane przez algorytm na bezwzględną skalę Kelwina.",
+    "formula": "(1 - ((Tc + 273.15) / (Th + 273.15))) * 100",
+    "unit": "%",
+    "variables": [
+      {"id": "Th", "label": "Temperatura źródła ciepła (Górnego)", "unit": "°C", "defaultValue": "560"},
+      {"id": "Tc", "label": "Temperatura chłodnicy (Dolnego)", "unit": "°C", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "fluid_reynolds_number",
+    "title": "MECHANIKA PŁYNÓW: Liczba Reynoldsa (Re)",
+    "description": "Fundamentalny, bezwymiarowy wskaźnik używany w inżynierii mechaniki płynów do prognozowania wzorców przepływu w rurociągach i wokół opływanych profili. Niskie wartości (Re < 2100) oznaczają uporządkowany, przewidywalny przepływ laminarny, natomiast wartości wysokie (Re > 4000) zwiastują wysoce chaotyczny przepływ turbulentny pełen wirów stratnych. Parametr ten jest absolutnie kluczowy przy projektowaniu rurociągów naftowych, aerodynamiki skrzydeł samolotów pasażerskich oraz układów chłodzenia cieczą w rdzeniach reaktorów jądrowych.",
+    "formula": "(Density * Velocity * Diameter) / Viscosity",
+    "unit": "Re (Bezwymiarowa)",
+    "variables": [
+      {"id": "Density", "label": "Gęstość płynu", "unit": "kg/m³", "defaultValue": "998"},
+      {"id": "Velocity", "label": "Prędkość przepływu", "unit": "m/s", "defaultValue": "2"},
+      {"id": "Diameter", "label": "Średnica rury / Długość charakt.", "unit": "m", "defaultValue": "0.05"},
+      {"id": "Viscosity", "label": "Lepkość dynamiczna (Pa·s)", "unit": "Pa·s", "defaultValue": "0.001"}
+    ]
+  },
+  {
+    "id": "elec_3phase_power",
+    "title": "ELEKTROENERGETYKA: Moc Czynna Układu Trójfazowego",
+    "description": "Podstawowe równanie określające całkowitą moc czynną (użyteczną mechaniczną i cieplną) pobieraną przez symetryczny odbiornik trójfazowy, na przykład potężny asynchroniczny silnik indukcyjny klatkowy na taśmie produkcyjnej. We wzorze występuje pierwiastek z trzech (ok. 1.732), napięcie międzyfazowe (w Europie znormalizowane do 400 V), prąd przewodowy oraz współczynnik mocy (cosinus fi) określający straty na moc bierną. Układy trójfazowe stanowią potężny kręgosłup światowego przemysłu ciężkiego, pozwalając na przesył gigantycznych mocy prądowych przy radykalnie zmniejszonym przekroju kabli miedzianych.",
+    "formula": "1.7320508 * Voltage * Current * CosFi",
+    "unit": "W (Wat)",
+    "variables": [
+      {"id": "Voltage", "label": "Napięcie międzyfazowe", "unit": "V", "defaultValue": "400"},
+      {"id": "Current", "label": "Natężenie prądu na fazę", "unit": "A", "defaultValue": "32"},
+      {"id": "CosFi", "label": "Współczynnik mocy (Cosinus Fi)", "unit": "0-1", "defaultValue": "0.85"}
+    ]
+  },
+  {
+    "id": "civ_thermal_stress",
+    "title": "WYTRZYMAŁOŚĆ: Skrajne Naprężenie Termiczne",
+    "description": "Kiedy potężny element konstrukcyjny (na przykład stalowa szyna kolei dużych prędkości, przęsło mostu wisiokowego lub grubościenny rurociąg ciepłowniczy) zostaje zablokowany mechanicznie na obu końcach i nie może swobodnie się rozszerzać pod wpływem wzrostu letniej temperatury, w jego głębokim wnętrzu powstają monstrualne naprężenia termiczne. Zgodnie z prawem Hooke'a, naprężenie to jest iloczynem modułu sprężystości podłużnej Younga, materiałowego współczynnika liniowej rozszerzalności cieplnej oraz delty temperatur. Zjawisko to potrafi katastrofalnie wyboczyć zespawane tory w upalne lipcowe popołudnie, jeśli inżynierowie zignorowali obliczenia szczelin dylatacyjnych.",
+    "formula": "(Modulus * Alpha * TempDiff) / 1000000",
+    "unit": "MPa (Megapaskal)",
+    "variables": [
+      {"id": "Modulus", "label": "Moduł Younga (Stal = 210000000000)", "unit": "Pa", "defaultValue": "210000000000"},
+      {"id": "Alpha", "label": "Współcz. rozszerzalności (Alfa)", "unit": "1/K", "defaultValue": "0.000012"},
+      {"id": "TempDiff", "label": "Różnica skrajnych temperatur", "unit": "°C", "defaultValue": "40"}
+    ]
+  },
+  {
+    "id": "cnc_spindle_rpm",
+    "title": "OBRÓBKA CNC: Prędkość Obrotowa Wrzeciona",
+    "description": "Optymalna prędkość obrotowa (RPM) dla obrotowego narzędzia skrawającego (na przykład freza palcowego z węglika spiekanego) lub toczonego detalu w tokarce numerycznej. Wartość ta wynika bezpośrednio i matematycznie z odgórnie zaleconej przez producenta płytki prędkości skrawania (Vc - podawanej w metrach na minutę) dla konkretnego materiału twardego (np. tytan medyczny, stal nierdzewna Duplex, aluminium PA6) oraz czynnej średnicy narzędzia. Przekroczenie tych rygorystycznych parametrów prowadzi do natychmiastowego przepalenia powłok azotku tytanu, natomiast zbyt niskie obroty powodują katastrofalne wibracje rezonansowe obrabiarki i chropowate wyrywanie materiału.",
+    "formula": "(Vc * 1000) / (3.1415926 * Diameter)",
+    "unit": "RPM (Obr/min)",
+    "variables": [
+      {"id": "Vc", "label": "Prędkość skrawania z tabeli (Vc)", "unit": "m/min", "defaultValue": "120"},
+      {"id": "Diameter", "label": "Średnica frezu / detalu", "unit": "mm", "defaultValue": "12"}
+    ]
+  },
+  {
+    "id": "optics_critical_angle",
+    "title": "OPTYKA KWANTO.: Kąt Graniczny (Całkowite Odbicie Wewnętrzne)",
+    "description": "Kąt padania fotonów światła wyliczony ze ścisłego prawa Snelliusa, po przekroczeniu którego wiązka światła nie opuszcza już gęstszego ośrodka fizycznego (na przykład rdzenia szklanego światłowodu lub słupa wody morskiej), lecz całkowicie i bezstratnie odbija się od granicy z ośrodkiem rzadszym (powietrzem lub płaszczem optycznym). Zjawisko to stanowi absolutny fundament istnienia i działania globalnej infrastruktury internetowej światłowodów telekomunikacyjnych, w których wysoce skoncentrowane impulsy laserowe niosące petabajty danych odbijają się od ścianek rdzenia krzemionkowego, podróżując z prędkością światła na odległości tysięcy kilometrów po mrocznym dnie oceanów bez ucieczki najmniejszego ułamka światła na zewnątrz okablowania.",
+    "formula": "asin(N2 / N1) * (180 / 3.1415926)",
+    "unit": "Stopni (°)",
+    "variables": [
+      {"id": "N1", "label": "Współcz. załamania ośrodka 1 (np. Szkło 1.5)", "unit": "-", "defaultValue": "1.52"},
+      {"id": "N2", "label": "Współcz. załamania ośrodka 2 (np. Powietrze 1.0)", "unit": "-", "defaultValue": "1.0"}
+    ]
+  },
+  {
+    "id": "aero_lift_equation",
+    "title": "AERODYNAMIKA: Zmodyfikowana Siła Nośna Skrzydła",
+    "description": "Równanie opisujące potężną siłę nośną generowaną przez aerodynamiczny profil płata (komercyjne skrzydło samolotu pasażerskiego Boeing/Airbus, łopatę nośną helikoptera wojskowego lub gigantyczny wirnik turbiny wiatrowej na morzu) poruszający się w ośrodku ciągłym płynu atmosferycznego. Zależność ta wyprowadzona została bezpośrednio z równania Bernoulliego i III zasady dynamiki Newtona. Siła ta rośnie drastycznie i wykładniczo do potęgi drugiej w stosunku do prędkości – podwojenie prędkości przelotowej samolotu zwiększa fizyczną siłę nośną aż czterokrotnie. Współczynnik siły nośnej (Cl) jest wartością eksperymentalną zależną od kąta natarcia profilu w tunelu aerodynamicznym.",
+    "formula": "0.5 * Density * (Velocity * Velocity) * Area * Cl",
+    "unit": "N (Niutonów)",
+    "variables": [
+      {"id": "Density", "label": "Gęstość powietrza (na pułapie)", "unit": "kg/m³", "defaultValue": "1.225"},
+      {"id": "Velocity", "label": "Prędkość względem strugi", "unit": "m/s", "defaultValue": "250"},
+      {"id": "Area", "label": "Powierzchnia nośna skrzydeł", "unit": "m²", "defaultValue": "120"},
+      {"id": "Cl", "label": "Współczynnik siły nośnej", "unit": "-", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "astro_orbital_velocity",
+    "title": "ASTRODYNAMIKA: I Prędkość Kosmiczna (Prędkość Orbitalna)",
+    "description": "Wymagana fizyczna prędkość, z jaką masywny obiekt sztuczny (na przykład satelita telekomunikacyjny Starlink, Kosmiczny Teleskop Hubble'a lub ciężka Międzynarodowa Stacja Kosmiczna ISS) musi przemieszczać się ściśle równolegle do ugiętej powierzchni planety, aby jego stała krzywizna opadania w wyniku przyciągania grawitacyjnego idealnie dopasowała się do matematycznej krzywizny samego globu. Efektem tego niesamowitego balansu siły odśrodkowej i grawitacyjnej jest nieprzerwany stan swobodnego spadku mikrograwitacyjnego, czyli orbita kołowa. Dla relatywnie niskiej orbity okołoziemskiej (LEO - Low Earth Orbit) prędkość ta wynosi blisko 7.9 kilometra na sekundę, co przekłada się na oszałamiające okrążenie całej planety Ziemi w zaledwie 90 minut.",
+    "formula": "sqrt((0.00000000006674 * Mass) / Radius)",
+    "unit": "m/s",
+    "variables": [
+      {"id": "Mass", "label": "Masa centralnej planety (Ziemia)", "unit": "kg", "defaultValue": "5972000000000000000000000"},
+      {"id": "Radius", "label": "Promień orbity od środka jądra", "unit": "m", "defaultValue": "6771000"}
+    ]
+  },
+  {
+    "id": "chem_gibbs_free_energy",
+    "title": "TERMODYNAMIKA CHEM.: Entalpia Swobodna (Równanie Gibbsa)",
+    "description": "Najważniejsze, definitywne równanie termodynamiki reakcji chemicznych (ΔG = ΔH - TΔS). Określa z absolutną pewnością, czy dana reakcja chemiczna przebiegnie w środowisku w sposób spontaniczny bez inicjacji zewnętrznej. Jeśli wyliczona całkowita wartość energii swobodnej Gibbsa (ΔG) jest ujemna, reakcja zachodzi i postępuje samorzutnie uwalniając rezerwy układu (na przykład gwałtowne spalanie drewna w tlenie, utlenianie się żelaza do rdzy). Jeżeli wynikiem jest wartość dodatnia, proces jest egzoenergetycznie wymuszony i wymaga ciągłego, zmasowanego dostarczania prądu lub ciepła z zewnątrz układu (na przykład przemysłowa elektroliza wody do wodoru i tlenu, czy długotrwałe ładowanie akumulatora litowo-jonowego z sieci elektrycznej).",
+    "formula": "DeltaH - ((TempC + 273.15) * DeltaS)",
+    "unit": "J/mol",
+    "variables": [
+      {"id": "DeltaH", "label": "Zmiana entalpii układu", "unit": "J/mol", "defaultValue": "-50000"},
+      {"id": "DeltaS", "label": "Zmiana entropii układu", "unit": "J/(mol·K)", "defaultValue": "-150"},
+      {"id": "TempC", "label": "Temperatura środowiska", "unit": "°C", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "geo_seismic_epicenter_dist",
+    "title": "GEOFIZYKA: Odległość od Epicentrum Trzęsienia Ziemi",
+    "description": "Inżynierskie, uproszczone obliczenie sejsmologiczne dystansu dzielącego stację pomiarową od bezpośredniego ogniska niszczycielskiego wstrząsu tektonicznego. Algorytm ten bazuje na fizycznej różnicy czasu dotarcia do czułego sejsmografu skrajnie szybkich, bezinwazyjnych fal podłużnych (P - Primary, fale kompresyjne pędzące poprzez wnętrze płaszcza ziemskiego) oraz docierających po nich znacznie wolniejszych, katastrofalnych w skutkach dla architektury fal poprzecznych (S - Secondary, fale ścinające fundamenty). Ponieważ fale pierwotne P poruszają się w skorupie ziemskiej z ogromną prędkością około 8 km/s, a fale wtórne S docierają z prędkością około 4.5 km/s, czas opóźnienia między ich zarejestrowaniem na wykresie powiększa się proporcjonalnie wraz z rosnącą odległością o stabilne, średnio 8 sekund na każde sto kilometrów rzutu terenu.",
+    "formula": "TimeDiff * 8",
+    "unit": "km",
+    "variables": [
+      {"id": "TimeDiff", "label": "Różnica czasu dotarcia fal S i P", "unit": "s", "defaultValue": "12.5"}
+    ]
   }
 ]
 
