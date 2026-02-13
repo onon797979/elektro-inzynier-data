@@ -4957,6 +4957,564 @@
     "variables": [
       {"id": "V", "label": "Objętość zamknięta basenów chłodzących", "unit": "L", "defaultValue": "100"}
     ]
+  },
+  {
+    "id": "mass_steel_carbon",
+    "title": "METAL: Stal Węglowa",
+    "description": "Stal węglowa to stop żelaza z węglem (do ok. 2.11%) oraz domieszkami. Gęstość strukturalna przyjmowana w normach budowlanych (np. Eurokod 3) wynosi 7850 kg/m³. Jest to podstawowy materiał konstrukcyjny w inżynierii lądowej i mechanicznej, charakteryzujący się wysoką wytrzymałością i modułem Younga na poziomie ok. 210 GPa. Kalkulator oblicza masę blach, płyt i formatek prostopadłościennych.",
+    "formula": "L * W * (T / 1000) * 7850",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_aluminum",
+    "title": "METAL: Aluminium",
+    "description": "Aluminium (glin) to lekki metal o gęstości ok. 2700 kg/m³, co stanowi zaledwie jedną trzecią gęstości stali. Dzięki pasywacji (tworzeniu powłoki Al2O3) wykazuje znakomitą odporność na korozję. Jest szeroko stosowane w przemyśle lotniczym, motoryzacyjnym i budownictwie w postaci stopów (np. duraluminium). Obliczenia dedykowane dla płaskowników i arkuszy blach.",
+    "formula": "L * W * (T / 1000) * 2700",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_copper",
+    "title": "METAL: Miedź",
+    "description": "Miedź to metal o gęstości 8960 kg/m³, charakteryzujący się najwyższą (po srebrze) przewodnością elektryczną i cieplną spośród metali nieszlachetnych. Powszechnie wykorzystywana w elektrotechnice, elektronice, a także w instalacjach wodnych i chłodniczych. Ze względu na wysoką plastyczność łatwo poddaje się obróbce plastycznej na zimno.",
+    "formula": "L * W * (T / 1000) * 8960",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "mass_brass",
+    "title": "METAL: Mosiądz",
+    "description": "Mosiądz to stop miedzi i cynku (z reguły od 10% do 45% cynku), często z dodatkami ołowiu, aluminium czy cyny. Jego średnia gęstość wynosi około 8500 kg/m³. Cechuje się dobrymi właściwościami odlewniczymi, wysoką odpornością na korozję w wodzie morskiej oraz doskonałą obrabialnością skrawaniem. Często stosowany w armaturze i elementach precyzyjnych.",
+    "formula": "L * W * (T / 1000) * 8500",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_bronze",
+    "title": "METAL: Brąz",
+    "description": "Brąz to stop miedzi z cyną lub innymi pierwiastkami (np. aluminium, berylem), z wyłączeniem cynku i niklu. Średnia gęstość wynosi 8800 kg/m³. Brązy charakteryzują się bardzo dobrą wytrzymałością mechaniczną, wysoką odpornością na ścieranie i korozję. Są niezastąpione przy produkcji łożysk ślizgowych, kół zębatych i śrub okrętowych.",
+    "formula": "L * W * (T / 1000) * 8800",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_lead",
+    "title": "METAL: Ołów",
+    "description": "Ołów to miękki, ciężki i plastyczny metal o gęstości 11340 kg/m³. Charakteryzuje się niską temperaturą topnienia (327,5°C) oraz doskonałymi właściwościami tłumiącymi promieniowanie jonizujące (rentgenowskie i gamma). Stosowany powszechnie w akumulatorach kwasowo-ołowiowych, osłonach radiologicznych oraz przemyśle chemicznym ze względu na odporność na kwas siarkowy.",
+    "formula": "L * W * (T / 1000) * 11340",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "mass_titanium",
+    "title": "METAL: Tytan",
+    "description": "Tytan to metal przejściowy o gęstości 4500 kg/m³. Posiada najwyższy stosunek wytrzymałości mechanicznej do masy spośród wszystkich metali. Jest niemagnetyczny, wybitnie odporny na korozję (dzięki silnej pasywacji) oraz biokompatybilny. Ze względu na wysokie koszty produkcji, znajduje zastosowanie głównie w przemyśle lotniczym, kosmicznym, medycznym (implanty) i chemicznym.",
+    "formula": "L * W * (T / 1000) * 4500",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "mass_zinc",
+    "title": "METAL: Cynk",
+    "description": "Cynk to niebieskawobiały metal o gęstości 7140 kg/m³. Jego najważniejszym zastosowaniem technicznym jest ochrona stali przed korozją w procesie cynkowania (ogniowego lub galwanicznego), gdzie pełni rolę anody galwanicznej. Ponadto stanowi kluczowy składnik mosiądzów oraz stopów odlewniczych (znal).",
+    "formula": "L * W * (T / 1000) * 7140",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_cast_iron",
+    "title": "METAL: Żeliwo",
+    "description": "Żeliwo to odlewniczy stop żelaza z węglem (zawartość węgla od 2.11% do 6.67%). Jego gęstość zależy od rodzaju, ale średnio przyjmuje się 7200 kg/m³. Charakteryzuje się doskonałą lejnością, bardzo dobrym tłumieniem drgań i odpornością na ścieranie, jednak jest kruche i nie poddaje się obróbce plastycznej. Używane na korpusy maszyn, tarcze hamulcowe i włazy kanałowe.",
+    "formula": "L * W * (T / 1000) * 7200",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "mass_magnesium",
+    "title": "METAL: Magnez",
+    "description": "Magnez to jeden z najlżejszych metali konstrukcyjnych o gęstości zaledwie 1740 kg/m³ (jest o ponad 30% lżejszy od aluminium). Stopy magnezu charakteryzują się rewelacyjnym stosunkiem wytrzymałości do masy. Znajdują zastosowanie w produkcji ultralekkich obudów laptopów, kierownic samochodowych, felg sportowych oraz obudów przekładni w lotnictwie.",
+    "formula": "L * W * (T / 1000) * 1740",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_gold",
+    "title": "METAL SZLACHETNY: Złoto",
+    "description": "Złoto (Au) to niezwykle gęsty, kowalny i ciągliwy metal szlachetny o gęstości 19320 kg/m³. Wykorzystywane powszechnie w elektronice ze względu na doskonałą odporność na korozję powłokową i dobrą przewodność elektryczną, a także w jubilerstwie i inżynierii kosmicznej. Objętość w tym kalkulatorze podawana jest w centymetrach sześciennych (cm³).",
+    "formula": "V * 0.01932",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość materiału", "unit": "cm³", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_silver",
+    "title": "METAL SZLACHETNY: Srebro",
+    "description": "Srebro (Ag) charakteryzuje się najwyższą przewodnością elektryczną i cieplną ze wszystkich znanych metali, a także najwyższym współczynnikiem odbicia światła. Jego gęstość to 10490 kg/m³. Ponieważ ciemnieje (siarczkuje) w kontakcie z powietrzem, w zastosowaniach stykowych często stosuje się je pod postacią stopów lub wymaga się ochrony powłokowej. Wprowadź objętość w cm³.",
+    "formula": "V * 0.01049",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość materiału", "unit": "cm³", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_platinum",
+    "title": "METAL SZLACHETNY: Platyna",
+    "description": "Platyna (Pt) to niezwykle rzadki, ciągliwy i ciężki metal przejściowy o gęstości wynoszącej aż 21450 kg/m³. Jest jednym z najmniej reaktywnych pierwiastków na Ziemi, co czyni ją bezcenną w środowiskach silnie korozyjnych. Stosowana szeroko jako katalizator w motoryzacji (katalizatory spalin), przemyśle chemicznym, elektronice oraz w produkcji termopar wysokotemperaturowych.",
+    "formula": "V * 0.02145",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość materiału", "unit": "cm³", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_tungsten",
+    "title": "METAL: Wolfram",
+    "description": "Wolfram (W) posiada najwyższą temperaturę topnienia ze wszystkich metali (3422°C) i jedną z najwyższych gęstości (19250 kg/m³ - niemal identyczną z gęstością złota). Ze względu na te właściwości wykorzystywany jest do produkcji żarników w żarówkach, włókien emisyjnych w lampach rentgenowskich, ciężarków wyważających oraz w postaci węglika wolframu do narzędzi skrawających.",
+    "formula": "V * 0.01925",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość materiału", "unit": "cm³", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_nickel",
+    "title": "METAL: Nikiel",
+    "description": "Nikiel to twardy, srebrzystobiały metal o gęstości 8900 kg/m³. Posiada właściwości ferromagnetyczne. Jego głównym zastosowaniem technicznym jest produkcja stali nierdzewnych (np. stal austenityczna 304/316) oraz superstopów żaroodpornych (np. Inconel), które zachowują wysoką wytrzymałość mechaniczną w ekstremalnych temperaturach w turbinach gazowych.",
+    "formula": "L * W * (T / 1000) * 8900",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_concrete",
+    "title": "BUDOWNICTWO: Beton Zwykły",
+    "description": "Beton zwykły (niezbrojony) to kompozyt powstający z mieszania cementu, kruszywa i wody. Zgodnie z normą PN-EN 1991-1-1 ciężar objętościowy stwardniałego betonu zwykłego wynosi średnio 2400 kg/m³. Przenosi on znaczne naprężenia ściskające, jednak jest kruchy i posiada bardzo niską wytrzymałość na rozciąganie (ok. 1/10 wytrzymałości na ściskanie).",
+    "formula": "V * 2400",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość mieszanki/elementu", "unit": "m³", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_reinforced_concrete",
+    "title": "BUDOWNICTWO: Żelbet",
+    "description": "Beton zbrojony (żelbet) to materiał konstrukcyjny, w którym wprowadzono stalowe wkładki zbrojeniowe w celu przenoszenia naprężeń rozciągających. Standardowa gęstość żelbetu przyjmowana do obliczeń statycznych wynosi 2500 kg/m³ (zwiększona masa wynika z obecności stali węglowej o wysokiej gęstości). Jest to dominujący materiał w inżynierii mostowej i kubaturowej.",
+    "formula": "V * 2500",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość elementu", "unit": "m³", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_aerated_concrete",
+    "title": "BUDOWNICTWO: Gazobeton (Suporex)",
+    "description": "Beton komórkowy (gazobeton) powstaje przez wprowadzenie do masy cementowo-wapienno-piaskowej gazu (najczęściej wodoru z reakcji proszku aluminiowego), co tworzy wysoce porowatą strukturę. Gęstość odmian konstrukcyjnych waha się, jednak średnio wynosi około 600 kg/m³. Materiał gwarantuje doskonałą izolacyjność termiczną przy jednoczesnym obniżeniu masy własnej ścian.",
+    "formula": "V * 600",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość przegrody", "unit": "m³", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_brick",
+    "title": "BUDOWNICTWO: Cegła Pełna Ceramiczna",
+    "description": "Tradycyjna cegła pełna, wytwarzana z gliny, suszona i wypalana w temperaturze ok. 900-1000°C. Jej ciężar objętościowy wynosi przeciętnie 1800 kg/m³. Odznacza się dużą pojemnością cieplną, dobrą wytrzymałością na ściskanie (klasy od 10 do 20 MPa) i trwałością. Stosowana w murach nośnych, kominach i elementach architektury tradycyjnej.",
+    "formula": "V * 1800",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość muru", "unit": "m³", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_sand_dry",
+    "title": "KRUSZYWA: Piasek Suchy",
+    "description": "Piasek kwarcowy w stanie suchym o frakcji luźnej charakteryzuje się gęstością nasypową wynoszącą średnio 1600 kg/m³. Wilgotność i stopień ubicia (zagęszczenia) drastycznie wpływają na tę wartość – piasek mokry może ważyć nawet do 2000 kg/m³. Obliczenie niezbędne przy projektowaniu transportu samowyładowczego oraz kosztorysowaniu robót ziemnych.",
+    "formula": "V * 1600",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość nasypowa", "unit": "m³", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_gravel",
+    "title": "KRUSZYWA: Żwir",
+    "description": "Żwir (kruszywo naturalne o frakcji ziarnowej powyżej 2 mm) w stanie luźnym posiada gęstość nasypową około 1800 kg/m³. Stanowi główny szkielet nośny w mieszankach betonowych oraz podsypkach drogowych i fundamentowych. Wartość ta jest orientacyjna i ulega zmianie w procesie zagęszczania walcami drogowymi i wibratorami.",
+    "formula": "V * 1800",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość nasypowa", "unit": "m³", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_cement_bulk",
+    "title": "MATERIAŁY: Cement (Luzem)",
+    "description": "Cement portlandzki to drobno zmielone spoiwo hydrauliczne, które twardnieje w wyniku hydratacji. Jego gęstość właściwa to ponad 3100 kg/m³, jednak gęstość nasypowa w silosach i transporcie pneumatycznym wynosi średnio 1500 kg/m³ (w stanie spulchnionym może być niższa). Jest to kluczowy parametr dla projektowania węzłów betoniarskich i zbiorników magazynowych.",
+    "formula": "V * 1500",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość w silosie", "unit": "m³", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_asphalt",
+    "title": "DROGOWNICTWO: Asfalt (Beton Asfaltowy)",
+    "description": "Beton asfaltowy to mieszanka kruszywa, wypełniacza i lepiszcza asfaltowego (pochodzącego z destylacji ropy naftowej). Po wbudowaniu i zagęszczeniu walcami drogowymi jego gęstość robocza wynosi zazwyczaj około 2100 - 2400 kg/m³ (do uproszczonych szacunków przyjmuje się 2100 kg/m³ lub 2.1 t/m³ do obliczania tonażu potrzebnego na daną warstwę ścieralną).",
+    "formula": "L * W * (T / 1000) * 2100",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość jezdni", "unit": "m", "defaultValue": "100"},
+      {"id": "W", "label": "Szerokość pasa", "unit": "m", "defaultValue": "3.5"},
+      {"id": "T", "label": "Grubość warstwy", "unit": "mm", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_glass",
+    "title": "BUDOWNICTWO: Szkło Budowlane",
+    "description": "Szkło krzemianowe (sodowo-wapniowe) stosowane w architekturze (szyby zespolone, fasady, balustrady) charakteryzuje się gęstością wynoszącą równo 2500 kg/m³. Inżynierowie używają tej ścisłej wartości do wyznaczania obciążeń pochodzących od fasad słupowo-ryglowych. Szyba o grubości 1 mm waży dokładnie 2.5 kg na każdy metr kwadratowy powierzchni.",
+    "formula": "L * W * (T / 1000) * 2500",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość tafli", "unit": "m", "defaultValue": "2"},
+      {"id": "W", "label": "Szerokość tafli", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość szkła", "unit": "mm", "defaultValue": "8"}
+    ]
+  },
+  {
+    "id": "mass_granite",
+    "title": "KAMIEŃ: Granit",
+    "description": "Granit to kwaśna skała magmowa głębinowa o strukturze jawnokrystalicznej. Jego gęstość pozorna waha się zazwyczaj w wąskim przedziale 2600 - 2800 kg/m³ (do obliczeń przyjmuje się średnio 2700 kg/m³). Odznacza się doskonałą mrozoodpornością, niezwykle niską ścieralnością i wysoką twardością. Powszechnie wykorzystywany na nawierzchnie drogowe, posadzki i blaty robocze.",
+    "formula": "L * W * (T / 1000) * 2700",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.6"},
+      {"id": "T", "label": "Grubość blatu", "unit": "mm", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "mass_marble",
+    "title": "KAMIEŃ: Marmur",
+    "description": "Marmur to skała metamorficzna powstała z przeobrażenia wapieni lub dolomitów pod wpływem wysokiej temperatury i ciśnienia. Jego ciężar objętościowy wynosi średnio 2600 kg/m³. W odróżnieniu od granitu, marmur łatwo reaguje z kwasami (w tym z deszczem kwasowym i octem spożywczym) i posiada niższą twardość, dlatego rekomendowany jest głównie do zastosowań wewnętrznych.",
+    "formula": "L * W * (T / 1000) * 2600",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.6"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "mass_plasterboard",
+    "title": "WYKOŃCZENIA: Płyta Gipsowo-Kartonowa",
+    "description": "Płyty G-K składają się z gipsowego rdzenia obłożonego wielowarstwowym kartonem. Gęstość standardowych płyt ściennych wynosi około 800 kg/m³. Stanowią podstawowy element suchej zabudowy wnętrz ze względu na niską masę, dobrą ognioodporność (gips zawiera wodę krystaliczną) i łatwość w kształtowaniu krzywizn.",
+    "formula": "L * W * (T / 1000) * 800",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość płyty", "unit": "m", "defaultValue": "2.6"},
+      {"id": "W", "label": "Szerokość płyty", "unit": "m", "defaultValue": "1.2"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "12.5"}
+    ]
+  },
+  {
+    "id": "mass_soil_dry",
+    "title": "GEOTECHNIKA: Ziemia (Sucha)",
+    "description": "Ziemia uprawna i typowe grunty spoiste w stanie suchym wykazują gęstość nasypową rzędu 1500 kg/m³. Gęstość ta podlega drastycznym zmianom pod wpływem wilgotności oraz naturalnego lub mechanicznego zagęszczenia gruntu. Obliczanie masy urobku jest krytyczne dla logistyki sprzętu ciężkiego podczas wykopów fundamentowych.",
+    "formula": "V * 1500",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość wykopu", "unit": "m³", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_clay",
+    "title": "GEOTECHNIKA: Glina Naturalna",
+    "description": "Glina to spoisty grunt drobnocząsteczkowy o właściwościach plastycznych. Jej gęstość w stanie naturalnym zależy od poziomu wilgotności i konsolidacji, przyjmując średnio wartość 1900 kg/m³. Posiada znikomą przepuszczalność wody, co sprawia, że jest doskonałym izolatorem wodnym, lecz bywa problematyczna w robotach ziemnych podczas opadów.",
+    "formula": "V * 1900",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość urobku", "unit": "m³", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_wood_oak",
+    "title": "DREWNO: Dąb (Suche)",
+    "description": "Drewno dębowe charakteryzuje się dużą twardością, wytrzymałością mechaniczną i wysoką odpornością na ścieranie. Gęstość drewna dębowego po wysuszeniu komorowym (wilgotność ok. 12-15%) wynosi ok. 700 kg/m³. Ze względu na zawartość garbników wykazuje znaczną trwałość naturalną. Stosowane do produkcji podłóg, schodów, fornirów oraz do stolarki otworowej.",
+    "formula": "L * W * (T / 1000) * 700",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "2"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.3"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "40"}
+    ]
+  },
+  {
+    "id": "mass_wood_pine",
+    "title": "DREWNO: Sosna (Suche)",
+    "description": "Sosna to gatunek drewna iglastego o dobrych właściwościach sprężystych i stosunkowo łatwej obróbce, będący podstawowym surowcem tartacznym. Gęstość suchego drewna sosnowego (ok. 12% wilgotności) wynosi zaledwie 500 kg/m³. Główny budulec szkieletów domów drewnianych, więźb dachowych oraz mebli z drewna litego.",
+    "formula": "L * W * (T / 1000) * 500",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "5"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.15"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_wood_beech",
+    "title": "DREWNO: Buk (Suche)",
+    "description": "Drewno bukowe jest twarde, ciężkie (gęstość suchego ok. 720 kg/m³) oraz posiada zwięzłą budowę bez wyraźnego twardzieli. Jest bardzo podatne na proces gięcia metodą parzenia (tzw. drewno gięte thonetowskie). Niestety, posiada bardzo niską naturalną odporność na warunki atmosferyczne i ataki biologiczne, stąd wymaga stosowania niemal wyłącznie wewnątrz pomieszczeń.",
+    "formula": "L * W * (T / 1000) * 720",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.6"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "mass_wood_spruce",
+    "title": "DREWNO: Świerk (Suche)",
+    "description": "Drewno świerkowe jest jasne, miękkie i lekkie – gęstość w stanie powietrzno-suchym to zaledwie ok. 450 kg/m³. Posiada relatywnie dobre właściwości izolacyjne termicznie i akustycznie, dzięki czemu wybrane, bezsęczne gatunki wykorzystywane są do budowy instrumentów muzycznych (drewno rezonansowe). W budownictwie powszechne jako drewno klejone krzyżowo (CLT).",
+    "formula": "L * W * (T / 1000) * 450",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "4"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_wood_balsa",
+    "title": "DREWNO: Balsa",
+    "description": "Balsa to najbardziej znane drewno na świecie łączące ekstremalnie niską masę z rewelacyjnymi właściwościami mechanicznymi. Jej gęstość wynosi średnio zaledwie 150 kg/m³ (choć bywają partie rzędu 100 kg/m³). Choć w botanice uznawane jest za drewno liściaste twarde (hardwood), w praktyce jest superlekkie. Wykorzystywane powszechnie w modelarstwie lotniczym i jako rdzenie śmigieł wiatrowych.",
+    "formula": "L * W * (T / 1000) * 150",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_mdf",
+    "title": "PŁYTY: MDF",
+    "description": "MDF (Medium-Density Fibreboard) to płyta pilśniowa średniej gęstości stanowiąca bazowy produkt przemysłu meblarskiego. Gęstość wynosi od 700 do 800 kg/m³ (kalkulator zakłada 750 kg/m³). Dzięki homogenicznej strukturze z włókien drzewnych spojonych żywicami syntetycznymi w warunkach wysokiego ciśnienia i temperatury, doskonale nadaje się do frezowania profilowego i lakierowania.",
+    "formula": "L * W * (T / 1000) * 750",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "2.8"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "2.07"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "18"}
+    ]
+  },
+  {
+    "id": "mass_plywood",
+    "title": "PŁYTY: Sklejka Suchotrwała",
+    "description": "Sklejka powstaje poprzez sklejenie nieparzystej liczby obłogów (cienkich arkuszy forniru) ułożonych naprzemiennie tak, aby włókna warstw sąsiednich przecinały się pod kątem prostym. Zapewnia to jej izotropowe własności mechaniczne w płaszczyźnie. Średnia gęstość standardowej sklejki brzozowej/sosnowej to około 600 kg/m³. Niezastąpiona w szalunkach i produkcji mebli o wysokiej obciążalności.",
+    "formula": "L * W * (T / 1000) * 600",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "2.5"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1.25"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "15"}
+    ]
+  },
+  {
+    "id": "mass_water",
+    "title": "CIECZE: Woda Słodka",
+    "description": "Woda to kluczowy nośnik ciepła w inżynierii instalacyjnej (HVAC). Jej gęstość zależy od temperatury, przy czym maksimum osiąga w temperaturze 4°C, wynosząc dokładnie 1000 kg/m³ (1 kg na litr). Anomalna rozszerzalność cieplna sprawia, że lód unosi się na powierzchni wody. W obliczeniach pojemności zbiorników, kotłów i rurociągów powszechnie stosuje się podany współczynnik.",
+    "formula": "V",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość płynu", "unit": "L", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_seawater",
+    "title": "CIECZE: Woda Morska",
+    "description": "Woda morska charakteryzuje się podwyższoną gęstością w stosunku do wody słodkiej wskutek zawartości rozpuszczonych soli (zasolenie ok. 35 promili). Średnia gęstość oceaniczna wynosi 1025 kg/m³. Ten niewielki dodatek jest kluczowy dla inżynierii morskiej, gdyż woda morska generuje wyraźnie większą siłę wyporu (zgodnie z prawem Archimedesa) dla statków i okrętów podwodnych.",
+    "formula": "V * 1.025",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość płynu", "unit": "L", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_engine_oil",
+    "title": "CIECZE: Olej Silnikowy",
+    "description": "Środki smarne i oleje bazowe w klasycznej motoryzacji i mechanice pojazdowej posiadają gęstość wynoszącą przeważnie ok. 880 kg/m³ (0.88 kg/L). Ponieważ są znacznie lżejsze od wody, zawsze tworzą powłokę filmową na jej powierzchni. Zjawisko to ma krytyczne znaczenie dla funkcjonowania separatorów substancji ropopochodnych oraz zjawisk trybologicznych w węzłach tarcia.",
+    "formula": "V * 0.880",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość płynu", "unit": "L", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_diesel",
+    "title": "PALIWA: Olej Napędowy",
+    "description": "Olej napędowy (ON) to frakcja destylacyjna ropy naftowej wrząca w zakresie temperatur od ok. 200°C do 350°C. Gęstość robocza oleju napędowego w stacjach paliw i zbiornikach znormalizowano do poziomu w okolicach 830 kg/m³ (0.83 kg/L) w temperaturze 15°C. Parametr gęstości jest śledzony na co dzień w logistyce cystern oraz ma bezpośredni wpływ na wydatek energetyczny wtryskiwaczy.",
+    "formula": "V * 0.830",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość paliwa", "unit": "L", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_gasoline",
+    "title": "PALIWA: Benzyna Bezołowiowa",
+    "description": "Benzyna stanowi wysoce łatwopalną, lekką frakcję ropy naftowej o masie właściwej wynoszącej ok. 740 kg/m³ (0.74 kg/L). Cechuje się dużą prężnością par oraz specyficznymi parametrami odporności na spalanie stukowe w silnikach iskrowych (Liczba Oktanowa). Jako materiał wyjątkowo lekki, benzyna wylana do wody utrzymuje się na samej górze powłoki, niosąc wysokie zagrożenie pożarowe.",
+    "formula": "V * 0.740",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość paliwa", "unit": "L", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_mercury",
+    "title": "CIECZE: Rtęć",
+    "description": "Rtęć (Hg) to jedyny metal będący w stanie ciekłym w warunkach pokojowych, charakteryzujący się niesamowicie dużą gęstością na poziomie 13534 kg/m³. Jeden litr rtęci waży aż 13.5 kg! W mechanice płynów przez wiele lat stosowana do barometrów i manometrów rtęciowych z uwagi na niski punkt krzepnięcia i wysoką prężność, obecnie wycofywana z racji ekstremalnej toksyczności oparów.",
+    "formula": "V * 13.534",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość płynu", "unit": "L", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_pvc",
+    "title": "TWORZYWA: Polichlorek Winylu (PVC)",
+    "description": "PVC (często w Polsce nazywany PCW) to syntetyczny polimer o dużej wytrzymałości chemicznej i termoplastyczności, a jego gęstość to 1380 kg/m³. Bywa plastyfikowany (miękkie węże, izolacje przewodów elektrycznych) lub sztywny (PVC-U). W inżynierii budowlanej sztywne profile to najpowszechniejszy materiał w stolarce okiennej, panelach sidingowych, i systemach kanalizacyjnych.",
+    "formula": "L * W * (T / 1000) * 1380",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "mass_acrylic",
+    "title": "TWORZYWA: Plexiglass (PMMA)",
+    "description": "PMMA (Poli(metakrylan metylu)), zwany akrylem lub plexi, to transparentne, sztywne tworzywo termoplastyczne. Cechuje się doskonałą przezroczystością (przepuszcza promieniowanie UV) oraz gęstością ok. 1180 kg/m³ (jest o ponad połowę lżejszy od tradycyjnego szkła budowlanego). Wykorzystywany z sukcesami w obudowach maszyn, szyldach podświetlanych oraz osłonach antywirusowych i lotniczych.",
+    "formula": "L * W * (T / 1000) * 1180",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_teflon",
+    "title": "TWORZYWA: Teflon (PTFE)",
+    "description": "PTFE (Politetrafluoroetylen) to w pełni fluorowany polimer, słynący z ekstremalnie niskiego współczynnika tarcia oraz wyjątkowej bierności chemicznej. Jego gęstość jest stosunkowo wysoka dla polimerów i wynosi ok. 2200 kg/m³. Z racji możliwości ciągłej pracy w temp. nawet +260°C, wykonuje się z niego uszczelnienia wałów, zawory w inżynierii korozyjnej i rurki w układach precyzyjnych.",
+    "formula": "L * W * (T / 1000) * 2200",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "mass_polycarbonate",
+    "title": "TWORZYWA: Poliwęglan (PC)",
+    "description": "Poliwęglany to grupa amorficznych tworzyw termoplastycznych o rewelacyjnej wytrzymałości na udarność (są wielokrotnie wytrzymalsze na uderzenia młoTkiem w porównaniu do PMMA) oraz niezłej transparentności. Gęstość kształtuje się na poziomie 1200 kg/m³. Surowiec ten to m.in. szyby kuloodporne, daszki na wiatach stadionowych, hełmy astronautów czy tarcze prewencyjne.",
+    "formula": "L * W * (T / 1000) * 1200",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "4"}
+    ]
+  },
+  {
+    "id": "mass_polyurethane_foam",
+    "title": "IZOLACJE: Pianka PUR",
+    "description": "Poliuretan w postaci spienionej (PUR) zdefiniował rynkową izolację domów i urządzeń chłodniczych (lodówki, zamrażarki). Parametr gęstości waha się zależnie od stopnia rozprężenia, jednak twarde pianki konstrukcyjne używane w hydro- i termoizolacji dachowej wykazują ok. 40 kg/m³. Dzięki zamkniętokomórkowej budowie, opór cieplny ustępuje miejsca jedynie zaawansowanym próżniom.",
+    "formula": "V * 40",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość izolacji", "unit": "m³", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_ice",
+    "title": "POGODA: Lód Czysty",
+    "description": "Lód bez pęcherzyków powietrza waży 917 kg/m³. Fizyka anomalna wody sprawia, że objętość zwiększa się w fazie zamarzania, a sieć krystaliczna traci gęstość w porównaniu do fazy ciekłej (1000 kg/m³). To właśnie ta specyfika rodzi gigantyczne ciśnienia kriogeniczne – do 200 MPa, powodując erozję skał (tzw. zamróz) i masowe niszczenie niezabezpieczonych systemów orurowania rurociągów na mrozie.",
+    "formula": "L * W * (T / 1000) * 917",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość tafli", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość pokrywy", "unit": "mm", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_snow_fresh",
+    "title": "POGODA: Śnieg (Świeży puch)",
+    "description": "Świeżo spadły puszysty śnieg w warunkach braku wiatru i ubicia jest swoistym izolatorem termicznym o gęstości zaledwie ok. 100 kg/m³. Pustki przestrzenne pomiędzy kryształkami sprawiają, że składa się on z powietrza aż w 90%. Pod wpływem osiadania, ociepleń i deszczu masa pokrywy śnieżnej może wzrosnąć nawet 5-7 krotnie, co jest punktem krytycznym przy odśnieżaniu dachów płaskich.",
+    "formula": "L * W * (T / 1000) * 100",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość dachu", "unit": "m", "defaultValue": "10"},
+      {"id": "W", "label": "Szerokość dachu", "unit": "m", "defaultValue": "10"},
+      {"id": "T", "label": "Grubość pokrywy", "unit": "mm", "defaultValue": "200"}
+    ]
+  },
+  {
+    "id": "mass_air",
+    "title": "GAZY: Powietrze Atmosferyczne",
+    "description": "Powietrze suche w warunkach normalnych (na poziomie morza (p=1013.25 hPa) i temp. 15°C) charakteryzuje się gęstością dokładnie na poziomie 1.225 kg/m³. Choć wydaje się nieważkie, w ogromnych halach waży dziesiątki ton. Różnica gęstości mas powietrza zimnego i ogrzanego stanowi fizyczny motor sił aerodynamicznych, kominowych grawitacyjnych, a na wielką skalę napędza pogodę Ziemi.",
+    "formula": "V * 1.225",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość pomieszczenia/hali", "unit": "m³", "defaultValue": "100"}
+    ]
   }
 ]
 
