@@ -5515,8 +5515,461 @@
     "variables": [
       {"id": "V", "label": "Objętość pomieszczenia/hali", "unit": "m³", "defaultValue": "100"}
     ]
+  },
+  {
+    "id": "phys_schwarzschild_radius",
+    "title": "ASTROFIZYKA: Promień Schwarzschilda",
+    "description": "Promień Schwarzschilda określa krytyczny rozmiar, do jakiego należy skompresować masę fizycznego obiektu, aby jego prędkość ucieczki zrównała się z prędkością światła w próżni (c), tworząc w ten sposób horyzont zdarzeń czarnej dziury. Równanie wywodzi się z ogólnej teorii względności Einsteina (R = 2GM/c²). Dla Ziemi promień ten wynosi niespełna 9 milimetrów, a dla Słońca około 3 kilometry.",
+    "formula": "(2 * 0.00000000006674 * Mass) / (299792458 * 299792458)",
+    "unit": "m",
+    "variables": [
+      {"id": "Mass", "label": "Masa obiektu", "unit": "kg", "defaultValue": "5972000000000000000000000"}
+    ]
+  },
+  {
+    "id": "phys_time_dilation_gravity",
+    "title": "FIZYKA KWANTO.: Grawitacyjna Dylatacja Czasu",
+    "description": "Zjawisko z ogólnej teorii względności opisujące, jak upływ czasu zwalnia w pobliżu masywnych ciał niebieskich (w głębszej studni grawitacyjnej). Czas na powierzchni Ziemi płynie minimalnie wolniej niż na orbicie satelitów GPS, co wymusza wprowadzanie stałych korekt relatywistycznych do zegarów atomowych satelitów, aby system nawigacji nie mylił się o kilkanaście kilometrów dziennie.",
+    "formula": "Time * sqrt(1 - ((2 * 0.00000000006674 * Mass) / (Radius * 299792458 * 299792458)))",
+    "unit": "s",
+    "variables": [
+      {"id": "Time", "label": "Czas obserwatora z zewnątrz", "unit": "s", "defaultValue": "3600"},
+      {"id": "Mass", "label": "Masa planety/gwiazdy", "unit": "kg", "defaultValue": "5972000000000000000000000"},
+      {"id": "Radius", "label": "Odległość od środka masy", "unit": "m", "defaultValue": "6371000"}
+    ]
+  },
+  {
+    "id": "phys_terminal_velocity",
+    "title": "AERODYNAMIKA: Prędkość Graniczna (Spadanie)",
+    "description": "Maksymalna prędkość osiągana przez obiekt swobodnie spadający w płynie (np. powietrzu), gdy siła oporu aerodynamicznego zrównuje się z siłą grawitacji. Dla dorosłego człowieka spadającego w pozycji 'płaskiej' (brzuchem w dół) współczynnik oporu Cd wynosi około 1.0, a prędkość graniczna ustala się na poziomie około 53 m/s (190 km/h). Zmiana pozycji na 'na główkę' drastycznie zmniejsza pole przekroju poprzecznego, zwiększając prędkość.",
+    "formula": "sqrt((2 * Mass * 9.81) / (1.225 * Area * Drag))",
+    "unit": "m/s",
+    "variables": [
+      {"id": "Mass", "label": "Masa obiektu", "unit": "kg", "defaultValue": "80"},
+      {"id": "Area", "label": "Pole przekroju poprzecznego", "unit": "m²", "defaultValue": "0.7"},
+      {"id": "Drag", "label": "Współczynnik oporu (Cd)", "unit": "-", "defaultValue": "1.0"}
+    ]
+  },
+  {
+    "id": "phys_escape_velocity",
+    "title": "ASTROFIZYKA: Prędkość Ucieczki (II Prędkość Kosmiczna)",
+    "description": "Minimalna prędkość początkowa, jaką musi uzyskać obiekt (np. rakieta nośna bez własnego napędu po starcie), aby przezwyciężyć wpływ pola grawitacyjnego danego ciała niebieskiego i oddalić się od niego w nieskończoność po paraboli. Wzór (v = √(2GM/R)) nie uwzględnia oporów atmosfery. Dla Ziemi prędkość ta wynosi około 11.2 km/s.",
+    "formula": "sqrt((2 * 0.00000000006674 * Mass) / Radius)",
+    "unit": "m/s",
+    "variables": [
+      {"id": "Mass", "label": "Masa planety", "unit": "kg", "defaultValue": "5972000000000000000000000"},
+      {"id": "Radius", "label": "Promień planety", "unit": "m", "defaultValue": "6371000"}
+    ]
+  },
+  {
+    "id": "rad_decay_half_life",
+    "title": "RADIOLOGIA: Prawo Rozpadu Promieniotwórczego",
+    "description": "Eksponencjalne równanie opisujące spadek liczby nietrwałych jąder atomowych w czasie. Półtrwanie (okres połowicznego rozpadu) to czas, w którym połowa jąder ulega transformacji w lżejsze izotopy, emitując promieniowanie alfa, beta lub gamma. Kalkulator pozwala przewidzieć, ile gramów niebezpiecznego izotopu (np. Czarnobylskiego Cezu-137 o półtrwaniu 30 lat) pozostanie w skażonej strefie po upływie zadanego czasu.",
+    "formula": "InitialMass * (0.5 ^ (Time / HalfLife))",
+    "unit": "g",
+    "variables": [
+      {"id": "InitialMass", "label": "Masa początkowa izotopu", "unit": "g", "defaultValue": "100"},
+      {"id": "Time", "label": "Czas, który upłynął", "unit": "lat", "defaultValue": "30"},
+      {"id": "HalfLife", "label": "Okres półtrwania", "unit": "lat", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "rad_carbon_dating",
+    "title": "ARCHEOLOGIA: Datowanie Radiowęglowe (C-14)",
+    "description": "Metoda badawcza oparta na pomiarze proporcji radioaktywnego izotopu węgla-14 w stosunku do stabilnych izotopów C-12. Organizm żywy utrzymuje stałą równowagę C-14 z atmosferą. W momencie śmierci wymiana ustaje, a izotop zaczyna się rozpadać (okres półtrwania 5730 lat). Równanie Libby'ego pozwala precyzyjnie określić wiek szczątków organicznych (drewna, kości, papirusów) do około 50 000 lat wstecz.",
+    "formula": "-8267 * ln(PercentRemaining / 100)",
+    "unit": "lat temu",
+    "variables": [
+      {"id": "PercentRemaining", "label": "% pozostałego Węgla-14", "unit": "%", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "rad_absorbed_dose",
+    "title": "DOZYMETRIA: Dawka Pochłonięta (Gy)",
+    "description": "Dawka pochłonięta to podstawowa miara w ochronie radiologicznej, wyrażająca ilość energii promieniowania jonizującego zdeponowanej w jednostce masy materii (np. w tkankach człowieka). Jednostką w układzie SI jest Grej (Gy), gdzie 1 Gy = 1 Dżul energii na 1 kilogram masy. Śmiertelna dawka promieniowania dla człowieka, przyjęta jednorazowo na całe ciało, wynosi około 4 do 5 Gy.",
+    "formula": "Energy / Mass",
+    "unit": "Gy (Grej)",
+    "variables": [
+      {"id": "Energy", "label": "Zdeponowana energia", "unit": "J", "defaultValue": "10"},
+      {"id": "Mass", "label": "Masa tkanki", "unit": "kg", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "rad_effective_dose",
+    "title": "DOZYMETRIA: Dawka Skuteczna (Sv)",
+    "description": "Dawka skuteczna (wyrażana w Siwertach) jest zaawansowanym oszacowaniem wpływu promieniowania na zdrowie biologiczne. Otrzymuje się ją poprzez przemnożenie dawki pochłoniętej przez współczynnik wagowy promieniowania (WR). Promieniowanie X i Gamma ma WR=1, natomiast wysokoenergetyczne cząstki Alfa mają WR=20, co oznacza, że są dwudziestokrotnie bardziej destrukcyjne z racji generowania gęstej jonizacji w DNA komórki.",
+    "formula": "Dose * WeightFactor",
+    "unit": "Sv (Siwert)",
+    "variables": [
+      {"id": "Dose", "label": "Dawka pochłonięta", "unit": "Gy", "defaultValue": "0.1"},
+      {"id": "WeightFactor", "label": "Współczynnik (Alfa=20, Gamma=1)", "unit": "-", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "chem_molarity",
+    "title": "CHEMIA ANALI.: Stężenie Molowe (Molarność)",
+    "description": "Stężenie molowe (M lub mol/dm³) to najpowszechniejszy w laboratoriach chemicznych sposób wyrażania składu roztworów. Definiuje liczbę moli substancji rozpuszczonej w dokładnie jednym litrze roztworu. Jest krytycznym parametrem w miareczkowaniu, reakcjach stechiometrycznych oraz farmakokinetyce, pozwala na precyzyjne odmierzanie ilości cząsteczek reagentów poprzez objętość cieczy.",
+    "formula": "(Mass / MolarMass) / Vol",
+    "unit": "mol/L",
+    "variables": [
+      {"id": "Mass", "label": "Masa substancji", "unit": "g", "defaultValue": "58.44"},
+      {"id": "MolarMass", "label": "Masa molowa (np. NaCl=58.44)", "unit": "g/mol", "defaultValue": "58.44"},
+      {"id": "Vol", "label": "Objętość roztworu", "unit": "L", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "chem_ideal_gas_pressure",
+    "title": "TERMODYNAMIKA: Prawo Gazów Doskonałych (Ciśnienie)",
+    "description": "Równanie stanu gazu doskonałego (Równanie Clapeyrona: pV = nRT) opisuje zależność pomiędzy ciśnieniem, objętością, temperaturą i ilością moli gazu, zakładając brak oddziaływań międzycząsteczkowych. Stała gazowa R w układzie SI wynosi 8.314 J/(mol·K). Model ten jest wystarczająco dokładny dla większości gazów atmosferycznych w warunkach zbliżonych do normalnych, niezbędny przy projektowaniu zbiorników kompresorowych.",
+    "formula": "(Moles * 8.314 * (TempC + 273.15)) / Vol",
+    "unit": "Pa (Paskal)",
+    "variables": [
+      {"id": "Moles", "label": "Ilość substancji", "unit": "mol", "defaultValue": "100"},
+      {"id": "TempC", "label": "Temperatura", "unit": "°C", "defaultValue": "20"},
+      {"id": "Vol", "label": "Objętość zbiornika", "unit": "m³", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "chem_ph_calculation",
+    "title": "CHEMIA: Potencjał Wodorowy (pH)",
+    "description": "Skala pH to ujemny logarytm dziesiętny z aktywności (w uproszczeniu: stężenia molowego) jonów wodorowych [H⁺] (lub hydroniowych H₃O⁺) w roztworze wodnym. Skala obejmuje wartości od 0 (kwas akumulatorowy, stężony kwas solny) do 14 (ług sodowy). Ponieważ skala jest logarytmiczna, zmiana pH o jedną jednostkę oznacza dziesięciokrotną zmianę kwasowości roztworu.",
+    "formula": "-log10(H_conc)",
+    "unit": "pH",
+    "variables": [
+      {"id": "H_conc", "label": "Stężenie jonów H+", "unit": "mol/L", "defaultValue": "0.0000001"}
+    ]
+  },
+  {
+    "id": "chem_faraday_electrolysis",
+    "title": "ELEKTROCHEMIA: Prawo Faradaya (Masa z Elektrolizy)",
+    "description": "Pierwsze prawo elektrolizy Michaela Faradaya określa masę substancji wydzielonej na elektrodach podczas przepływu prądu stałego przez elektrolit. Wzór (m = (I*t*M)/(z*F)) uwzględnia natężenie prądu, czas, masę molową, ładunek jonu (wartościowość) oraz stałą Faradaya (96485 C/mol). Jest to fundamentalne równanie w przemyśle galwanicznym przy cynkowaniu, miedziowaniu i chromowaniu metali.",
+    "formula": "(Current * Time * MolarMass) / (96485 * Valency)",
+    "unit": "g",
+    "variables": [
+      {"id": "Current", "label": "Natężenie prądu", "unit": "A", "defaultValue": "5"},
+      {"id": "Time", "label": "Czas elektrolizy", "unit": "s", "defaultValue": "3600"},
+      {"id": "MolarMass", "label": "Masa molowa metalu (np. Cu=63.5)", "unit": "g/mol", "defaultValue": "63.5"},
+      {"id": "Valency", "label": "Wartościowość (ładunek jonu)", "unit": "-", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "chem_osmotic_pressure",
+    "title": "BIOCHEMIA: Ciśnienie Osmotyczne",
+    "description": "Ciśnienie osmotyczne (równanie van 't Hoffa: π = iCRT) to ciśnienie termodynamiczne, z jakim cząsteczki rozpuszczalnika (np. wody) przenikają przez błonę półprzepuszczalną z roztworu o niższym stężeniu do roztworu o stężeniu wyższym. Zjawisko to jest napędem fizjologicznym dla komórek roślinnych (turgor) i czerwonych krwinek, a w odwróconej inżynierii pozwala na odsalanie wody morskiej w systemach RO (Reverse Osmosis).",
+    "formula": "VanHoff * Conc * 0.0821 * (TempC + 273.15)",
+    "unit": "atm",
+    "variables": [
+      {"id": "VanHoff", "label": "Współczynnik van't Hoffa (np. NaCl=2)", "unit": "-", "defaultValue": "2"},
+      {"id": "Conc", "label": "Stężenie molowe roztworu", "unit": "mol/L", "defaultValue": "0.15"},
+      {"id": "TempC", "label": "Temperatura", "unit": "°C", "defaultValue": "37"}
+    ]
+  },
+  {
+    "id": "bio_bact_growth",
+    "title": "BIOLOGIA MOLEK.: Eksponencjalny Wzrost Bakterii",
+    "description": "Równanie opisujące logarytmiczną fazę namnażania komórek prokariotycznych przez podział binarny. Bakterie, takie jak Escherichia coli, w optymalnych warunkach pożywkowych i termicznych potrafią podwoić swoją populację co zaledwie 20 minut. Ten bezwzględny wzór wykładniczy obrazuje, dlaczego zakażenia bakteryjne i zatrucia pokarmowe rozwijają się z tak błyskawiczną, niszczycielską dynamiką.",
+    "formula": "Initial * (2 ^ (Time / GenTime))",
+    "unit": "komórek",
+    "variables": [
+      {"id": "Initial", "label": "Początkowa liczba bakterii", "unit": "CFU", "defaultValue": "100"},
+      {"id": "Time", "label": "Całkowity czas wzrostu", "unit": "min", "defaultValue": "180"},
+      {"id": "GenTime", "label": "Czas jednej generacji", "unit": "min", "defaultValue": "20"}
+    ]
+  },
+  {
+    "id": "bio_blood_volume_nadler",
+    "title": "MEDYCYNA: Całkowita Objętość Krwi (Wzór Nadlera)",
+    "description": "Równanie Nadlera jest medycznym standardem używanym na oddziałach intensywnej terapii i w transfuzjologii do oszacowania całkowitej objętości krwi krążącej pacjenta. Prawidłowy wolumen krwi jest krytyczny dla diagnostyki wstrząsu hipowolemicznego, krwotoków oraz dawkowania leków znieczulających. Kalkulator ustawiony dla płci męskiej, wykorzystuje potęgową relację wzrostu i wagi ujętą empirycznie.",
+    "formula": "(0.3669 * ((Height/100) * (Height/100) * (Height/100))) + (0.03219 * Weight) + 0.6041",
+    "unit": "Litrów",
+    "variables": [
+      {"id": "Height", "label": "Wzrost pacjenta", "unit": "cm", "defaultValue": "180"},
+      {"id": "Weight", "label": "Waga pacjenta", "unit": "kg", "defaultValue": "80"}
+    ]
+  },
+  {
+    "id": "bio_gfr_cockcroft",
+    "title": "MEDYCYNA: Klirens Kreatyniny (GFR - Wzór Cockcrofta-Gaulta)",
+    "description": "Wskaźnik Filtracji Kłębuszkowej (GFR) określa pojemność wydalniczą nerek poprzez badanie poziomu kreatyniny w surowicy krwi. Jest to najistotniejszy parametr nefrologiczny, określający stadium niewydolności nerek. Od wyniku GFR lekarze i farmaceuci uzależniają dawkowanie leków (szczególnie antybiotyków i chemioterapeutyków), aby uniknąć ciężkiego zatrucia organizmu spowodowanego brakiem usuwania metabolitów.",
+    "formula": "((140 - Age) * Weight) / (72 * Creatinine)",
+    "unit": "mL/min",
+    "variables": [
+      {"id": "Age", "label": "Wiek pacjenta", "unit": "lat", "defaultValue": "65"},
+      {"id": "Weight", "label": "Waga pacjenta", "unit": "kg", "defaultValue": "75"},
+      {"id": "Creatinine", "label": "Kreatynina w surowicy", "unit": "mg/dL", "defaultValue": "1.2"}
+    ]
+  },
+  {
+    "id": "bio_cardiac_output",
+    "title": "FIZJOLOGIA: Pojemność Minutowa Serca (Rzut Serca)",
+    "description": "Objętość krwi tłoczonej przez komory serca do głównych naczyń (aorty i pnia płucnego) w przeciągu jednej minuty. Jest to iloczyn tętna (częstości skurczów, HR) oraz objętości wyrzutowej (SV - krew wypchnięta podczas jednego skurczu). U dorosłego człowieka w spoczynku CO wynosi około 5 litrów, natomiast u elitarnych sportowców wydolnościowych (maratończyków) podczas ekstremalnego wysiłku może wzrosnąć nawet do 35 litrów na minutę.",
+    "formula": "(HR * SV) / 1000",
+    "unit": "L/min",
+    "variables": [
+      {"id": "HR", "label": "Tętno (Heart Rate)", "unit": "ud./min", "defaultValue": "70"},
+      {"id": "SV", "label": "Objętość wyrzutowa", "unit": "mL", "defaultValue": "70"}
+    ]
+  },
+  {
+    "id": "bio_alcohol_clearance",
+    "title": "TOKSYKOLOGIA: Kinetyka Eliminacji Alkoholu",
+    "description": "Eliminacja etanolu z krwiobiegu człowieka przebiega zgodnie z kinetyką zerowego rzędu (eliminacja liniowa), co oznacza, że enzymy wątrobowe (dehydrogenaza alkoholowa) przetwarzają stałą ilość alkoholu w jednostce czasu niezależnie od tego, ile się go wypiło. Standardowy spadek to 0.15 promila na godzinę, z wahaniami osobniczymi od 0.10 do 0.20 w zależności od masy, płci i uwarunkowań genetycznych.",
+    "formula": "Promille - (Time * 0.15)",
+    "unit": "‰ (Promila na koniec)",
+    "variables": [
+      {"id": "Promille", "label": "Początkowe stężenie", "unit": "‰", "defaultValue": "1.2"},
+      {"id": "Time", "label": "Czas od zakończenia picia", "unit": "h", "defaultValue": "4"}
+    ]
+  },
+  {
+    "id": "bio_caloric_burn_run",
+    "title": "METABOLIZM: Spalanie Kalorii (Bieganie)",
+    "description": "Wydatek energetyczny organizmu w trakcie biegania jest zjawiskiem bezpośrednio liniowym w stosunku do masy ciała oraz pokonanego dystansu, a niespodziewanie w bardzo małym stopniu zależy od samej prędkości biegu. Fizyka ludzkiego narządu ruchu powoduje, że na każdy kilogram masy ciała trzeba wygenerować około 1.036 kilokalorii na przeniesienie się o jeden kilometr.",
+    "formula": "Weight * Distance * 1.036",
+    "unit": "kcal",
+    "variables": [
+      {"id": "Weight", "label": "Waga biegacza", "unit": "kg", "defaultValue": "80"},
+      {"id": "Distance", "label": "Przebiegnięty dystans", "unit": "km", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "civ_euler_buckling",
+    "title": "WYTRZYMAŁOŚĆ: Siła Krytyczna Wyboczenia (Euler)",
+    "description": "Równanie Leonharda Eulera określające maksymalną siłę osiową, którą potrafi przenieść smukły słup, zanim ulegnie zniszczeniu poprzez katastrofalną utratę stateczności poprzecznej (wyboczenie). Zależność ta definiuje nośność rur i rusztowań w budownictwie. Ujawnia ona potężną zależność od długości – dwukrotne wydłużenie słupa zmniejsza jego udźwig aż czterokrotnie. Kalkulator zakłada obustronne przegubowe podparcie.",
+    "formula": "(3.14159 * 3.14159 * E * I) / (L * L)",
+    "unit": "N (Niutonów)",
+    "variables": [
+      {"id": "E", "label": "Moduł Younga (np. Stal=210000000000)", "unit": "Pa", "defaultValue": "210000000000"},
+      {"id": "I", "label": "Moment bezwładności przekroju", "unit": "m^4", "defaultValue": "0.000001"},
+      {"id": "L", "label": "Długość słupa", "unit": "m", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "civ_beam_deflection",
+    "title": "WYTRZYMAŁOŚĆ: Ugięcie Belki (Punktowe)",
+    "description": "Klasyczne równanie z teorii belek Eulera-Bernoulliego dla belki swobodnie podpartej na obu końcach, obciążonej statyczną siłą skupioną ułożoną centralnie w środku rozpiętości. Formuła ta wyznacza maksymalną strzałkę ugięcia (f_max), która zgodnie z restrykcyjnymi Eurokodami budowlanymi zazwyczaj nie może przekraczać proporcji L/250, aby zagwarantować bezpieczeństwo przebywających na stropie ludzi.",
+    "formula": "(F * (L * L * L)) / (48 * E * I)",
+    "unit": "m (Ugięcie)",
+    "variables": [
+      {"id": "F", "label": "Siła nacisku", "unit": "N", "defaultValue": "10000"},
+      {"id": "L", "label": "Rozpiętość belki", "unit": "m", "defaultValue": "5"},
+      {"id": "E", "label": "Moduł Younga", "unit": "Pa", "defaultValue": "210000000000"},
+      {"id": "I", "label": "Moment bezwładności belki", "unit": "m^4", "defaultValue": "0.00005"}
+    ]
+  },
+  {
+    "id": "civ_u_value_wall",
+    "title": "FIZYKA BUDOWLI: Współczynnik Przenikania Ciepła (U)",
+    "description": "Współczynnik U wyraża ilość energii w Watach przenikającej przez 1 metr kwadratowy wielowarstwowej przegrody budowlanej (ściany, dachu, okna) przy różnicy temperatur wynoszącej 1 Kelwin. Jest to odwrotność sumy całkowitego oporu cieplnego warstw materiałowych. Zgodnie z dyrektywami unijnymi o efektywności energetycznej (WT2021), ściany zewnętrzne nie powinny przekraczać ekstremalnie rygorystycznej wartości U = 0.20 W/(m²K).",
+    "formula": "1 / (0.13 + (Thickness1 / Lambda1) + (Thickness2 / Lambda2) + 0.04)",
+    "unit": "W/(m²K)",
+    "variables": [
+      {"id": "Thickness1", "label": "Grubość muru (np. beton komórkowy)", "unit": "m", "defaultValue": "0.24"},
+      {"id": "Lambda1", "label": "Lambda muru", "unit": "W/mK", "defaultValue": "0.18"},
+      {"id": "Thickness2", "label": "Grubość izolacji (styropian)", "unit": "m", "defaultValue": "0.15"},
+      {"id": "Lambda2", "label": "Lambda styropianu", "unit": "W/mK", "defaultValue": "0.038"}
+    ]
+  },
+  {
+    "id": "civ_acoustic_stc",
+    "title": "AKUSTYKA BUD.: Prawo Masy (Izolacyjność Akustyczna)",
+    "description": "Podstawowe prawo akustyki strukturalnej stwierdzające, że izolacyjność dźwiękowa jednorodnej przegrody budowlanej (np. masywnej ściany żelbetowej) rośnie logarytmicznie o około 6 decybeli wraz z każdym podwojeniem masy powierzchniowej przegrody lub podwojeniem częstotliwości uderzającej fali dźwiękowej. Równanie to wyjaśnia, dlaczego niskie częstotliwości (basy i wibracje techniczne) są tak wybitnie uciążliwe do wyizolowania.",
+    "formula": "(20 * log10(MassArea * Freq)) - 47",
+    "unit": "dB (Tłumienie)",
+    "variables": [
+      {"id": "MassArea", "label": "Masa 1 m² przegrody", "unit": "kg/m²", "defaultValue": "400"},
+      {"id": "Freq", "label": "Częstotliwość dźwięku", "unit": "Hz", "defaultValue": "500"}
+    ]
+  },
+  {
+    "id": "civ_wind_pressure",
+    "title": "AERODYNAMIKA BUD.: Obciążenie Wiatrem",
+    "description": "Równanie Bernoulliego w zastosowaniu do obciążeń inżynierskich oblicza ciśnienie dynamiczne (q) wywierane przez masywiate wiatry na bryłę obiektu. Ciśnienie to rośnie w potędze drugiej wraz z prędkością wiatru. Orkan, w którym prędkość wzrasta dwukrotnie, uderza w fasady drapaczy chmur z siłą uderzeniową aż czterokrotnie większą, stwarzając kolosalne zagrożenie dla paneli szklanych i zakotwień dachu.",
+    "formula": "0.5 * 1.225 * (Velocity * Velocity)",
+    "unit": "Pa (N/m²)",
+    "variables": [
+      {"id": "Velocity", "label": "Prędkość wiatru w porywach", "unit": "m/s", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "civ_snow_load",
+    "title": "BUDOWNICTWO: Obciążenie Śniegiem Dachu Płaskiego",
+    "description": "Mechaniczne obciążenie śniegiem zalegającym na połaci dachu wyraża się iloczynem grubości pokrywy i gęstości objętościowej śniegu. Śnieg mokry lub topniejący lód bywa kilkukrotnie gęstszy niż śnieg suchy, a dla wielkich hal przemysłowych i supermarketów ciężar ten może iść w setki ton nacisku statycznego, często bywając bezpośrednią i tragiczną przyczyną zapaści strukturalnej konstrukcji stalowych kratownic.",
+    "formula": "Area * Depth * Density",
+    "unit": "kg",
+    "variables": [
+      {"id": "Area", "label": "Rzut poziomy powierzchni dachu", "unit": "m²", "defaultValue": "500"},
+      {"id": "Depth", "label": "Grubość pokrywy śnieżnej", "unit": "m", "defaultValue": "0.4"},
+      {"id": "Density", "label": "Gęstość (Świeży=100, Mokry=400)", "unit": "kg/m³", "defaultValue": "300"}
+    ]
+  },
+  {
+    "id": "elec_lc_resonance",
+    "title": "ELEKTROTECHNIKA: Częstotliwość Rezonansowa (Cewka+Kondensator)",
+    "description": "Wzór Thomsona definiuje częstotliwość rezonansową idealnego obwodu rezonansowego LC (cewka indukcyjna i kondensator połączone bezoporowo). Jest to krytyczna częstotliwość zjawiska, przy którym impedancja obu elementów wzajemnie się znosi (reaktancje indukcyjna i pojemnościowa stają się równe). To fundamentalne zjawisko fizyczne wykorzystywane we wszystkich radiach, filtrach pasmowych i zasilaczach impulsowych.",
+    "formula": "1 / (2 * 3.14159 * sqrt(Inductance * Capacitance))",
+    "unit": "Hz",
+    "variables": [
+      {"id": "Inductance", "label": "Indukcyjność Cewki", "unit": "H (Henr)", "defaultValue": "0.001"},
+      {"id": "Capacitance", "label": "Pojemność Kondensatora", "unit": "F (Farad)", "defaultValue": "0.000001"}
+    ]
+  },
+  {
+    "id": "elec_capacitor_energy",
+    "title": "ELEKTRONIKA: Energia Zmagazynowana w Kondensatorze",
+    "description": "Kondensatory magazynują energię elektryczną w postaci statycznego pola elektrycznego pomiędzy dielektrykiem a okładkami. Zgromadzona energia termodynamiczna jest wprost proporcjonalna do pojemności elementu i rośnie z kwadratem naładowanego napięcia. Ze względu na zjawisko niemal natychmiastowego wyładowania (potężny prąd udarowy), energia ta z powodzeniem służy we fleszach aparatów, defibrylatorach kardiologicznych i wyrzutniach szynowych (railgun).",
+    "formula": "0.5 * Capacitance * (Voltage * Voltage)",
+    "unit": "J (Dżul)",
+    "variables": [
+      {"id": "Capacitance", "label": "Pojemność całkowita", "unit": "F", "defaultValue": "0.0047"},
+      {"id": "Voltage", "label": "Napięcie zgromadzone", "unit": "V", "defaultValue": "400"}
+    ]
+  },
+  {
+    "id": "elec_dc_voltage_drop",
+    "title": "INSTALACJE: Spadek Napięcia (Prąd Stały DC)",
+    "description": "Rezystancja wewnętrzna metali zmusza strumień elektronów do wytracania energii kinetycznej w postaci ciepła Joule'a-Lenza. Na długich przewodach zjawisko to powoduje odczuwalny spadek napięcia między początkiem a końcem obwodu. Poprawne wyliczenie rezystancji żył miedzianych (przewodność miedzi ρ = 0.0175 Ω·mm²/m) jest obowiązkiem każdego inżyniera projektującego instalacje zasilające niskonapięciowe oświetlenia LED i panele fotowoltaiczne.",
+    "formula": "(2 * Length * Current * 0.0175) / CrossSection",
+    "unit": "V (Spadek)",
+    "variables": [
+      {"id": "Length", "label": "Długość przewodu w jedną stronę", "unit": "m", "defaultValue": "25"},
+      {"id": "Current", "label": "Pobór prądu obciążenia", "unit": "A", "defaultValue": "10"},
+      {"id": "CrossSection", "label": "Przekrój żyły (miedź)", "unit": "mm²", "defaultValue": "2.5"}
+    ]
+  },
+  {
+    "id": "elec_skin_effect_depth",
+    "title": "RADIOTECHNIKA: Głębokość Wnikania (Efekt Naskórkowy)",
+    "description": "Fizyczne zjawisko elektrodynamiczne polegające na wypieraniu strumienia zmiennego prądu elektrycznego na samą zewnętrzną powłokę (naskórek) grubego przewodnika na skutek wirowego pola magnetycznego wyindukowanego w jego własnym wnętrzu. Z tego fizycznego powodu, linie przesyłowe mega wysokiego napięcia napowietrznego konstruowane są w kształcie grubych rur, rzadziej grubych prętów ze względu na marnotrawstwo centralnej przestrzeni miedzianej lub aluminiowej.",
+    "formula": "sqrt(1 / (3.14159 * Frequency * 0.000001256 * Conductivity))",
+    "unit": "m",
+    "variables": [
+      {"id": "Frequency", "label": "Częstotliwość prądu", "unit": "Hz", "defaultValue": "50"},
+      {"id": "Conductivity", "label": "Przewodność metalu (np. Cu = 58000000)", "unit": "S/m", "defaultValue": "58000000"}
+    ]
+  },
+  {
+    "id": "elec_quarter_wave_antenna",
+    "title": "TELEKOMUNIKACJA: Długość Anteny Ćwierćfalowej",
+    "description": "Anteny nadawczo-odbiorcze (w tym monopole) rezonują z maksymalną sprawnością, gdy ich długość fizyczna odpowiada dokładnie ułamkowi długości fali elektromagnetycznej, którą muszą zdekodować z eteru. Monopol ćwierćfalowy stanowi ćwiartkę długości fali radiowej, zdeterminowanej przez potężną prędkość przemieszczania się światła, wynoszącą w powietrzu do 300 000 kilometrów na sekundę.",
+    "formula": "300 / (4 * FreqMHz)",
+    "unit": "m",
+    "variables": [
+      {"id": "FreqMHz", "label": "Częstotliwość Radia / WiFi", "unit": "MHz", "defaultValue": "433"}
+    ]
+  },
+  {
+    "id": "astro_dyson_sphere_area",
+    "title": "SCI-FI INŻYNIERIA: Powierzchnia Sfery Dysona",
+    "description": "Hipotetyczna, astroinżynieryjna megastruktura otaczająca w całości gwiazdę macierzystą układu w celu wykorzystania 100% z bezwzględnie całej wypromieniowanej z niej potężnej fuzji energetycznej. Dla obrysu obejmującego średnicę powszechnej ziemskiej trajektorii około orbity Słońca o rozpiętości jednego promienia jednostki astronomicznej (1 AU = blisko 150 milionów kilometrów) - ta geometryczna blaszana skorupa wygenerowałaby pole osadnicze setki milionów razy dominujące nad samą planetą macierzystą Ziemią.",
+    "formula": "4 * 3.14159 * (Radius * Radius)",
+    "unit": "km²",
+    "variables": [
+      {"id": "Radius", "label": "Promień Sfery (np. 150000000 dla 1 AU)", "unit": "km", "defaultValue": "150000000"}
+    ]
+  },
+  {
+    "id": "astro_meteorite_energy",
+    "title": "PLANETOLOGIA: Energia Zderzeniowa Meteorytu",
+    "description": "Asteroidy i okruchy skalne wkraczają w górne partie strefy ziemskiej z reżimowymi kosmicznymi pędami zbliżonymi do wielokrotności wystrzelonej kuli karabinowej (często od 15 km/s w górę). Energia kinetyczna skalistego bloku w tych rzadkich proporcjach zamienia obiekt w bombę termojądrową, przy zderzeniu z podłożem doprowadzając do potwornych ablacji minerałów w kraterze i rozładowania fal uderzeniowych do sejsmografów świata.",
+    "formula": "0.5 * Mass * (Velocity * Velocity)",
+    "unit": "J (Dżul)",
+    "variables": [
+      {"id": "Mass", "label": "Masa skały z żelazem", "unit": "kg", "defaultValue": "50000"},
+      {"id": "Velocity", "label": "Prędkość zderzenia", "unit": "m/s", "defaultValue": "20000"}
+    ]
+  },
+  {
+    "id": "astro_meteor_crater_size",
+    "title": "GEOLOGIA KOSM.: Rozmiar Krateru Uderzeniowego",
+    "description": "Fizycy astrofizyczni posiłkują się empirycznie weryfikowanym zbiorem wzorów na skalowanie formacji kraterowych na twardej skorupie po nagłym impakcie asteroid. Mocno rygorystyczne równanie (średnica rzędu krotności D ∝ E^1/3) wykazuje średnicę wyżłobionej wyrwy skalistej na podstawie potężnego zastrzyku zdeponowanej energii kinetycznej, obnażając bezsilność ziemskiej grawitacji w zatrzymaniu wyrzutu.",
+    "formula": "0.058 * ((Mass * (Velocity * Velocity)) ^ 0.333333)",
+    "unit": "m (Średnica misy)",
+    "variables": [
+      {"id": "Mass", "label": "Masa meteorytu", "unit": "kg", "defaultValue": "10000"},
+      {"id": "Velocity", "label": "Prędkość uderzenia w grunt", "unit": "m/s", "defaultValue": "15000"}
+    ]
+  },
+  {
+    "id": "astro_antimatter_energy",
+    "title": "FIZYKA: Energia Anihilacji Antymaterii",
+    "description": "Najdoskonalsze fizyczne równanie masy i energii Diraca oraz Einsteina: E=mc². Kiedy w absolutnej skali mikrokosmosu fizyczna cząstka twardej materii zetknie się z rewersem i antycząstką, następuje 100% i całkowita zamiana mas w wybuch wolnych fotonów kwantowych, anihilując strukturę do czysta z podwojeniem efektu w stosunku do obydwu połączonych połówek, pozostawiając gigantyczny osad promieniotwórczy zaledwie garści cząstek.",
+    "formula": "Mass * (299792458 * 299792458) * 2",
+    "unit": "J (Dżul)",
+    "variables": [
+      {"id": "Mass", "label": "Masa czystej antymaterii w gramach/1000", "unit": "kg", "defaultValue": "0.001"}
+    ]
+  },
+  {
+    "id": "thermo_heat_capacity_water",
+    "title": "TERMODYNAMIKA: Ciepło Właściwe (Ogrzewanie Wody)",
+    "description": "Woda to król płynów pod kątem zatrzymywania energii. Posiada wręcz rekordową, rzadką zdolność termiczną i najwyższe ciepło właściwe wynoszące aż 4184 Dżuli na podgrzanie każdego pojedynczego kilograma płynu o równego stopnia Celcjusza. Dla chłodnictwa przemysłowego ten próg wymusza gigantyczne, bezlitosne reżimy energetyczne pomp ciepła w układzie podniesienia potencjału dla bojlera w domostwie by użytkownik zażył krótkiej gorącej kąpieli.",
+    "formula": "Mass * 4184 * (TargetTemp - CurrentTemp)",
+    "unit": "J (Dżul)",
+    "variables": [
+      {"id": "Mass", "label": "Masa wody do podgrzania", "unit": "kg", "defaultValue": "100"},
+      {"id": "CurrentTemp", "label": "Temperatura wejściowa kranu", "unit": "°C", "defaultValue": "10"},
+      {"id": "TargetTemp", "label": "Wymagana temp. prysznicowa", "unit": "°C", "defaultValue": "40"}
+    ]
+  },
+  {
+    "id": "thermo_thermal_expansion",
+    "title": "MECHANIKA: Liniowa Rozszerzalność Cieplna",
+    "description": "Ruch termiczny powszechnych drobin w układzie sieci bezlitośnie odsuwa od siebie atomy ze wzrostem temperatur. Skutkuje to zjawiskiem, w którym żelazna, wybitnie długa linia kolejowa albo filar mostowy z upalnego polskiego lata z rzędu w mróz obkurcza się aż po wymiar kilkunastu lub dwudziestu centymetrów. Obowiązkowe staje się instalowanie kompensatorów mostowych by uniknąć wyrw i pęknięć ściskających szyn.",
+    "formula": "Length * Alpha * TempDiff * 1000",
+    "unit": "mm (Zmiana dł.)",
+    "variables": [
+      {"id": "Length", "label": "Długość profilu (np. stal, most)", "unit": "m", "defaultValue": "100"},
+      {"id": "Alpha", "label": "Współczynnik Alfa dla stali (12×10^-6)", "unit": "-", "defaultValue": "0.000012"},
+      {"id": "TempDiff", "label": "Różnica skrajnych temperatur (lato/zima)", "unit": "°C", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "it_shannon_entropy",
+    "title": "INFORMATYKA: Entropia Informacji Shannona",
+    "description": "Matematyczna podstawa cyfrowej komunikacji kompresyjnej wprowadzona przez mistrza logiki, Claude'a Shannona, decyduje o fundamentalnej i maksymalnej dolnej barierze wyznaczonego pliku z upakowanymi bajtami na dysku. Definiuje on poziom szumów i gęstość z zaskakującym dowodem, po którym bez ucięć stratnych pakowanie zip lub rar staje się matematycznym fałszem i zablokowanym działaniem w obawie o uszkodzenie struktury wiedzy.",
+    "formula": "-(Probability * (log10(Probability) / log10(2)))",
+    "unit": "bitów",
+    "variables": [
+      {"id": "Probability", "label": "Prawdopodobieństwo zdarzenia ułamkowe", "unit": "0-1", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "biology_harris_benedict_men",
+    "title": "DIETETYKA: Podstawowa Przemiana Materii BMR (Mężczyźni)",
+    "description": "Zrewidowane równanie Harrisa-Benedicta to medyczny twardy rdzeń oceny kaloryczności. Gwarantuje lekarzowi poznanie absolutnego dna spoczynkowego energii by mózg z mięśniem serca przepompował limfę przy wegetacyjnej 24 godzinnej hibernacji łóżkowej bez podrywania ręki. Wraz z dorastaniem metabolity wyhamowują tarczycę zbijając spedycję zjawisk. Parametr ten stanowi rygor redukcji bądź reżimu nadwyżki mas.",
+    "formula": "88.362 + (13.397 * Weight) + (4.799 * Height) - (5.677 * Age)",
+    "unit": "kcal/dzień",
+    "variables": [
+      {"id": "Weight", "label": "Masa wagi", "unit": "kg", "defaultValue": "80"},
+      {"id": "Height", "label": "Wzrost kandydata", "unit": "cm", "defaultValue": "180"},
+      {"id": "Age", "label": "Wiek lat", "unit": "lat", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "biology_harris_benedict_women",
+    "title": "DIETETYKA: Podstawowa Przemiana Materii BMR (Kobiety)",
+    "description": "Adaptacja żeńska metabolizmu podstawowego BMR. Udział masy mięśniowej ustępuje tłuszczowej warstwie na korzyść rozrodczości oszczędzając pułap marnotrawionej temperatury obniżonym progiem do męskiego zderzenia. Poniżej minimalnego rzędu kalorii ustrojstwo endokrynologiczne wpada w stres włączając magazyn zapasów ze zmasowanym zatrzymaniem komórkowym wody uniemożliwiając proces spalania brzucha.",
+    "formula": "447.593 + (9.247 * Weight) + (3.098 * Height) - (4.330 * Age)",
+    "unit": "kcal/dzień",
+    "variables": [
+      {"id": "Weight", "label": "Masa wagi", "unit": "kg", "defaultValue": "65"},
+      {"id": "Height", "label": "Wzrost kandydata", "unit": "cm", "defaultValue": "165"},
+      {"id": "Age", "label": "Wiek lat", "unit": "lat", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "physics_earth_tunnel_fall",
+    "title": "FIZYKA: Czas Lotu Przez Środek Ziemi (Pociąg Grawitacyjny)",
+    "description": "Fizyczne równanie potwierdzające paradoks geometryczny drążąc pusty w środku, szczelny, gładki jak lód szyb przez rozgrzane jądro bezpośrednio z Londynu na antypody. Zjawiskowo - siła nośna opadającej kuli ulega odcięciu od punktu do punktu z racji mijanej zewnętrznej otuliny, skutkując wstrzymaniem i magicznie po 42 minutach oscylacyjnym wypadnięciem pasażera po drugiej stronie lustra z wyzerowaną prędkością czołową.",
+    "formula": "3.14159 * sqrt(6371000 / 9.81) / 60",
+    "unit": "min (Czas)",
+    "variables": [
+      
+    ]
   }
 ]
+
 
 
 
