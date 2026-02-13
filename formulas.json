@@ -4432,6 +4432,531 @@
       {"id": "TeethRear", "label": "Zęby tył", "unit": "szt", "defaultValue": "15"},
       {"id": "WheelCirc", "label": "Obwód koła", "unit": "mm", "defaultValue": "2096"}
     ]
+  },
+  {
+    "id": "mass_profile_round_bar",
+    "title": "STAL: Pręt Okrągły (Gładki)",
+    "description": "Pręty okrągłe gładkie produkowane są najczęściej poprzez walcowanie na gorąco lub ciągnienie na zimno. Gęstość stali węglowej przyjmuje się normatywnie jako 7850 kg/m³. Moment bezwładności przekroju kołowego zapewnia równomierną sztywność na zginanie w każdym kierunku. Wzór oblicza masę na podstawie objętości walca: V = π × r² × L.",
+    "formula": "3.14159 * (d / 2000) * (d / 2000) * L * 7850",
+    "unit": "kg",
+    "variables": [
+      {"id": "d", "label": "Średnica pręta", "unit": "mm", "defaultValue": "12"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "6"}
+    ]
+  },
+  {
+    "id": "mass_profile_pipe",
+    "title": "STAL: Rura Okrągła (Profil zamknięty)",
+    "description": "Rury stalowe (bezszwowe lub ze szwem wzdłużnym/spiralnym) charakteryzują się optymalnym stosunkiem wytrzymałości na skręcanie (moment biegunowy) do masy własnej. Wykorzystywane w rurociągach ciśnieniowych oraz konstrukcjach kratownicowych. Obliczenie masy bazuje na różnicy objętości walca zewnętrznego i wewnętrznego.",
+    "formula": "3.14159 * (((D / 2000) * (D / 2000)) - (((D - 2 * t) / 2000) * ((D - 2 * t) / 2000))) * L * 7850",
+    "unit": "kg",
+    "variables": [
+      {"id": "D", "label": "Średnica zewnętrzna", "unit": "mm", "defaultValue": "60.3"},
+      {"id": "t", "label": "Grubość ścianki", "unit": "mm", "defaultValue": "3.2"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "6"}
+    ]
+  },
+  {
+    "id": "mass_profile_square_solid",
+    "title": "STAL: Kęs Kwadratowy (Pełny)",
+    "description": "Kęsy kwadratowe (pręty pełne kwadratowe) to masywne półfabrykaty hutnicze poddawane dalszej obróbce plastycznej (kuciu) lub skrawaniu. Ich pole przekroju poprzecznego to kwadrat o boku 'a'. Ze względu na potężny ciężar metra bieżącego, stosowane są wyłącznie w węzłach o ekstremalnych naprężeniach ścinających i ściskających.",
+    "formula": "(a / 1000) * (a / 1000) * L * 7850",
+    "unit": "kg",
+    "variables": [
+      {"id": "a", "label": "Bok kwadratu", "unit": "mm", "defaultValue": "50"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_profile_rhs",
+    "title": "STAL: Profil Zamknięty Kwadratowy (RHS)",
+    "description": "Kształtowniki zamknięte formowane na zimno (RHS - Rectangular/Square Hollow Section). Posiadają znakomitą sztywność zginania w dwóch głównych osiach. Są fundamentem współczesnych hal stalowych, słupów nośnych i ram maszyn. Kalkulator stosuje uproszczony model bez zaokrągleń naroży roboczych, błąd obliczeniowy wynosi poniżej 2%.",
+    "formula": "(((a / 1000) * (a / 1000)) - (((a - 2 * t) / 1000) * ((a - 2 * t) / 1000))) * L * 7850",
+    "unit": "kg",
+    "variables": [
+      {"id": "a", "label": "Bok zewnętrzny", "unit": "mm", "defaultValue": "100"},
+      {"id": "t", "label": "Grubość ścianki", "unit": "mm", "defaultValue": "4"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "6"}
+    ]
+  },
+  {
+    "id": "mass_profile_flat_bar",
+    "title": "STAL: Płaskownik",
+    "description": "Płaskowniki stalowe to prostokątne profile walcowane ciągłe. W inżynierii mechanicznej służą jako elementy wsporcze, łączeniowe (blachy węzłowe) i pióra resorów (przy zastosowaniu stali sprężynowych). Wykazują silną anizotropię geometryczną momentu bezwładności – są sztywne w płaszczyźnie bocznej, lecz łatwo zginają się na płask.",
+    "formula": "(w / 1000) * (t / 1000) * L * 7850",
+    "unit": "kg",
+    "variables": [
+      {"id": "w", "label": "Szerokość", "unit": "mm", "defaultValue": "50"},
+      {"id": "t", "label": "Grubość", "unit": "mm", "defaultValue": "5"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "6"}
+    ]
+  },
+  {
+    "id": "mass_profile_hex_bar",
+    "title": "STAL: Pręt Sześciokątny",
+    "description": "Pręty ciągnione sześciokątne to podstawa przemysłu złącznego. Kształt idealnie współpracuje ze standardowymi kluczami płaskimi i oczkowymi, dlatego z tego półfabrykatu na automatach tokarskich wykonuje się śruby, nakrętki, nyple i złączki hydrauliczne. Parametr 'S' określa odległość między przeciwległymi równoległymi ścianami (rozmiar klucza).",
+    "formula": "0.866025 * (s / 1000) * (s / 1000) * L * 7850",
+    "unit": "kg",
+    "variables": [
+      {"id": "s", "label": "Rozmiar klucza (S)", "unit": "mm", "defaultValue": "24"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_profile_angle",
+    "title": "STAL: Kątownik Równoramienny",
+    "description": "Kątownik (L-profil) to profil walcowany lub gięty. Przekrój w kształcie litery L posiada specyficzne umiejscowienie środka ciężkości (poza materiałem) i główne osie bezwładności odchylone pod kątem. Powszechny w konstrukcjach kratownic (np. słupy energetyczne) i ramach nośnych. Model oblicza masę wycinając prostokąty z profilu całkowitego.",
+    "formula": "((2 * a * t) - (t * t)) / 1000000 * L * 7850",
+    "unit": "kg",
+    "variables": [
+      {"id": "a", "label": "Długość ramienia", "unit": "mm", "defaultValue": "50"},
+      {"id": "t", "label": "Grubość ścianki", "unit": "mm", "defaultValue": "5"},
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "6"}
+    ]
+  },
+  {
+    "id": "mass_profile_rebar",
+    "title": "STAL: Pręt Zbrojeniowy (Żebrowany)",
+    "description": "Stal zbrojeniowa (np. gatunek B500SP, klasa ciągliwości C) służy do zbrojenia betonu w strefach rozciąganych. Żebrowanie periodyczne znacząco zwiększa przyczepność mechaniczną pręta do matrycy cementowej. Masa metra bieżącego ustala się ze znormalizowanego uproszczenia inżynierskiego, wynoszącego ok. d² × 0.006165 [kg/m].",
+    "formula": "d * d * 0.006165 * L",
+    "unit": "kg",
+    "variables": [
+      {"id": "d", "label": "Średnica nominalna pręta", "unit": "mm", "defaultValue": "12"},
+      {"id": "L", "label": "Długość całkowita", "unit": "m", "defaultValue": "12"}
+    ]
+  },
+  {
+    "id": "mass_profile_copper_wire",
+    "title": "MIEDŹ: Drut Nawojowy (Goły)",
+    "description": "Czysta miedź elektrotechniczna (Cu-ETP, czystość >99.9%) wykazuje rewelacyjną konduktywność (58 MS/m) i gęstość 8960 kg/m³. Druty nawojowe służą do wykonywania cewek silników elektrycznych, transformatorów, dławików i prądnic. Dokładne wyliczenie masy drutu zwojowego jest kluczowe w doborze nośności karkasów izolacyjnych.",
+    "formula": "3.14159 * (d / 2000) * (d / 2000) * L * 8960",
+    "unit": "kg",
+    "variables": [
+      {"id": "d", "label": "Średnica żyły miedzianej", "unit": "mm", "defaultValue": "1.5"},
+      {"id": "L", "label": "Długość drutu w zwoju", "unit": "m", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_profile_checker_plate",
+    "title": "STAL: Blacha Ryflowana (Łezkowa)",
+    "description": "Blacha posadzkowa, wytłaczana we wzór łezkowy (ryfle). Zwiększa współczynnik tarcia kinetycznego, minimalizując ryzyko poślizgnięcia w warunkach zaolejenia lub zawilgocenia (podesty przemysłowe, rampy, schody). Wzór uwzględnia masę płaskiej blachy nośnej z dodatkowym narzutem materiałowym na wzór wypukły (ok. 3 kg/m²).",
+    "formula": "W * L * (((t / 1000) * 7850) + 3)",
+    "unit": "kg",
+    "variables": [
+      {"id": "W", "label": "Szerokość arkusza", "unit": "m", "defaultValue": "1"},
+      {"id": "L", "label": "Długość arkusza", "unit": "m", "defaultValue": "2"},
+      {"id": "t", "label": "Grubość rdzenia (bez łezki)", "unit": "mm", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "mass_chem_h2so4",
+    "title": "CHEMIA: Kwas Siarkowy (VI) 98%",
+    "description": "Olejowy kwas siarkowy (H₂SO₄) to ekstremalnie żrąca i higroskopijna ciecz, będąca jednym z najważniejszych surowców chemii ciężkiej. W stężeniu 98% osiąga gęstość 1840 kg/m³. Znajduje zastosowanie w syntezie nawozów fosforowych, produkcji barwników, rafinacji ropy naftowej oraz jako podstawowy elektrolit w kwasowo-ołowiowych ogniwach galwanicznych.",
+    "formula": "V * 1.840",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość kwasu", "unit": "L", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "mass_chem_hcl",
+    "title": "CHEMIA: Kwas Solny 38%",
+    "description": "Wodny roztwór chlorowodoru (HCl). Kwas solny dymiący (stężenie ok. 38%) posiada gęstość ok. 1190 kg/m³. Jest silnie żrącym, nieorganicznym kwasem beztlenowym. Wykorzystywany na potężną skalę w metalurgii do trawienia stali (usuwania zgorzeliny przed cynkowaniem), ekstrakcji rud metali oraz w przemyśle spożywczym i tekstylnym.",
+    "formula": "V * 1.190",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość kwasu", "unit": "L", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "mass_chem_hno3",
+    "title": "CHEMIA: Kwas Azotowy (V) 68%",
+    "description": "Kwas azotowy (HNO₃) to bezbarwna, dymiąca ciecz o potężnych właściwościach utleniających. W popularnym stężeniu przemysłowym (ok. 68% - tzw. kwas azeotropowy) jego gęstość wynosi ok. 1400 kg/m³. Używany do produkcji nawozów azotowych (saletry), materiałów wybuchowych (TNT, nitrogliceryna) oraz pasywacji powierzchniowej metali szlachetnych.",
+    "formula": "V * 1.400",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość kwasu", "unit": "L", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "mass_chem_ln2",
+    "title": "KRIOGENIKA: Ciekły Azot (LN2)",
+    "description": "Azot w stanie ciekłym skrapla się w temperaturze -195.8°C (77 K) pod ciśnieniem atmosferycznym. Gęstość cieczy w punkcie wrzenia wynosi około 808 kg/m³. Z racji niskiego kosztu produkcji (destylacja frakcjonowana skroplonego powietrza) i obojętności chemicznej, to najpopularniejsze medium chłodzące w medycynie, inżynierii nadprzewodników i kriokonserwacji.",
+    "formula": "V * 0.808",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość skroplona", "unit": "L", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_chem_lox",
+    "title": "KRIOGENIKA: Ciekły Tlen (LOX)",
+    "description": "Ciekły tlen (Liquid Oxygen) posiada bladoniebieską barwę i silne właściwości paramagnetyczne. Skrapla się w temp. -183°C (90 K), a jego gęstość to 1141 kg/m³. LOX jest potężnym utleniaczem kriogenicznym, powszechnie stosowanym wraz z paliwami ciekłymi (kerozyna RP-1, ciekły wodór LH2) w rakietach nośnych, w tym w misjach Apollo i systemach SpaceX.",
+    "formula": "V * 1.141",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość skroplona", "unit": "L", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_chem_lhe",
+    "title": "KRIOGENIKA: Ciekły Hel (LHe)",
+    "description": "Skroplony hel jest najzimniejszą substancją fizyczną, wrze w temp. -268.9°C (zaledwie 4.2 K powyżej zera absolutnego). Wykazuje ekstremalnie niską gęstość rzędu 125 kg/m³. Chłodzenie ciekłym helem jest warunkiem bezwzględnym do osiągnięcia stanu nadprzewodnictwa w cewkach magnesów w skanerach MRI, reaktorach fuzyjnych i akceleratorach cząstek (LHC).",
+    "formula": "V * 0.125",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość skroplona", "unit": "L", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_chem_glycerin",
+    "title": "PŁYNY: Gliceryna (Glicerol 100%)",
+    "description": "Glicerol (propan-1,2,3-triol) to organiczny związek chemiczny, bezbarwna, bezzapachowa, lepka ciecz o niezwykle słodkim smaku. Jej gęstość to 1261 kg/m³. Ze względu na silną higroskopijność, bezkarnie chłonie wodę z powietrza. Znajduje szerokie zastosowanie w kosmetyce, farmacji, produkcji e-liquidów oraz tłumikach ciśnieniomierzy jako ciecz wiskotyczna.",
+    "formula": "V * 1.261",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość gliceryny", "unit": "L", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_chem_ethanol",
+    "title": "PŁYNY: Etanol (Alkohol Etylowy 100%)",
+    "description": "Bezwodny etanol to wysoce lotny, łatwopalny rozpuszczalnik organiczny. Jego gęstość wynosi zaledwie 789 kg/m³. Obliczenie precyzyjnej masy alkoholu jest konieczne w destylarniach przy kontraktacji akcyzowej, w syntezach farmaceutycznych, a także przy mieszaniu biopaliw (E10, E85). W połączeniu z wodą ulega kontraktacji (zmniejszeniu wspólnej objętości).",
+    "formula": "V * 0.789",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość etanolu", "unit": "L", "defaultValue": "500"}
+    ]
+  },
+  {
+    "id": "mass_chem_acetone",
+    "title": "PŁYNY: Aceton (Propanon)",
+    "description": "Aceton to najprostszy keton alifatyczny, będący wybitnym, polarnym rozpuszczalnikiem organicznym aprotocznym. Gęstość wynosi 791 kg/m³. Ekstremalnie lotny i łatwopalny. Używany powszechnie w laboratoriach do czyszczenia sprzętu z żywic epoksydowych, w produkcji farb, lakierów, poliwęglanów oraz materiałów wybuchowych (kordi).",
+    "formula": "V * 0.791",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość acetonu", "unit": "L", "defaultValue": "200"}
+    ]
+  },
+  {
+    "id": "mass_chem_toluene",
+    "title": "PŁYNY: Toluen",
+    "description": "Metylobenzen, czyli toluen, to aromatyczny węglowodór będący bezbarwną cieczą o charakterystycznym, farbiarskim zapachu. Jego gęstość to 867 kg/m³. Stanowi bezpieczniejszą alternatywę toksycznego benzenu. Wykorzystywany wielkotonażowo jako rozpuszczalnik przemysłowy, dodatek zwiększający liczbę oktanową paliw lotniczych i substrat trotylu (TNT).",
+    "formula": "V * 0.867",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość toluenu", "unit": "L", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "mass_agro_wheat",
+    "title": "ROLNICTWO: Pszenica (Ziarno nasypowo)",
+    "description": "Pszenica to obok ryżu i kukurydzy najważniejsze zboże chlebowe świata. W inżynierii rolniczej, przy projektowaniu silosów zbożowych i przyczep ciężarowych, krytycznym parametrem jest ciężar nasypowy. Ziarno pszenicy wykazuje gęstość nasypową średnio 750 kg/m³. Parametr ten faluje w zależności od wilgotności ziarna oraz stopnia odchwaszczenia.",
+    "formula": "V * 750",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość naczepy/silosu", "unit": "m³", "defaultValue": "24"}
+    ]
+  },
+  {
+    "id": "mass_agro_rapeseed",
+    "title": "ROLNICTWO: Rzepak (Nasiona nasypowo)",
+    "description": "Nasiona rzepaku są główne źródło tłuszczów roślinnych w Europie (produkcja oleju jadalnego oraz estrów do biodiesla). Z racji wysokiego zaolejenia komórek (ponad 40% tłuszczu), ziarno to posiada niższą gęstość nasypową niż zboża właściwe – średnio wynosi około 650 kg/m³. Nasiona mają kształt mikrokulek, przez co stawiają niski opór nasypowy (płyną jak ciecz).",
+    "formula": "V * 650",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość ładunku", "unit": "m³", "defaultValue": "24"}
+    ]
+  },
+  {
+    "id": "mass_agro_sugar",
+    "title": "SPOŻYWCZE: Cukier Kryształ (Sacharoza luzem)",
+    "description": "Krystaliczny biały cukier (sacharoza, C12H22O11) wytwarzany przemysłowo z buraków cukrowych lub trzciny. Gęstość usypowa surowca po procesie rafinacji, suszenia i granulacji wynosi stabilne 850 kg/m³. Prawidłowe obliczenie tonażu jest krytyczne dla przemysłu cukierniczego, dozowników ważących oraz bezpieczeństwa regałów w magazynach wysokiego składowania.",
+    "formula": "V * 850",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość nasypowa", "unit": "m³", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_agro_flour",
+    "title": "SPOŻYWCZE: Mąka Pszenna (Luzem)",
+    "description": "Mąka to potężnie rozdrobniony produkt przemiału ziarna. Z powodu olbrzymiej ilości powietrza absorbowanego pomiędzy cząstkami stałymi (aeracja), gęstość nasypowa mąki w stanie luźnym jest bardzo niska, wynosząc około 600 kg/m³. Cząstki ulegają kompresji w silosach, przez co gęstość wzrasta ku dnu. Unoszący się pył mączny jest ekstremalnie wybuchowy (ATEX).",
+    "formula": "V * 600",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość nasypowa", "unit": "m³", "defaultValue": "15"}
+    ]
+  },
+  {
+    "id": "mass_agro_coffee",
+    "title": "SPOŻYWCZE: Kawa Palona (Ziarnista)",
+    "description": "Ziarna kawowca poddane obróbce termicznej (paleniu w piecach bębnowych w temp. ok 200°C) drastycznie pęcznieją, tracąc przy tym wodę. Proces ten sprawia, że kawa staje się puszysta i krucha, a jej ciężar nasypowy spada do poziomu ok. 350-400 kg/m³ (w kalkulacjach uśredniono 400 kg/m³). Kawa surowa (zielona) jest z kolei dwukrotnie cięższa.",
+    "formula": "V * 400",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość w zasobniku", "unit": "m³", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "mass_agro_salt",
+    "title": "SPOŻYWCZE: Sól Kamienna (Halit rozkruszony)",
+    "description": "Chlorek sodu (NaCl) wydobywany z podziemnych złóż osadowych w procesie górniczym, następnie mielony i przesiewany. Jej objętościowy ciężar nasypowy wynosi ok. 1200 kg/m³ i jest uzależniony od granulacji oraz wilgoci (sól jest wybitnie higroskopijna i po zbryleniu zwiększa ciężar). Używana w przemyśle chemicznym (elektroliza solanki) i zimowym utrzymaniu dróg.",
+    "formula": "V * 1200",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość w pługoposypywarce", "unit": "m³", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_food_honey",
+    "title": "PŁYNY: Miód Pszczeli (Płynny)",
+    "description": "Naturalny miód to przesycony roztwór wodny cukrów prostych (głównie fruktozy i glukozy) z udziałem enzymów. Z racji minimalnej zawartości wody (zwykle poniżej 18%), tworzy wysoce gęstą i lepką substancję osiągającą ciężar właściwy na poziomie ok. 1420 kg/m³ (1.42 kg/L). Jeden słoik miodu o objętości 0.9 litra mieści zatem ponad 1.25 kg produktu netto.",
+    "formula": "V * 1.420",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość zadeklarowana", "unit": "L", "defaultValue": "0.9"}
+    ]
+  },
+  {
+    "id": "mass_food_milk",
+    "title": "PŁYNY: Mleko Krowie",
+    "description": "Mleko to złożona, wielofazowa emulsja (zawiesina tłuszczu i białek w wodzie). Dzięki obecności kazeiny, laktozy i soli mineralnych, gęstość mleka pełnotłustego (3.2%) lekko przekracza gęstość czystej wody i mieści się w paśmie ok. 1030 kg/m³ (1.03 kg/L) w temperaturze pasteryzacji. Pomiar ciężaru właściwego lakto-densymetrem pozwala od razu wykryć domieszkę wody.",
+    "formula": "V * 1.030",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość cieczy", "unit": "L", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "mass_food_olive_oil",
+    "title": "PŁYNY: Oliwa z Oliwek (Extra Virgin)",
+    "description": "Oleje tłoczone na zimno z oliwek stanowią mieszaninę triglicerydów kwasów tłuszczowych (głównie kwasu oleinowego). Jak większość tłuszczy roślinnych i zwierzęcych, oliwa jest wyraźnie lżejsza od wody. Jej gęstość w temperaturze 20°C wynosi stabilne 916 kg/m³ (0.916 kg/L). Z tego fizycznego zjawiska wynika unoszenie się oczek tłuszczu w bulionach kulinarnych na samą górę.",
+    "formula": "V * 0.916",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość oliwy", "unit": "L", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mass_agro_potatoes",
+    "title": "ROLNICTWO: Ziemniaki (w pryzmie)",
+    "description": "Składowanie bulw ziemniaka w halach magazynowych w systemie luźnych pryzm wymusza znajomość ich gęstości przestrzennej. Bulwa w 80% składa się z wody, lecz z uwagi na nieregularny kształt usypanych stosów i powstawanie pustek, cała pryzma na metr sześcienny wykazuje gęstość uśrednioną na poziomie ok. 700 kg/m³. Umożliwia to kalkulację nośności burt i posadzek.",
+    "formula": "V * 700",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość usypana", "unit": "m³", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "mass_fuel_coal",
+    "title": "PALIWA: Węgiel Kamienny (Groszek ekologiczny)",
+    "description": "Frakcjonowany węgiel kamienny (o granulacji 5-25 mm) dedykowany do kotłów retortowych. Gęstość właściwa węgla czystego dochodzi do 1300 kg/m³, jednak spakowany w workach z przerwami powietrznymi charakteryzuje się gęstością nasypową na poziomie ok. 800 kg/m³. Przelicznik jest absolutnie konieczny do budowy pojemnościowych zasobników buforowych przy piecach C.O.",
+    "formula": "V * 800",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Pojemność zasobnika pieca", "unit": "m³", "defaultValue": "0.3"}
+    ]
+  },
+  {
+    "id": "mass_fuel_lignite",
+    "title": "PALIWA: Węgiel Brunatny (Luzem)",
+    "description": "Młodsza technologicznie, kopalna skała osadowa o relatywnie niskiej kaloryczności i potężnej zawartości wilgoci (dochodzącej nawet do 50% masy świeżego urobku). Gęstość nasypowa węgla brunatnego tuż po wydobyciu metodą odkrywkową oscyluje w rejonie 750 kg/m³. Ze względu na wagę balastu wodnego, transport lądowy jest skrajnie nieekonomiczny (pali się go od razu przy kopalni).",
+    "formula": "V * 750",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość urobku", "unit": "m³", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_fuel_pellets",
+    "title": "PALIWA: Pelet Drzewny",
+    "description": "Granulat drzewny produkowany pod kolosalnym ciśnieniem z silnie wysuszonych odpadów tartacznych (trocin i wiórów). Zawartość wilgoci wynosi ułamek (poniżej 10%), a w procesie ekstruzji niszczona jest komórkowa budowa drewna, dlatego pojedyncza granula ma olbrzymią gęstość (tonie w wodzie). Gęstość nasypowa masy w big-bagu czy silosie to ok. 650 kg/m³.",
+    "formula": "V * 650",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość nasypowa", "unit": "m³", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "mass_fuel_woodchips",
+    "title": "PALIWA: Zrębki Drzewne",
+    "description": "Rozdrobniona biomasa pochodzenia leśnego, stosowana w zautomatyzowanych kotłowniach miejskich (ciepłowniach) na rusztach schodkowych. Ponieważ luźne kawałki drewna układają się bardzo nieregularnie i krzyżują ze sobą, sterta mieści kolosalne ilości pustego powietrza. Skutkuje to znikomą gęstością nasypową w rejonach 300 kg/m³. Zymusza to budowę gigantycznych magazynów operacyjnych.",
+    "formula": "V * 300",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość składowana", "unit": "m³", "defaultValue": "200"}
+    ]
+  },
+  {
+    "id": "mass_garden_peat",
+    "title": "AGRO: Ziemia Torfowa (Torf luźny)",
+    "description": "Materiał organiczny powstały ze zbutwiałych szczątków mchów i roślin bagiennych w warunkach niedoboru tlenu. Wysuszony substrat torfowy stosowany w ogrodnictwie jest potężnym chłonnikiem wody o niezwykle małej początkowej gęstości usypowej wynoszącej ok. 400 kg/m³. Dodany do gleb rolniczych, napowietrza strukturę i poprawia retencję bez nadmiernego dociążania systemu korzeniowego.",
+    "formula": "V * 400",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość usypana", "unit": "m³", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_build_paving_stone",
+    "title": "BUDOWNICTWO: Kostka Brukowa (Gr. 8 cm)",
+    "description": "Powszechnie stosowana betonowa wibroprasowana kostka brukowa na ciągi jezdne, parkingi i ciężkie place manewrowe. Beton o obniżonej nasiąkliwości gwarantuje wysoką masę własną ok. 2250 kg na m³ pełnej bryły. Dla ułatwienia operacji logistycznych i zamawiania transportu zakłada się, iż pokrycie jednego metra kwadratowego podłoża elementem o grubości 8 centymetrów generuje ciężar ok. 180 kg/m².",
+    "formula": "Area * 180",
+    "unit": "kg",
+    "variables": [
+      {"id": "Area", "label": "Powierzchnia ułożenia", "unit": "m²", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_build_porotherm",
+    "title": "BUDOWNICTWO: Pustak Ceramiczny (25 cm)",
+    "description": "Pustaki poryzowane (np. popularny Porotherm 25 P+W) to ewolucja cegły. Glina z wypalonymi mikroporami i duży udział wewnętrznych dziur geometrycznych radykalnie obniżają gęstość i współczynnik przewodzenia ciepła ściany. Typowy, pojedynczy element nośny o wymiarach 373×250×238 mm waży około 14 kg. Kalkulacja w oparciu o liczbę zamówionych sztuk (jedna paleta mieści najczęściej 72 sztuki).",
+    "formula": "N * 14",
+    "unit": "kg",
+    "variables": [
+      {"id": "N", "label": "Liczba pustaków", "unit": "szt", "defaultValue": "72"}
+    ]
+  },
+  {
+    "id": "mass_build_roof_tile",
+    "title": "BUDOWNICTWO: Dachówka Ceramiczna (Karpiówka)",
+    "description": "Klasyczna płaska dachówka ceramiczna, której układanie w podwójne pasy (łuska) tworzy majestatyczne, ciężkie pokrycie dachowe dla tradycyjnej architektury (np. budowle sakralne). Jedną z konsekwencji nakładania na siebie połaci ceramiki jest gigantyczne obciążenie więźby dachowej, mogące wynosić średnio 65 kg przypadających na każdy metr kwadratowy. Parametr kluczowy do ugięć krokwiowych.",
+    "formula": "Area * 65",
+    "unit": "kg",
+    "variables": [
+      {"id": "Area", "label": "Powierzchnia dachu", "unit": "m²", "defaultValue": "150"}
+    ]
+  },
+  {
+    "id": "mass_build_roofing_felt",
+    "title": "BUDOWNICTWO: Papa Termozgrzewalna Wierzchniego Krycia",
+    "description": "Nowoczesne pokrycia bitumiczne modyfikowane polimerami (SBS lub APP) na osnowach z geowłókniny poliestrowej. Stosowane do bezspoinowej izolacji wodochronnej dachów płaskich i fundamentów. Wykończone gruboziarnistą posypką mineralną z łupka w celu obrony powłoki przed destrukcyjnym działaniem promieni UV. Ciężar rolki papy zależy od grubości (zazwyczaj 5.2 mm grubości przekłada się na około 5 kg/m² krycia).",
+    "formula": "Area * 5",
+    "unit": "kg",
+    "variables": [
+      {"id": "Area", "label": "Powierzchnia izolacji", "unit": "m²", "defaultValue": "200"}
+    ]
+  },
+  {
+    "id": "mass_build_glass_tempered",
+    "title": "BUDOWNICTWO: Szkło Hartowane (ESG)",
+    "description": "Szkło hartowane termicznie, poprzez kontrolowane schłodzenie wywołujące wierzchnie naprężenia ściskające i głębokie naprężenia rozciągające. Proces hartowania czyni je 5-krotnie wytrzymalszym od szkła Float (typowa nośność to aż 120 N/mm²) nie zmieniając jednak pierwotnej gęstości w żaden sposób (nadal pozostaje fizyczne 2500 kg/m³). Rozbicie generuje tysiące nieostrych kryształków chroniących ciało ludzkie przed okaleczeniem.",
+    "formula": "L * W * (T / 1000) * 2500",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość szyby", "unit": "m", "defaultValue": "2.5"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1.5"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_exotic_aerogel",
+    "title": "MATERIAŁY: Aerożel Krzemionkowy",
+    "description": "Aerożel to absolutny rekordzista inżynierii materiałowej – najlżejsze znane ludzkości, nanostrukturalne ciało stałe, zwane potocznie 'zamrożonym dymem'. Powstaje przez wyparcie cieczy z żelu krzemionkowego bez jego zapadnięcia, tworząc kompozyt będący w ponad 99% czystym powietrzem, dając niewyobrażalną gęstość ok. 1.9 kg/m³. Przez to zatrzymuje całkowicie konwekcję i staje się najpotężniejszym znanym termoizolatorem na planecie Ziemia.",
+    "formula": "V * 1.9",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość fizyczna bryły", "unit": "m³", "defaultValue": "1"}
+    ]
+  },
+  {
+    "id": "mass_exotic_osmium",
+    "title": "PIERWIASTKI: Osm (Osmium)",
+    "description": "Osm to twardy, niebieskoszary metal przejściowy należący do platynowców, będący oficjalnie najgęstszym ze stabilnych pierwiastków układu okresowego i najcięższą na Ziemi substancją rzędu 22590 kg/m³ (jest niemal trzykrotnie cięższy od stali i ociężały w stosunku do złota czy uranu). Ze styków elektrycznych oraz wytrzymałych stalówek piór rezygnuje się na rzecz irydu, z powodu wybitnej promieniotwórczej toksyczności czterotlenku osmu, tworzącego się na styku z powietrzem w wysokich temperaturach.",
+    "formula": "V * 0.02259",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość metalu", "unit": "cm³", "defaultValue": "100"}
+    ]
+  },
+  {
+    "id": "mass_exotic_styrofoam",
+    "title": "IZOLACJE: Styropian Termiczny (EPS 70)",
+    "description": "Polistyren ekspandowany to uniwersalny polimer o komórkowej strukturze zamkniętej pełnej powietrza używany we wszelkiego typu dylatacjach fundamentów, posadzek czy ścian ETICS. Popularna w budownictwie odmiana elewacyjna EPS 70 jest dedykowana do lekkich naprężeń na docisk 70 kPa. Metr sześcienny tego plastycznego materiału (wyrażany w kilkunastu paczkach po 0.3 m³) waży zaledwie skromne 15 kg.",
+    "formula": "V * 15",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość izolacyjna (styropian)", "unit": "m³", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_exotic_epdm",
+    "title": "TWORZYWA: Guma EPDM",
+    "description": "Elastomer EPDM (terpolimer etyleno-propyleno-dienowy) charakteryzuje się unikalną polimerową odwracalną odkształcalnością. Jego bazowa gęstość oscyluje wokół 1150 kg/m³. Dzięki niemal całkowitej odporności na destrukcyjne promieniowanie ultrafioletowe (UV), stężony ozon i wysoką wodoodporność do +130°C - to bezwzględny król podzespołów dachowych, opon rolniczych, amortyzatorów wstrząsów i taśm izolujących przewody wysokiego napięcia w inżynierii podziemnej.",
+    "formula": "L * W * (T / 1000) * 1150",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość uszczelki", "unit": "m", "defaultValue": "100"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "0.05"},
+      {"id": "T", "label": "Grubość", "unit": "mm", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_exotic_carbide",
+    "title": "NARZĘDZIA: Węglik Spiekany (Widia)",
+    "description": "Węgliki spiekane to kompozyty ceramiczno-metalowe. Proszek węglika wolframu lub rzadszego tytanu wraz ze szlachetnym kobaltem i niklem jako lepkim spoiwem prasuje się a po tym wypieka w warunkach temp. wykraczającej powyżej 1400°C. Ciężar stopów zależnie od modyfikacji zbliża się do gęstości rzędu 15000 kg/m³ dając materiałowi wprost diamentową obrabialność narzędzi tokarskich, wierteł w kopalnictwie szybkim, noży frezarskich bez tępienia w stali nierdzewnej pod warunkiem niedopuszczenia do szoku cieplnego płynu chłodniczego.",
+    "formula": "V * 0.015",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość spieków na końcówki", "unit": "cm³", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_exotic_cfrp",
+    "title": "KOMPOZYTY: Włókno Węglowe (CFRP)",
+    "description": "Polimery zbrojone wyczynowymi splotami z włókien węglowych zawartymi w matrycy z termoutwardzalnej żywicy epoksydowej. Mają kolosalnie wyższy od metali współczynnik modułu sprężystości poprzecznej lecz pociągając za sobą masę o połowę niższą od stopów glinu, z obłędem gęstości zaledwie na granicy 1500 kg/m³. Stanowią podstawę inżynierii lotniczej cywilnej (Airbus A350, Dreamliner 787), bolidów z ramą Monocoque F1 i rowerowych ram szosowych ograniczając opory sił bezwładności masy wirującej do minimum.",
+    "formula": "L * W * (T / 1000) * 1500",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość formy", "unit": "m", "defaultValue": "2"},
+      {"id": "W", "label": "Szerokość splotu", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość splotu do zalaminowania", "unit": "mm", "defaultValue": "2"}
+    ]
+  },
+  {
+    "id": "mass_exotic_kevlar",
+    "title": "KOMPOZYTY: Kevlar (Włókno Aramidowe)",
+    "description": "Poli(p-fenylenotereftaloamid), rewolucyjny wysokowytrzymały polimer wymyślony w ośrodkach laboratoryjnych firmy DuPont o relatywnie niskiej i doskonałej masie objętościowej nieprzekraczającej gęstości rzędu 1440 kg/m³. Dzięki kolosalnej odporności mechanicznej i zjawisku absorpcji pełnej energii uderzenia punktowego od odkształcenia elastycznego rozciągnięciu do siatki polimerowej to podstawowe włókno odlewanych hełmów policyjnych balistycznych, i kuloodpornych wielowarstwowych kamizelek o znikomych gabarytach krępujących człowieka w trakcie biegu pieszego w akcji.",
+    "formula": "L * W * (T / 1000) * 1440",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość", "unit": "m", "defaultValue": "1"},
+      {"id": "W", "label": "Szerokość", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość kompozytu warstwy", "unit": "mm", "defaultValue": "5"}
+    ]
+  },
+  {
+    "id": "mass_exotic_hdpe",
+    "title": "TWORZYWA: Polietylen HDPE",
+    "description": "Polietylen w wariacji o wysokiej gęstości łańcuchowej (HDPE). Dzięki minimalnej liczbie rozgałęzień wewnętrznych polimer charakteryzuje się podwyższoną wytrzymałością konstrukcyjną w porównaniu do standardowego PE gęstości od ok. 950 do 970 kg/m³. Ze względu na pełne uniesienie na wodzie, nie pękanie pod mrozem, obojętność bez toksyn dla układu, robione są z niego grube podziemne rury ciśnieniowe zaopatrujące osiedla miejskie w obieg zasilania zimnej wody wodociągowej i wielkie szczelne szamba asenizacyjne do domostw.",
+    "formula": "L * W * (T / 1000) * 960",
+    "unit": "kg",
+    "variables": [
+      {"id": "L", "label": "Długość rury / panelu", "unit": "m", "defaultValue": "2"},
+      {"id": "W", "label": "Szerokość lub przekrój", "unit": "m", "defaultValue": "1"},
+      {"id": "T", "label": "Grubość ścianki HDPE", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "mass_exotic_magma",
+    "title": "GEOLOGIA: Płynna Magma Krzemianowa",
+    "description": "Stopiona masa fuzji skalnej i minerałów oraz rozpuszczonych w niej lotnych pierwiastków ukryta pod kolosalnym ciśnieniem litosfery z reżimami rzędu dochodzących tysiącom ton ucisku. W trakcie erupcji pluwialnej wulkanu pozbywa się pary jako stop gęstniejący pod masą ok. 3100 kg/m³. Wyższa o zaledwie kilkanaście stopni celcjusza gorączka jądra podrzuca w wyciągu kominowym z gęstszego płaszcza ziemskiego z racji rozszerzalności objętości płyn wprost ku twardym skarpom wysp.",
+    "formula": "V * 3100",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość intruzji skalnej krateru", "unit": "m³", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "mass_exotic_d2o",
+    "title": "FIZYKA: Woda Ciężka (Tlenek Deuteru, D2O)",
+    "description": "Rzadki i niezwykle cenny rynkowo izotopolog, w którym atomy standardowego wodoru (protu) zostały wymienione na swój izotop posiadający na orbicie po za protonem jeden obarczony ciężarem nielotny neutron tworząc nukleon z deuteru. Zmienia ten niuans kompletnie masę powszechnego życiodajnego tlenku do imponujących jak na płyn 1105 kg/m³. Doskonała funkcja neutralizacji rozbłysków jako wyhamowywacz mrożący swobodne pędzące reaktorem nuklearnym cząsteczki uranowe nie blokując reaktywności do zapadów chłodnicznych po podgrzaniu turbiny na wał mechaniczny.",
+    "formula": "V * 1.105",
+    "unit": "kg",
+    "variables": [
+      {"id": "V", "label": "Objętość zamknięta basenów chłodzących", "unit": "L", "defaultValue": "100"}
+    ]
   }
 ]
 
