@@ -6082,6 +6082,77 @@
     "variables": [
       {"id": "TimeDiff", "label": "Różnica czasu dotarcia fal S i P", "unit": "s", "defaultValue": "12.5"}
     ]
+  },
+  {
+    "id": "tox_widmark_bac",
+    "title": "MEDYCYNA SĄDOWA: Wzór Widmarka (Promile)",
+    "description": "Klasyczne i fundamentalne równanie medycyny sądowej opracowane przez Erika Widmarka w 1932 roku. Służy do precyzyjnego, teoretycznego szacowania maksymalnego stężenia alkoholu etylowego we krwi (BAC - Blood Alcohol Concentration) po spożyciu znanej dawki. Algorytm ten uwzględnia całkowitą masę spożytego czystego etanolu w gramach oraz masę ciała pacjenta skorygowaną o współczynnik dystrybucji wodnej (0.7 dla mężczyzn, 0.6 dla kobiet ze względu na różnice w fizjologicznym udziale tkanki tłuszczowej). Wzór ten nie uwzględnia deficytu absorpcji ani czasu eliminacji wątrobowej, wskazując absolutny, teoretyczny pik stężenia natychmiastowego.",
+    "formula": "AlcoholGrams / (Weight * K_Factor)",
+    "unit": "‰ (Promile)",
+    "variables": [
+      {"id": "AlcoholGrams", "label": "Masa czystego etanolu", "unit": "g", "defaultValue": "40"},
+      {"id": "Weight", "label": "Masa ciała", "unit": "kg", "defaultValue": "80"},
+      {"id": "K_Factor", "label": "Współczynnik (0.7 Mężczyzna, 0.6 Kobieta)", "unit": "-", "defaultValue": "0.7"}
+    ]
+  },
+  {
+    "id": "pharma_therapeutic_index",
+    "title": "FARMAKOLOGIA: Indeks Terapeutyczny (TI)",
+    "description": "Jeden z najistotniejszych wskaźników w projektowaniu i bezpiecznym dawkowaniu nowoczesnych leków. Indeks Terapeutyczny to bezwymiarowy stosunek dawki wywołującej efekt toksyczny u 50% populacji (TD50) do dawki wywołującej pożądany efekt leczniczy u 50% populacji (ED50). Leki o wysokim indeksie terapeutycznym (np. penicylina, paracetamol) są wysoce bezpieczne i pozwalają na duże błędy w dawkowaniu. Leki o wąskim indeksie (tzw. NTI - Narrow Therapeutic Index, np. digoksyna, warfaryna, sole litu) wymagają absolutnie rygorystycznego monitorowania stężenia we krwi, gdyż niewielkie przedawkowanie prowadzi do drastycznej toksyczności.",
+    "formula": "TD50 / ED50",
+    "unit": "TI (Wskaźnik)",
+    "variables": [
+      {"id": "TD50", "label": "Dawka toksyczna (TD50)", "unit": "mg", "defaultValue": "1000"},
+      {"id": "ED50", "label": "Dawka efektywna (ED50)", "unit": "mg", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "ohs_gas_concentration_ppm",
+    "title": "TOKSYKOLOGIA BHP: Konwersja PPM na mg/m³",
+    "description": "Kluczowe równanie z zakresu inżynierii bezpieczeństwa i higieny pracy (BHP) oraz detekcji gazów. Przelicza stężenie objętościowe toksycznych par i gazów podawane przez sensory w parts-per-million (ppm) na bezwzględne stężenie masowe (mg/m³), które jest prawnym standardem w normach Najwyższych Dopuszczalnych Stężeń (NDS). Konwersja ta wymaga znajomości masy molowej substancji badanej oraz opiera się na objętości molowej gazu doskonałego w standardowych warunkach termodynamicznych (24.45 litra w 25°C i 1 atm). Używane nagminnie w kopalniach, lakierniach i oczyszczalniach ścieków.",
+    "formula": "(PPM * MolarMass) / 24.45",
+    "unit": "mg/m³",
+    "variables": [
+      {"id": "PPM", "label": "Wskazanie detektora gazu", "unit": "ppm", "defaultValue": "50"},
+      {"id": "MolarMass", "label": "Masa molowa gazu (np. CO = 28.01)", "unit": "g/mol", "defaultValue": "28.01"}
+    ]
+  },
+  {
+    "id": "ohs_le_chatelier_lel",
+    "title": "CHEMIA POŻAROWA: Dolna Granica Wybuchowości (LEL Mieszaniny)",
+    "description": "Zaawansowane równanie empiryczne Le Chateliera pozwalające na wyznaczenie całkowitej Dolnej Granicy Wybuchowości (DGW / LEL) dla złożonej, wieloskładnikowej mieszaniny palnych gazów atmosferycznych (np. metanu, propanu i wodoru uwolnionych w hali). Równanie to zakłada, że gazy nie reagują ze sobą chemicznie przed zapłonem. Poprawne wyliczenie stężenia LEL mieszaniny determinuje próg załączenia awaryjnych układów wentylacji przeciwwybuchowej (EX) w przemyśle petrochemicznym. Wzór w wariancie dla dwuskładnikowej mieszanki ułamkowej.",
+    "formula": "100 / ((Vol1 / LEL1) + (Vol2 / LEL2))",
+    "unit": "% (LEL Mieszaniny)",
+    "variables": [
+      {"id": "Vol1", "label": "Udział % gazu pierwszego (np. Metan 60%)", "unit": "%", "defaultValue": "60"},
+      {"id": "LEL1", "label": "Własny LEL gazu pierwszego (Metan = 5.0)", "unit": "%", "defaultValue": "5.0"},
+      {"id": "Vol2", "label": "Udział % gazu drugiego (np. Wodór 40%)", "unit": "%", "defaultValue": "40"},
+      {"id": "LEL2", "label": "Własny LEL gazu drugiego (Wodór = 4.0)", "unit": "%", "defaultValue": "4.0"}
+    ]
+  },
+  {
+    "id": "pharma_volume_of_distribution",
+    "title": "FARMAKOKINETYKA: Objętość Dystrybucji (Vd)",
+    "description": "Objętość dystrybucji to czysto hipotetyczny, matematyczny parametr farmakokinetyczny. Określa on objętość płynów ustrojowych, w jakiej musiałaby równomiernie rozpuścić się podana dawka leku, aby osiągnąć stężenie dokładnie takie, jakie faktycznie zmierzono we krwi (osoczu) pacjenta. Leki o niskim Vd (zbliżonym do objętości osocza, ok. 3-5 litrów) są silnie wiązane przez białka we krwi i rzadko przenikają do tkanek. Z kolei wysoce lipofilne leki i toksyny (np. THC, niektóre antydepresanty) osiągają ekstremalne, urojone objętości Vd rzędu setek litrów, uciekając z krwiobiegu i kumulując się głęboko w tkance tłuszczowej lub nerwowej.",
+    "formula": "Dose_mg / (Concentration_ug_ml / 1000)",
+    "unit": "Litrów",
+    "variables": [
+      {"id": "Dose_mg", "label": "Podana całkowita dawka leku", "unit": "mg", "defaultValue": "500"},
+      {"id": "Concentration_ug_ml", "label": "Zmierzone stężenie w osoczu", "unit": "μg/mL", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "ohs_air_changes_per_hour",
+    "title": "HVAC: Krotność Wymiany Powietrza (ACH)",
+    "description": "Parametr ACH (Air Changes per Hour) stanowi fundament inżynierii wentylacji mechanicznej, klimatyzacji (HVAC) oraz projektowania laboratoriów chemicznych i boksów sterylnych. Określa, ile razy w ciągu jednej, pełnej godziny potężne wentylatory nawiewno-wywiewne zdołają całkowicie wyssać i podmienić całą kubaturę brudnego, nasyconego gazami powietrza z danego pomieszczenia. Sale operacyjne, laboratoria z dygestoriami BSL-3 oraz lakiernie samochodowe wymagają reżimu na poziomie kilkunastu do kilkudziesięciu wymian na godzinę (ACH > 15), aby zabezpieczyć personel przed śmiercionośną kumulacją oparów i patogenów.",
+    "formula": "FanAirflow / (RoomLength * RoomWidth * RoomHeight)",
+    "unit": "ACH (Wymian/h)",
+    "variables": [
+      {"id": "FanAirflow", "label": "Wydajność wentylatora (Wydatek)", "unit": "m³/h", "defaultValue": "1500"},
+      {"id": "RoomLength", "label": "Długość hali", "unit": "m", "defaultValue": "10"},
+      {"id": "RoomWidth", "label": "Szerokość hali", "unit": "m", "defaultValue": "5"},
+      {"id": "RoomHeight", "label": "Wysokość hali", "unit": "m", "defaultValue": "3"}
+    ]
   }
 ]
 
