@@ -6386,6 +6386,236 @@
       {"id": "DeltaV", "label": "Wymagany impuls całkowity misji Delta-V", "unit": "m/s", "defaultValue": "9500"},
       {"id": "ExhaustVelocity", "label": "Efektywny ciąg prędkości ucieczki spalin silnika", "unit": "m/s", "defaultValue": "4500"}
     ]
+  },
+  {
+    "id": "astro_eddington_luminosity",
+    "title": "ASTROFIZYKA: Jasność Eddingtona (Limit)",
+    "description": "Fundamentalny limit astrofizyczny określający absolutnie maksymalną moc promieniowania (jasność), jaką może emitować sferycznie symetryczna gwiazda o danej masie, zanim potężne ciśnienie wywieranego przez nią promieniowania elektromagnetycznego przezwycięży własną siłę grawitacji i doprowadzi do odrzucenia zewnętrznych warstw gazu (wiatru gwiazdowego). Równanie to stanowi barierę dla akrecji materii na supermasywne czarne dziury oraz determinuje masę największych możliwych gwiazd we wszechświecie. Wartość jest skalowana względem masy Słońca.",
+    "formula": "32000 * (Mass / 1.989e30) * 3.828e26",
+    "unit": "W (Wat)",
+    "variables": [
+      {"id": "Mass", "label": "Masa gwiazdy/obiektu", "unit": "kg", "defaultValue": "1.989e31"}
+    ]
+  },
+  {
+    "id": "astro_chandrasekhar_limit",
+    "title": "ASTROFIZYKA: Granica Chandrasekhara",
+    "description": "Krytyczna masa maksymalna stabilnego białego karła, wspieranego wyłącznie przez ciśnienie zdegenerowanego gazu elektronowego (zjawisko wynikające wprost z zakazu Pauliego w mechanice kwantowej). Przekroczenie tej masy (ok. 1.44 masy Słońca) wskutek akrecji materii z gwiazdy towarzyszącej wywołuje nieuchronny, katastrofalny kolaps grawitacyjny, prowadzący do zapłonu termojądrowego węgla i tlenu, a w efekcie do potężnej eksplozji supernowej typu Ia. Wyliczenie to opiera się na stałej Plancka, prędkości światła i masie protonu.",
+    "formula": "1.44 * 1.989e30",
+    "unit": "kg (Max masa)",
+    "variables": []
+  },
+  {
+    "id": "astro_drake_equation_simplified",
+    "title": "ASTROBIOLOGIA: Równanie Drake'a",
+    "description": "Probabilistyczne równanie sformułowane w 1961 roku przez dr. Franka Drake'a w celu oszacowania liczby aktywnych, komunikatywnych cywilizacji pozaziemskich w galaktyce Drogi Mlecznej. Wzór ten systematyzuje poszukiwania w ramach programu SETI, mnożąc tempo powstawania gwiazd, odsetek układów planetarnych, liczbę planet w ekosferze, ułamek ciał rozwijających życie, inteligencję, technologię radiową oraz szacowany czas trwania takiej zaawansowanej cywilizacji przed samounicestwieniem lub wymarciem.",
+    "formula": "R_star * F_p * N_e * F_l * F_i * F_c * L_time",
+    "unit": "Cywilizacji",
+    "variables": [
+      {"id": "R_star", "label": "Tempo formowania gwiazd", "unit": "1/rok", "defaultValue": "1.5"},
+      {"id": "F_p", "label": "Ułamek gwiazd z planetami", "unit": "-", "defaultValue": "0.5"},
+      {"id": "N_e", "label": "Planety w ekosferze (na układ)", "unit": "szt", "defaultValue": "1"},
+      {"id": "F_l", "label": "Ułamek planet z życiem", "unit": "-", "defaultValue": "0.1"},
+      {"id": "F_i", "label": "Ułamek z życiem inteligentnym", "unit": "-", "defaultValue": "0.1"},
+      {"id": "F_c", "label": "Ułamek zdolny do komunikacji", "unit": "-", "defaultValue": "0.1"},
+      {"id": "L_time", "label": "Średni czas przetrwania (lata)", "unit": "lat", "defaultValue": "10000"}
+    ]
+  },
+  {
+    "id": "quantum_planck_einstein",
+    "title": "MECHANIKA KWANTOWA: Relacja Plancka-Einsteina (Energia Fotonu)",
+    "description": "Fundamentalne równanie fizyki kwantowej dowodzące, że promieniowanie elektromagnetyczne (w tym światło widzialne) jest skwantowane – przenosi energię wyłącznie w dyskretnych porcjach zwanych fotonami lub kwantami. Energia pojedynczego fotonu jest bezwzględnie wprost proporcjonalna do częstotliwości jego fali drgań elektromagnetycznych. Współczynnikiem proporcjonalności jest stała Plancka (h ≈ 6.626 × 10⁻³⁴ J·s). Równanie to leży u podstaw zjawiska fotoelektrycznego, budowy laserów oraz fizyki półprzewodników.",
+    "formula": "6.626e-34 * Frequency",
+    "unit": "J (Dżul)",
+    "variables": [
+      {"id": "Frequency", "label": "Częstotliwość fali elektromag.", "unit": "Hz", "defaultValue": "5e14"}
+    ]
+  },
+  {
+    "id": "quantum_uncertainty_momentum",
+    "title": "MECHANIKA KWANTOWA: Zasada Nieoznaczoności Heisenberga",
+    "description": "Jedno z najbardziej kontrowersyjnych i niezrozumiałych zjawisk fizyki subatomowej, sformułowane przez Wernera Heisenberga w 1927 roku. Zasada ta stanowi absolutny, matematyczny zakaz jednoczesnego, nieskończenie precyzyjnego pomiaru pary sprzężonych zmiennych kanonicznych, takich jak pęd oraz położenie cząstki (np. elektronu). Równanie wskazuje dolną, fizyczną granicę iloczynu niepewności (równą zredukowanej stałej Plancka podzielonej przez dwa). Oznacza to, że im dokładniej zmierzymy położenie elektronu w atomie, tym mniej będziemy wiedzieć o jego pędzie, i odwrotnie.",
+    "formula": "(1.054e-34 / 2) / UncertaintyPos",
+    "unit": "kg·m/s (Niepewność pędu)",
+    "variables": [
+      {"id": "UncertaintyPos", "label": "Niepewność położenia (Δx)", "unit": "m", "defaultValue": "1e-10"}
+    ]
+  },
+  {
+    "id": "quantum_photoelectric_work",
+    "title": "FIZYKA KWANTO.: Zjawisko Fotoelektryczne (Praca Wyjścia)",
+    "description": "Równanie opracowane przez Alberta Einsteina (za które ostatecznie otrzymał Nagrodę Nobla), bezbłędnie wyjaśniające zjawisko wybijania swobodnych elektronów z powierzchni twardych metali pod wpływem naświetlania promieniami UV. Maksymalna kinetyczna energia wybitego fotoelektronu jest różnicą pomiędzy energią uderzającego fotonu kwantowego a tzw. pracą wyjścia – minimalną porcją energii niezbędną do wyrwania elektronu ze struktury krystalicznej danego metalu. Zjawisko to umożliwiło stworzenie paneli słonecznych (fotowoltaiki), noktowizorów oraz nowoczesnych powielaczy fotoelektrycznych.",
+    "formula": "(6.626e-34 * Frequency) - (WorkFunction * 1.602e-19)",
+    "unit": "J (Energia kinetyczna)",
+    "variables": [
+      {"id": "Frequency", "label": "Częstotliwość fali padającej", "unit": "Hz", "defaultValue": "1e15"},
+      {"id": "WorkFunction", "label": "Praca wyjścia metalu", "unit": "eV", "defaultValue": "2.2"}
+    ]
+  },
+  {
+    "id": "relativity_lorentz_factor",
+    "title": "RELATYWISTYKA: Czynnik Lorentza (Gamma)",
+    "description": "Najważniejszy współczynnik transformacji w szczególnej teorii względności Alberta Einsteina. Czynnik Lorentza (często oznaczany grecką literą γ) określa precyzyjną miarę zjawisk dylatacji czasu, kontrakcji (skrócenia) długości oraz wzrostu masy relatywistycznej dla obiektów fizycznych poruszających się z prędkościami zbliżającymi się do bariery prędkości światła w próżni. W miarę jak prędkość obiektu zbliża się do c, czynnik ten asymptotycznie dąży do nieskończoności, udowadniając matematycznie, że przyspieszenie jakiegokolwiek ciała posiadającego masę spoczynkową do prędkości światła wymaga nieskończonych nakładów energii.",
+    "formula": "1 / sqrt(1 - ((Velocity * Velocity) / (299792458 * 299792458)))",
+    "unit": "γ (Bezwymiarowy)",
+    "variables": [
+      {"id": "Velocity", "label": "Prędkość obiektu fizycznego", "unit": "m/s", "defaultValue": "250000000"}
+    ]
+  },
+  {
+    "id": "relativity_momentum",
+    "title": "RELATYWISTYKA: Pęd Relatywistyczny",
+    "description": "Zmodyfikowane przez Alberta Einsteina klasyczne równanie pędu Newtona (p = m·v). W fizyce relatywistycznej kinetyczny pęd ciała nie rośnie liniowo wraz z jego prędkością. Zjawisko to ulega drastycznemu nasileniu przy wysokich prędkościach za sprawą sprzężenia z czynnikiem Lorentza. W efekcie, aby utrzymać stałe przyspieszenie cząstki w akceleratorze kołowym (np. w Wielkim Zderzaczu Hadronów), wymagane są potężne, nieliniowe modyfikacje natężenia pól magnetycznych wyginających ich trajektorię lotu.",
+    "formula": "Mass * Velocity / sqrt(1 - ((Velocity * Velocity) / (299792458 * 299792458)))",
+    "unit": "kg·m/s",
+    "variables": [
+      {"id": "Mass", "label": "Spoczynkowa masa obiektu", "unit": "kg", "defaultValue": "1"},
+      {"id": "Velocity", "label": "Prędkość kinetyczna", "unit": "m/s", "defaultValue": "200000000"}
+    ]
+  },
+  {
+    "id": "chem_graham_effusion",
+    "title": "CHEMIA FIZYCZNA: Prawo Grahama (Efuzja Gazów)",
+    "description": "Równanie opracowane przez szkockiego chemika Thomasa Grahama określa, że szybkość efuzji (lub mikroskopowej dyfuzji) izotermicznego gazu przez mikroskopijne pory jest odwrotnie proporcjonalna do pierwiastka kwadratowego z jego masy molowej. Lżejsze cząsteczki poruszają się fizycznie szybciej w próżni i gazach nośnych. Prawo to stanowi technologiczny fundament procesu masowego wzbogacania uranu metodą dyfuzji gazowej heksafluorku uranu (UF6), gdzie izotop U-235 ucieka przez specjalistyczne filtry nieznacznie szybciej niż dominujący, cięższy izotop U-238.",
+    "formula": "sqrt(MolarMass2 / MolarMass1)",
+    "unit": "Stosunek szybkości (v1/v2)",
+    "variables": [
+      {"id": "MolarMass1", "label": "Masa molowa gazu 1 (lżejszego)", "unit": "g/mol", "defaultValue": "2.016"},
+      {"id": "MolarMass2", "label": "Masa molowa gazu 2 (cięższego)", "unit": "g/mol", "defaultValue": "32.0"}
+    ]
+  },
+  {
+    "id": "chem_henry_law_solubility",
+    "title": "CHEMIA FIZYCZNA: Prawo Henry'ego (Rozpuszczalność Gazów)",
+    "description": "Prawo sformułowane w 1803 roku przez Williama Henry'ego opisuje fizyczną termodynamikę roztworów, definiując, że w stałej temperaturze całkowita masa gazu rozpuszczonego w określonej objętości ciekłego rozpuszczalnika jest wprost proporcjonalna do ciśnienia cząstkowego tego gazu wywieranego nad roztworem. Zjawisko to doskonale wyjaśnia proces przemysłowego nasycania napojów gazowanych dwutlenkiem węgla pod ogromnym uciskiem maszyn, a także śmiertelnie groźną dla nurków chorobę dekompresyjną, gdy rozpuszczony pod ciśnieniem dennym azot gwałtownie uwalnia się we krwi w postaci gazowych bąbli podczas zbyt prędkiego wynurzania z głębin na powierzchnię.",
+    "formula": "Pressure * HenryConstant",
+    "unit": "mol/L (Stężenie)",
+    "variables": [
+      {"id": "Pressure", "label": "Ciśnienie cząstkowe gazu", "unit": "atm", "defaultValue": "2.5"},
+      {"id": "HenryConstant", "label": "Stała Henry'ego dla pary (H)", "unit": "mol/(L·atm)", "defaultValue": "0.034"}
+    ]
+  },
+  {
+    "id": "chem_fick_first_law",
+    "title": "TERMODYNAMIKA: I Prawo Ficka (Dyfuzja Mas)",
+    "description": "Pierwsze prawo dyfuzji Adolfa Ficka to fundamentalny algorytm określający wektorowy przepływ molowy (lub masowy) cząsteczek substancji przemieszczających się poprzez ośrodek (np. gaz, ciecz, półprzepuszczalną membranę polimerową) wskutek narzuconego gradientu stężeń. Ruch materii zawsze następuje z obszaru o stężeniu wyższym do obszaru o stężeniu niższym, próbując maksymalizować entropię w zamkniętym systemie. To potężne równanie różniczkowe jest szeroko używane przy projektowaniu respiratorów płucnych, membran stacji odwróconej osmozy i procesów nawęglania cieplnego struktur stalowych (hartowania metali na wskroś).",
+    "formula": "-DiffCoeff * (ConcDiff / Thickness)",
+    "unit": "mol/(m²·s) (Strumień)",
+    "variables": [
+      {"id": "DiffCoeff", "label": "Współczynnik dyfuzji (D)", "unit": "m²/s", "defaultValue": "1e-9"},
+      {"id": "ConcDiff", "label": "Różnica stężeń (ΔC)", "unit": "mol/m³", "defaultValue": "50"},
+      {"id": "Thickness", "label": "Grubość warstwy bariery", "unit": "m", "defaultValue": "0.01"}
+    ]
+  },
+  {
+    "id": "thermo_fourier_conduction",
+    "title": "WYMIANA CIEPŁA: Prawo Fouriera (Przewodnictwo Termiczne)",
+    "description": "Najważniejsze równanie inżynierii cieplnej sformułowane w 1822 roku przez Jean-Baptiste Fouriera. Opisuje jednowymiarowy, stacjonarny transfer wewnętrznej energii cieplnej uchodzącej poprzez ciągłą fizyczną przegrodę (np. pełną ścianę budynku, miedziany radiator procesora komputerowego lub izolacyjny koc ratunkowy). Strumień przepływającego ciepła (wyrażony w jednostkach mocy, czyli Watach) jest wprost proporcjonalny do pola ucieczki, przewodności termicznej materiału, fizycznej różnicy skrajnych temperatur oraz jest odwrotnie proporcjonalny do odległości przegrody na wylot (grubości). Algorytm ten jest kluczowy przy profesjonalnym audycie energetycznym w inżynierii domów pasywnych z odzyskiem ciepła.",
+    "formula": "(ThermalCond * Area * TempDiff) / Thickness",
+    "unit": "W (Moc cieplna strumienia)",
+    "variables": [
+      {"id": "ThermalCond", "label": "Współcz. przewodzenia ciepła (Lambda)", "unit": "W/(m·K)", "defaultValue": "0.04"},
+      {"id": "Area", "label": "Powierzchnia oddająca ciepło", "unit": "m²", "defaultValue": "10"},
+      {"id": "TempDiff", "label": "Różnica temperatur środowisk", "unit": "°C", "defaultValue": "30"},
+      {"id": "Thickness", "label": "Grubość bariery ściennej", "unit": "m", "defaultValue": "0.2"}
+    ]
+  },
+  {
+    "id": "thermo_carnot_cop_cooling",
+    "title": "TERMODYNAMIKA: Współczynnik Wydajności COP (Chłodnictwo)",
+    "description": "Bezwzględna górna, wyidealizowana fizycznie granica i wskaźnik wydajności energetycznej (Coefficient of Performance) dla dowolnej maszyny chłodniczej pracującej w zamkniętym termodynamicznie Odwróconym Cyklu Carnota. Wskaźnik ten określa nieubłagany stosunek odprowadzonego od układu ciepła z komory zamrażalnika do ułożonej, bezwzględnej pracy mechanicznej pobranej przez obciążony sprężarką wał kompresora z gniazdka elektrycznego. W rzeczywistych instalacjach układów klimatyzacji rygorystyczne wartości COP ulegają znaczącym degradacjom przez destrukcyjne, nieliniowe efekty lepkościowe dławienia zaworów w sprężarkach tłokowych układu rur miedzianych freonu.",
+    "formula": "(Tc + 273.15) / ((Th + 273.15) - (Tc + 273.15))",
+    "unit": "COP (Współczynnik)",
+    "variables": [
+      {"id": "Tc", "label": "Temperatura chłodzonego wnętrza", "unit": "°C", "defaultValue": "-18"},
+      {"id": "Th", "label": "Temperatura otoczenia (na zewnątrz)", "unit": "°C", "defaultValue": "30"}
+    ]
+  },
+  {
+    "id": "fluid_dynamic_pressure",
+    "title": "AERODYNAMIKA: Ciśnienie Dynamiczne Strugi (q)",
+    "description": "Bezwzględna wartość ciśnienia mechanicznego bezpośrednio indukowana we frontalnym zderzeniu przez samą kinetyczną energię ruchu strug płynu uderzającego o statyczną powierzchnię obiektu (na przykład czołową szybę pędzącego samochodu wyścigowego Formuły 1 lub betonowy filar mostowy uderzany wartkim nurtem fali powodziowej). Formuła równania wywodzi się bezpośrednio z przekształconego twardego Równania Bernoulliego i odpowiada energetycznemu wyrażeniu połowy iloczynu gęstości płynu z kwadratem osiąganej prędkości przelotowej czołowej maszyny. Konstrukcje mostowe i lotnicze badane są w kosztownych tunelach wiatrowych głównie przez mapowanie potężnych uderzeń tej właśnie fali frontalnej w karoserię pojazdów.",
+    "formula": "0.5 * Density * (Velocity * Velocity)",
+    "unit": "Pa (Paskal)",
+    "variables": [
+      {"id": "Density", "label": "Gęstość strugi cieczy/gazu", "unit": "kg/m³", "defaultValue": "1.225"},
+      {"id": "Velocity", "label": "Prędkość kinetyczna ośrodka", "unit": "m/s", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "fluid_weber_number",
+    "title": "MECHANIKA PŁYNÓW: Liczba Webera (We)",
+    "description": "Kluczowy i bezwymiarowy wskaźnik inżynierii mechanicznej i termicznej stosowany na szeroką skalę do dogłębnej klasyfikacji przepływów układów w wielofazowych płynach strukturalnych. Liczba ta odzwierciedla relatywny matematyczny stosunek pędu bezwładności masy przepływającej kropli i zaburzających strukturę lotu wibracji turbulentnych do napinającego zewnętrzną powłokę kropli obronnego napięcia powierzchniowego, zarysowanego brzegiem mikroskopijnym. Ogromne, przerośnięte liczby wskaźnikowe (We >> 1) zwiastują brutalne deformacje rozerwania strumienia cząstek i ich natychmiastowe rozbicie mżawkowe, które stanowią mechaniczny cel dysz wtryskowych najnowszych tłokowych silników wysokoprężnych common-rail oraz palników w potężnych kotłach piecowych elektrowni.",
+    "formula": "(Density * (Velocity * Velocity) * Length) / SurfaceTension",
+    "unit": "We (Współczynnik)",
+    "variables": [
+      {"id": "Density", "label": "Gęstość wewnętrzna kropelki płynu", "unit": "kg/m³", "defaultValue": "1000"},
+      {"id": "Velocity", "label": "Prędkość uderzeniowa kropli", "unit": "m/s", "defaultValue": "20"},
+      {"id": "Length", "label": "Średnica geometryczna kropli roztworu", "unit": "m", "defaultValue": "0.001"},
+      {"id": "SurfaceTension", "label": "Fizyczne Napięcie Powierzchniowe otoczki", "unit": "N/m", "defaultValue": "0.0728"}
+    ]
+  },
+  {
+    "id": "fluid_mach_angle",
+    "title": "AERODYNAMIKA NADDŹWIĘKOWA: Kąt Stożka Macha",
+    "description": "Kinematyczna zależność geometryczna ściśle determinująca kształt oraz kąt rozwarcia niezwykle potężnego, destrukcyjnego czołowego stożka fal uderzeniowych zjawiska Macha, kreowanych wybuchowo wokół ostrego nosa samolotu pędzącego w lotnictwie naddźwiękowym. Formacja tych ekstremalnie skompresowanych, zmasowanych fal wybuchowych ulega transformacji pod nieliniowym wskaźnikiem prędkości - w miarę jej drastycznego powiększania się w wyższe regiony hipersoniczne (Mach 2, Mach 3) szpic stożka zaciska się geometrycznie wąsko okalając z bezlitosnym tarciem poszycie statku kosmicznego wchodzącego do powłok lądowania, wymagając tym pancerzy kompozytowo-ceramicznych z węgla do osłon przed ablacyjnym topnieniem plazmy uderzeniowej pod kadłubem dziobem.",
+    "formula": "asin(1 / MachNumber) * (180 / 3.1415926)",
+    "unit": "° (Stopnie rozwarcia krawędzi)",
+    "variables": [
+      {"id": "MachNumber", "label": "Przelotowa Liczba Macha (Ma > 1.0)", "unit": "Ma", "defaultValue": "2.5"}
+    ]
+  },
+  {
+    "id": "fluid_prandtl_number",
+    "title": "TERMODYNAMIKA PŁYNÓW: Liczba Prandtla (Pr)",
+    "description": "Liczba Prandtla (Pr) jest rdzennym parametrem bezwymiarowym krytycznym w inżynierii konwekcyjnej sprzętu lotniczego, określającym sprzężenie i wewnętrzną harmonię lepkiej dyfuzyjności twardego, zbijającego ucisku masy pędu (lepkości kinematycznej) w bezpośrednim uderzeniu zestawionym z rozpraszającym temperaturę dyfuzyjnym gradientem odprowadzania rzutu cieplnego struktury bloku metalowego w wodzie czy mroźnym azocie gazowym. Woda pitna zachowuje współczynniki uśrednione w relacji oscylując stabilnie zaledwie przy Pr równym blisko 7, za to stopy metali w ciekłym płynie np. rzadkie stopy chłodzące uderzenia ciepła radaru rakiet atomowych rzucają drastyczne struny niskich wyników z potężnym drenażem pożarów obwodów w locie obronnym pocisku samosterującego na trajektorii bezgłośnej pętli nad lasami lotu wojskowego obrony cywilnej mocarstw.",
+    "formula": "(Viscosity * HeatCapacity) / ThermalConductivity",
+    "unit": "Pr (Współczynnik lepkości cieplnej)",
+    "variables": [
+      {"id": "Viscosity", "label": "Absolutna lepkość dynamiczna roztworu z rury", "unit": "Pa·s", "defaultValue": "0.001"},
+      {"id": "HeatCapacity", "label": "Wyznaczone Ciepło właściwe substancji żeli", "unit": "J/(kg·K)", "defaultValue": "4184"},
+      {"id": "ThermalConductivity", "label": "Przewodność cieplna w ujęciu radiacji bloku", "unit": "W/(m·K)", "defaultValue": "0.6"}
+    ]
+  },
+  {
+    "id": "elec_lorentz_force",
+    "title": "ELEKTROMAGNETYZM KWANTO.: Siła Lorentza (Zjonizowana cząstka w polu)",
+    "description": "Najstarszy uniwersalny algorytm równań sił pola elektromagnetycznego zjawisk indukcji. Definiuje absolutny wektor wypadkowy kinetycznej, zginającej trajektorię lotu siły fizycznej wywieranej podstępnie na swobodny elektron, izotopowy zjonizowany naładowany ładunek jonu dodatniego pędzący strumieniowo w tunelu przez niewidzialne zderzenie krzyżowe zewnętrznych prądów statycznego pola elektrycznego wespół z polami odkształceń stałych magnesów magnetyzacji. Wygięcie lotu wiązki jonów napędza całą inżynierię nowoczesnego światowego układu precyzyjnych akceleratorów laboratoryjnych medycyny CERN i lamp obrazowych dawnych telewizorów CRT w salonach z epoki przedcyfrowej kineskopów odchylających wizji kolorystycznej elektroniki.",
+    "formula": "Charge * (ElectricField + (Velocity * MagneticField * sin(Angle * 3.1415926 / 180)))",
+    "unit": "N (Niutonów wypadkowych)",
+    "variables": [
+      {"id": "Charge", "label": "Zgromadzony Ładunek elektryczny na powłoce drobinki", "unit": "C (Kulomb)", "defaultValue": "1.602e-19"},
+      {"id": "ElectricField", "label": "Rzut natężenia w tunelu prądu elektrycznego", "unit": "V/m", "defaultValue": "0"},
+      {"id": "Velocity", "label": "Prędkość przelotu elektronu jonu", "unit": "m/s", "defaultValue": "10000000"},
+      {"id": "MagneticField", "label": "Indukcja zewnętrzna odciągająca bieguny magnetyzmu", "unit": "T (Tesla)", "defaultValue": "1.5"},
+      {"id": "Angle", "label": "Przekos kątowy toru lotu do sił magnetycznych siatki prętów", "unit": "° (Stopnie)", "defaultValue": "90"}
+    ]
+  },
+  {
+    "id": "elec_hall_voltage",
+    "title": "ELEKTROTECHNIKA TWARDOTOROWA: Napięcie Halla (Zjawisko Hallotronu)",
+    "description": "Równanie definiujące rewelacyjną różnicę w poprzecznych potencjałach woltażowych powłok miedzianych zwaną efektem zjawiskowym Halla indukowanych naturalnie przy potężnym poprzecznym ciśnieniu naporu pola zewnętrznej indukowanej linii magnetycznych strumieni przecinających fizycznie metaliczną taśmę uginając tym wektor podróży elektronów prądowych ładunku ku samej dolnej powłoce kabla taśmociągu. Zastosowane przez inżynierię do konstrukcji bezawaryjnych czujników wałów rozrządu aut w systemach zapłonu cylindrów w spalania wtrysku ABS oraz w sensorach obrotów dronowych silników w ominięciu mechanicznych włączników przekaźników szczotkowych pod obciążeniem silników.",
+    "formula": "(MagneticField * Current) / (ChargeCarrierDensity * 1.602e-19 * Thickness)",
+    "unit": "V (Napięcie obwodu hallotronu)",
+    "variables": [
+      {"id": "MagneticField", "label": "Magnetyzm cewki prostopadłej ułożenia testu", "unit": "T", "defaultValue": "0.5"},
+      {"id": "Current", "label": "Wydatek prądu idący przez włączony pas czujnika", "unit": "A", "defaultValue": "10"},
+      {"id": "ChargeCarrierDensity", "label": "Gęstość elektronów (Miedź=8.5e28, Półprzew.=1e21)", "unit": "1/m³", "defaultValue": "8.5e28"},
+      {"id": "Thickness", "label": "Grubość blaszki lub ścieżki na płycie testu obwodu druku laminatu krzemowego wafli mikrostyków", "unit": "m", "defaultValue": "0.001"}
+    ]
+  },
+  {
+    "id": "elec_capacitor_charging_time",
+    "title": "UKŁADY RC: Napięcie Ładowania Kondensatora w Czasie",
+    "description": "Zależność całkowa opisująca wykładnicze, bezwzględne dławienie ładowania statycznego ogniw wielkopojemnych oraz baterii kondensatorów przeciwzakłóceniowych sprzęgniętych w obwodach szeregowych rezystorów drutowych oporników bezpieczeństwa R układu filtru zasilaczy. Z racji nieliniowego zbliżania się rzędnych pojemności do pełnego poziomu ciśnienia bariery V gniazda źródłowego, ogniwo przyjmuje błyskawiczne fale pierwszej fali strzału z impetem ładowarki kompresując z czasem krzywą zapisu oporowego ładowania, aż do pełnego upłynięcia rygorystycznej normy pięciokrotnej stałej czasowej drutów zwaną tau układu równą dokładnie R razy C.",
+    "formula": "SourceVoltage * (1 - (2.7182818 ^ (-Time / (Resistance * Capacitance))))",
+    "unit": "V (Napięcie na stykach złącza odczytu multimetru baterii układu)",
+    "variables": [
+      {"id": "SourceVoltage", "label": "Czysty woltaż ładowarki gniazda portu stałego", "unit": "V", "defaultValue": "12"},
+      {"id": "Resistance", "label": "Oporność włożona szeregowo blokady", "unit": "Ω", "defaultValue": "1000"},
+      {"id": "Capacitance", "label": "Wydajność skondensowania pojemności ogniw F", "unit": "F", "defaultValue": "0.001"},
+      {"id": "Time", "label": "Czas zmierzony w postępie od kliknięcia zamknięcia styków gniazd we wtyku do naładowania", "unit": "s", "defaultValue": "2"}
+    ]
   }
 ]
 
