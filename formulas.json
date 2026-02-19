@@ -6153,6 +6153,239 @@
       {"id": "RoomWidth", "label": "Szerokość hali", "unit": "m", "defaultValue": "5"},
       {"id": "RoomHeight", "label": "Wysokość hali", "unit": "m", "defaultValue": "3"}
     ]
+  },
+  {
+    "id": "optics_lensmaker",
+    "title": "OPTYKA: Równanie Soczewkowiczów (Soczewka Dwuwypukła Symetryczna)",
+    "description": "Fundamentalne równanie optyki geometrycznej wyznaczające ogniskową (odległość, w której skupiają się promienie świetlne) dla grubych i cienkich soczewek sferycznych. Zależność ta udowadnia, że moc optyczna soczewki zależy wyłącznie od współczynnika załamania materiału (np. szkła kronowego lub poliwęglanu) względem otoczenia oraz od geometrycznej krzywizny jej powierzchni. Wersja ta zakłada symetryczną soczewkę dwuwypukłą o identycznym promieniu obu krzywizn umieszczoną w próżni lub powietrzu. Równanie to jest krytyczne przy szlifowaniu soczewek do okularów korekcyjnych, obiektywów astronomicznych i układów litografii laserowej w produkcji procesorów.",
+    "formula": "1 / ((RefractiveIndex - 1) * (2 / Radius))",
+    "unit": "m (Ogniskowa f)",
+    "variables": [
+      {"id": "RefractiveIndex", "label": "Współczynnik załamania soczewki (Szkło = 1.52)", "unit": "-", "defaultValue": "1.52"},
+      {"id": "Radius", "label": "Promień krzywizny powierzchni", "unit": "m", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "quantum_compton_shift",
+    "title": "FIZYKA KWANTO.: Przesunięcie Comptona",
+    "description": "Zjawisko Comptona to koronny dowód na korpuskularną (cząsteczkową) naturę światła, za które Arthur Compton otrzymał Nagrodę Nobla. Opisuje ono sprężyste zderzenie wysokoenergetycznego fotonu promieniowania rentgenowskiego (X) lub gamma ze swobodnym elektronem. Foton uderzając w elektron przekazuje mu część swojego pędu i energii, przez co sam ulega rozproszeniu, a jego długość fali ulega bezwzględnemu wydłużeniu (traci energię). Algorytm oblicza fizyczną różnicę długości fali fotonu przed i po zderzeniu w zależności od kąta rozproszenia, wykorzystując stałą długość fali Comptona dla elektronu (2.426 pm).",
+    "formula": "0.000000000002426 * (1 - cos(Angle * 3.1415926 / 180))",
+    "unit": "m (Δλ Przesunięcie)",
+    "variables": [
+      {"id": "Angle", "label": "Kąt rozproszenia fotonu", "unit": "° (Stopnie)", "defaultValue": "90"}
+    ]
+  },
+  {
+    "id": "astro_hill_sphere",
+    "title": "ASTROMECHANIKA: Promień Sfery Hilla",
+    "description": "Sfera Hilla (znana również jako strefa Roche'a) wyznacza absolutny, trójwymiarowy zasięg przestrzenny, w którym grawitacja mniejszego ciała niebieskiego (np. planety takiej jak Ziemia) całkowicie dominuje nad grawitacją masywniejszego obiektu centralnego (np. Słońca). Aby sztuczny satelita lub naturalny księżyc mógł stabilnie orbitować wokół planety, musi znajdować się bezwzględnie wewnątrz tej sfery. Jeśli ją opuści, zostanie niechybnie wyrwany przez potężniejsze siły pływowe gwiazdy i wejdzie na niezależną orbitę heliocentryczną. Promień ten zależy od masy obu ciał oraz wielkiej półosi orbity mniejszego ciała.",
+    "formula": "SemiMajorAxis * ((MassPlanet / (3 * MassStar)) ^ 0.33333333)",
+    "unit": "km",
+    "variables": [
+      {"id": "SemiMajorAxis", "label": "Odległość planety od gwiazdy", "unit": "km", "defaultValue": "149600000"},
+      {"id": "MassPlanet", "label": "Masa planety orbitującej", "unit": "kg", "defaultValue": "5.972e24"},
+      {"id": "MassStar", "label": "Masa gwiazdy centralnej", "unit": "kg", "defaultValue": "1.989e30"}
+    ]
+  },
+  {
+    "id": "chem_arrhenius_equation",
+    "title": "KINETYKA CHEM.: Równanie Arrheniusa (Stała Szybkości)",
+    "description": "Empiryczne równanie sformułowane przez Svante Arrheniusa w 1889 roku, stanowiące absolutny fundament kinetyki chemicznej. Określa nieliniową, wykładniczą zależność szybkości przebiegu reakcji chemicznych od temperatury środowiska. Z równania tego wynika słynna, inżynierska reguła kciuka, mówiąca, że wzrost temperatury zaledwie o 10 stopni Celsjusza prowadzi do dwukrotnego przyspieszenia reakcji. Bezwzględnym warunkiem przebiegu jest pokonanie bariery energii aktywacji. Model ten jest wykorzystywany przy projektowaniu reaktorów syntezy, obliczaniu czasu starzenia się baterii litowo-jonowych oraz przewidywaniu degradacji żywności i leków.",
+    "formula": "PreFactor * (2.7182818 ^ (-ActivationEnergy / (8.314 * (TempC + 273.15))))",
+    "unit": "k (Stała szybkości)",
+    "variables": [
+      {"id": "PreFactor", "label": "Współczynnik przedwykładniczy (A)", "unit": "-", "defaultValue": "1000000000000"},
+      {"id": "ActivationEnergy", "label": "Energia aktywacji reakcji (Ea)", "unit": "J/mol", "defaultValue": "50000"},
+      {"id": "TempC", "label": "Temperatura środowiska", "unit": "°C", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "mech_coriolis_force",
+    "title": "MECHANIKA: Siła Coriolisa (Wektor Przyspieszenia Pozornego)",
+    "description": "Siła Coriolisa to potężna siła bezwładności ujawniająca się wyłącznie w nieinercjalnych, obracających się układach odniesienia (takich jak wirująca Ziemia). Wpływa ona na każde ciało poruszające się wewnątrz tego układu, zakrzywiając jego tor ruchu prostopadle do wektora prędkości. Na półkuli północnej odchyla ona trajektorie w prawo, a na południowej w lewo. To właśnie ta bezlitosna siła mechaniczna jest wyłącznym architektem gigantycznych, wirujących cyklonów i huraganów atmosferycznych, a także wymusza rygorystyczne korekty kątowe w obliczeniach balistycznych artylerii dalekiego zasięgu oraz precyzyjnych lotach międzykontynentalnych rakiet balistycznych.",
+    "formula": "2 * Mass * Velocity * 0.000072921 * sin(Latitude * 3.1415926 / 180)",
+    "unit": "N (Niutonów)",
+    "variables": [
+      {"id": "Mass", "label": "Masa poruszającego się obiektu", "unit": "kg", "defaultValue": "1000"},
+      {"id": "Velocity", "label": "Prędkość obiektu względem Ziemi", "unit": "m/s", "defaultValue": "800"},
+      {"id": "Latitude", "label": "Szerokość geograficzna obiektu", "unit": "° (Stopnie)", "defaultValue": "45"}
+    ]
+  },
+  {
+    "id": "bio_laplace_law_vessels",
+    "title": "BIOMECHANIKA: Prawo Laplace'a (Naprężenie Ściany Naczynia)",
+    "description": "Prawo Pierre'a-Simona de Laplace'a zastosowane w biofizyce i fizjologii układu krążenia człowieka. Matematycznie dowodzi, że mechaniczne napięcie sprężyste rozrywające ścianę cylindrycznego naczynia krwionośnego jest wprost proporcjonalne do transmuralnego ciśnienia krwi oraz fizycznego promienia tego naczynia. Oznacza to, że przy takim samym ciśnieniu krwi, rozszerzona tętnica (tętniak) podlega drastycznie wyższemu naprężeniu ściany niż tętnica zdrowa o mniejszej średnicy. To błędne koło fizyczne prowadzi do wykładniczego powiększania się tętniaków aorty brzusznej aż do ich nieuniknionego, katastrofalnego pęknięcia bez interwencji kardiochirurgicznej.",
+    "formula": "Pressure * (Radius / 1000)",
+    "unit": "N/m (Napięcie)",
+    "variables": [
+      {"id": "Pressure", "label": "Ciśnienie parcjalne we wnętrzu", "unit": "Pa", "defaultValue": "16000"},
+      {"id": "Radius", "label": "Promień wewnętrzny naczynia", "unit": "mm", "defaultValue": "15"}
+    ]
+  },
+  {
+    "id": "mat_brinell_hardness",
+    "title": "INŻYNIERIA MATERIAŁOWA: Twardość Brinella (HB)",
+    "description": "Metoda badawcza opracowana przez szwedzkiego inżyniera Johana Augusta Brinella w 1900 roku. Pozwala na precyzyjne wyznaczenie twardości stopów metali poprzez wciskanie pod potężnym obciążeniem (np. 3000 kgf) kulki z węglika spiekanego o znormalizowanej średnicy w płaską powierzchnię badanego materiału. Skala Brinella (HBW) jest stosunkiem przyłożonej siły testowej do całkowitego pola powierzchni trwałego odkształcenia (czaszy kulistej). Z uwagi na duży ślad odcisku, metoda ta jest wybitnie rzetelna dla materiałów niejednorodnych strukturalnie, takich jak żeliwa czy grube odlewy stalowe, ignorując mikroskopijne defekty sieci.",
+    "formula": "(2 * Force) / (3.1415926 * DiaBall * (DiaBall - sqrt((DiaBall * DiaBall) - (DiaIndent * DiaIndent))))",
+    "unit": "HB (Skala Brinella)",
+    "variables": [
+      {"id": "Force", "label": "Siła nacisku wgłębnika", "unit": "kgf", "defaultValue": "3000"},
+      {"id": "DiaBall", "label": "Średnica kulki penetrującej", "unit": "mm", "defaultValue": "10"},
+      {"id": "DiaIndent", "label": "Średnica odcisku w materiale", "unit": "mm", "defaultValue": "4.5"}
+    ]
+  },
+  {
+    "id": "chem_raoults_law",
+    "title": "TERMODYNAMIKA: Prawo Raoulta (Prężność Par Roztworu)",
+    "description": "Fizykochemiczne prawo sformułowane w 1882 roku przez François-Marie Raoulta opisujące ciśnienie cząstkowe par nad idealnym roztworem ciekłym. Zgodnie z tym równaniem, całkowita prężność par rozpuszczalnika (np. wody) ulega absolutnemu obniżeniu wprost proporcjonalnie do ułamka molowego nielotnej substancji rozpuszczonej (np. soli kuchennej lub glikolu etylowego). To niezwykłe zjawisko termodynamiczne (obniżenie prężności par) jest bezpośrednią przyczyną tzw. podwyższenia temperatury wrzenia cieczy chłodniczych w chłodnicach silników samochodowych oraz drastycznego obniżenia temperatury ich krzepnięcia zimą.",
+    "formula": "MoleFractionSolvent * PureVaporPressure",
+    "unit": "Pa (Prężność par)",
+    "variables": [
+      {"id": "MoleFractionSolvent", "label": "Ułamek molowy rozpuszczalnika", "unit": "0-1", "defaultValue": "0.95"},
+      {"id": "PureVaporPressure", "label": "Prężność par czystej cieczy", "unit": "Pa", "defaultValue": "2330"}
+    ]
+  },
+  {
+    "id": "geo_heat_flow",
+    "title": "GEOFIZYKA: Przewodnictwo Geotermalne (Strumień Ciepła)",
+    "description": "Zjawisko propagacji potężnych mas ciepła wydobywających się z rozżarzonego, płynnego jądra Ziemi oraz z reakcji rozpadu izotopów promieniotwórczych (uranu, toru) w płaszczu litosfery ku chłodniejszej powierzchni planety. Zgodnie z prawem Fouriera dla przewodnictwa cieplnego, gęstość strumienia geotermalnego jest ścisłym iloczynem przewodności cieplnej lokalnych skał (granitów, bazaltów) oraz stopnia gradientu geotermalnego (czyli wzrostu temperatury na każdy metr głębokości). Algorytm ten jest kluczowy przy projektowaniu głębokich odwiertów do pomp ciepła oraz przy ocenie wentylacji kopalni miedzi i węgla głębinowego.",
+    "formula": "ThermalConductivity * (TempGradient / 1000)",
+    "unit": "W/m² (Strumień cieplny)",
+    "variables": [
+      {"id": "ThermalConductivity", "label": "Przewodność cieplna skał (Lambda)", "unit": "W/(m·K)", "defaultValue": "2.5"},
+      {"id": "TempGradient", "label": "Gradient geotermalny Ziemi", "unit": "°C/km", "defaultValue": "25"}
+    ]
+  },
+  {
+    "id": "elec_antenna_gain_parabolic",
+    "title": "TELEKOMUNIKACJA: Zysk Energetyczny Anteny Parabolicznej",
+    "description": "Matematyczny dowód na inżynieryjną wyższość czasz parabolicznych nad antenami dookólnymi. Zysk energetyczny określa zdolność kierunkowej czaszy odblaskowej do potężnego skupiania wiązki słabych mikrofal lub fal radiowych padających na powierzchnię otworu. Zjawisko to pozwala antenie wypromieniować bądź przechwycić ułamek sygnału o wiele efektywniej niż antena izotropowa (teoretyczna). Zysk ten (wyrażany w izotropowych decybelach - dBi) jest potężnie uzależniony od częstotliwości fali - podwojenie fizycznej średnicy czaszy satelitarnej zapewnia aż czterokrotny (o 6 dB) wzrost mocy odbieranego sygnału telemetrii kosmicznej.",
+    "formula": "10 * log10(Efficiency * ((3.1415926 * Diameter) / Wavelength) * ((3.1415926 * Diameter) / Wavelength))",
+    "unit": "dBi (Decybele izotropowe)",
+    "variables": [
+      {"id": "Efficiency", "label": "Sprawność oświetlacza czaszy", "unit": "0-1", "defaultValue": "0.65"},
+      {"id": "Diameter", "label": "Średnica lustra anteny", "unit": "m", "defaultValue": "1.2"},
+      {"id": "Wavelength", "label": "Długość fali odbieranej", "unit": "m", "defaultValue": "0.025"}
+    ]
+  },
+  {
+    "id": "fluid_continuity_equation",
+    "title": "HYDRODYNAMIKA: Równanie Ciągłości Strugi Płynu",
+    "description": "Zasada zachowania masy zaaplikowana bezpośrednio do mechaniki stacjonarnych przepływów płynów nieściśliwych (takich jak woda czy oleje hydrauliczne w rurociągach stalowych). Prawo to głosi, że całkowity strumień objętościowy cieczy musi być bezwzględnie stały wzdłuż całego przewodu zamkniętego, co wymusza radykalną zmianę kinetyki. Zwężenie przekroju rury (na przykład w dyszach pożarniczych lub zwężkach Venturiego) powoduje proporcjonalny, drastyczny wzrost prędkości przepływu płynu. Algorytm oblicza fizyczną prędkość cieczy u wylotu zwężki bazując na geometrii wejścia.",
+    "formula": "(Area1 * Velocity1) / Area2",
+    "unit": "m/s (Prędkość na wylocie)",
+    "variables": [
+      {"id": "Area1", "label": "Pole przekroju rury wlotowej", "unit": "m²", "defaultValue": "0.05"},
+      {"id": "Velocity1", "label": "Prędkość płynu na wlocie", "unit": "m/s", "defaultValue": "2"},
+      {"id": "Area2", "label": "Pole przekroju zwężki na wylocie", "unit": "m²", "defaultValue": "0.01"}
+    ]
+  },
+  {
+    "id": "fluid_archimedes_buoyancy",
+    "title": "HYDROSTATYKA: Siła Wyporu (Prawo Archimedesa)",
+    "description": "Najstarsze i najsłynniejsze prawo hydrostatyki sformułowane przez Archimedesa z Syrakuz. Definiuje on siłę nośną działającą na każdy fizyczny obiekt zanurzony całkowicie lub częściowo w płynie spoczynkowym (cieczy lub gazie). Siła ta jest skierowana pionowo ku górze i jest bezwzględnie równa ciężarowi płynu wypartego przez ten obiekt. To dzięki temu nieugiętemu prawu fizyki, lotniskowce ze stali ważące po 100 000 ton oraz podwodne batyskafy swobodnie unoszą się na powierzchni oceanów, pod warunkiem zaprojektowania wewnętrznych pustek powietrznych zapewniających odpowiednio ogromną objętość wyporu.",
+    "formula": "DensityLiquid * VolumeSubmerged * 9.81",
+    "unit": "N (Niutonów)",
+    "variables": [
+      {"id": "DensityLiquid", "label": "Gęstość otaczającej cieczy", "unit": "kg/m³", "defaultValue": "1025"},
+      {"id": "VolumeSubmerged", "label": "Objętość zanurzonej bryły", "unit": "m³", "defaultValue": "50"}
+    ]
+  },
+  {
+    "id": "mech_moment_of_inertia_cylinder",
+    "title": "MECHANIKA KLASYCZNA: Moment Bezwładności (Walec Pełny)",
+    "description": "W fizyce ruchu obrotowego moment bezwładności pełni dokładnie taką samą rolę, jak klasyczna masa w ruchu postępowym – określa fizyczny opór, jaki stawia bryła sztywna przeciwko jakiejkolwiek próbie zmiany jej prędkości kątowej. Dla jednorodnego, pełnego walca (np. potężnego stalowego wału korbowego, koła zamachowego prasy lub toczącej się po asfalcie opony) wirującego wokół własnej osi symetrii podłużnej, parametr ten zależy od całkowitej masy bryły oraz kwadratu jej promienia. Dystrybucja materiału z dala od centrum geometrycznego (osi rotacji) drastycznie zwiększa wysiłek energetyczny potrzebny do rozruchu turbiny.",
+    "formula": "0.5 * Mass * (Radius * Radius)",
+    "unit": "kg·m²",
+    "variables": [
+      {"id": "Mass", "label": "Całkowita masa wirującego walca", "unit": "kg", "defaultValue": "50"},
+      {"id": "Radius", "label": "Promień zewnętrzny bryły", "unit": "m", "defaultValue": "0.5"}
+    ]
+  },
+  {
+    "id": "acoustics_beat_frequency",
+    "title": "AKUSTYKA: Częstotliwość Dudnień (Beats)",
+    "description": "Zjawisko fizycznej interferencji fal akustycznych o niezwykle zbliżonych, ale nie identycznych częstotliwościach. Kiedy dwie takie fale nakładają się na siebie w przestrzeni powietrznej, na przemian wzmacniają się (interferencja konstruktywna) i znoszą (destruktywna), generując wyraźnie słyszalne pulsujące zjawisko dźwiękowe zwane dudnieniami. Częstotliwość tych pulsacji jest absolutnie równa bezwzględnej matematycznej różnicy pomiędzy częstotliwościami źródeł składowych. Mechanizm ten jest powszechnie wykorzystywany przy precyzyjnym strojeniu fortepianów oraz synchronizacji potężnych, dwusilnikowych maszyn lotniczych śmigłowych.",
+    "formula": "abs(Freq1 - Freq2)",
+    "unit": "Hz (Dudnienia)",
+    "variables": [
+      {"id": "Freq1", "label": "Częstotliwość pierwszego źródła dźwięku", "unit": "Hz", "defaultValue": "440"},
+      {"id": "Freq2", "label": "Częstotliwość drugiego źródła dźwięku", "unit": "Hz", "defaultValue": "444"}
+    ]
+  },
+  {
+    "id": "aero_wing_loading",
+    "title": "LOTNICTWO: Obciążenie Powierzchni Nośnej Skrzydła",
+    "description": "Krytyczny inżynieryjny wskaźnik aerodynamiczny określający całkowitą masę samolotu w locie (wraz z ładunkiem paliwa bojowego) przypadającą bezpośrednio na każdy metr kwadratowy czynnej powierzchni nośnej jego płatów. Konstrukcje o niezwykle małym obciążeniu powierzchni (np. szybowce i małe awionetki sportowe) cechują się fenomenalną zwrotnością i bardzo niską prędkością przeciągnięcia, co umożliwia starty z krótkich pasów darniowych. Z kolei myśliwce naddźwiękowe uderzeniowe obciążone bombami posiadają mikroskopijne skrzydła i ekstremalne wskaźniki nacisku, wymuszając lądowania z gigantyczną prędkością czołową z asystą spadochronów.",
+    "formula": "Mass / WingArea",
+    "unit": "kg/m²",
+    "variables": [
+      {"id": "Mass", "label": "Całkowita masa startowa samolotu", "unit": "kg", "defaultValue": "70000"},
+      {"id": "WingArea", "label": "Sumaryczna powierzchnia skrzydeł", "unit": "m²", "defaultValue": "120"}
+    ]
+  },
+  {
+    "id": "nuclear_neutron_capture_rate",
+    "title": "FIZYKA JĄDROWA: Prędkość Wychwytu Neutronów (Reaktor)",
+    "description": "Fundamentalny wskaźnik kinetyki neutronowej serca reaktora rozszczepialnego. Wskazuje, ile swobodnych, wędrujących neutronów zostaje fizycznie złapanych i uwięzionych (zaabsorbowanych) przez atomy trucizn reaktorowych, prętów sterujących (zawierających bor lub kadm) lub samego uranowego paliwa, w określonej jednostce objętości pręta na każdą sekundę trwania ekspozycji. Obliczenia te wymagają znajomości makroskopowego przekroju czynnego (prawdopodobieństwa reakcji zderzenia) oraz potęgi całkowitego strumienia fali neutronowej. Bezwzględna kontrola tej absorpcji utrzymuje reaktor jądrowy w stabilnym stanie masy krytycznej, unikając stopienia rdzenia (meltdown).",
+    "formula": "NeutronFlux * MacroscopicCrossSection * Volume",
+    "unit": "Wychwytów/s",
+    "variables": [
+      {"id": "NeutronFlux", "label": "Strumień penetrujących neutronów", "unit": "n/(cm²·s)", "defaultValue": "10000000000000"},
+      {"id": "MacroscopicCrossSection", "label": "Przekrój czynny na absorpcję (Sigma)", "unit": "1/cm", "defaultValue": "0.05"},
+      {"id": "Volume", "label": "Objętość elementu absorbującego", "unit": "cm³", "defaultValue": "1000"}
+    ]
+  },
+  {
+    "id": "chem_nernst_equation",
+    "title": "ELEKTROCHEMIA: Równanie Nernsta (Potencjał Półogniwa)",
+    "description": "Teoretyczne równanie ułożone przez laureata nagrody Nobla Walthera Nernsta w 1889 roku, sprzęgające ze sobą dziedziny chemii i elektromagnetyzmu. Ustala korektę standardowego potencjału elektrochemicznego redukcji dla rzeczywistych elektrod zanurzonych w roztworach elektrolitów w sytuacji, gdy stężenia jonów roztworu uległy wyczerpaniu z bazowych warunków 1 molara do frakcji ułamkowych. Wykorzystywane przez laborantów oraz potężne zakłady rafinacji litu do kalkulacji prawdziwego roboczego woltażu napięć w rozładowanych kwasowo-ołowiowych bateriach oraz akumulatorach litowych aut elektrycznych, gdzie wraz z degradacją roztworu natychmiastowo zjeżdża siła uciągu prądu.",
+    "formula": "StandardPotential - (0.05916 / Electrons) * log10(ReactionQuotient)",
+    "unit": "V (Wolty)",
+    "variables": [
+      {"id": "StandardPotential", "label": "Potencjał standardowy elektrody", "unit": "V", "defaultValue": "0.34"},
+      {"id": "Electrons", "label": "Liczba elektronów walencyjnych transferu", "unit": "-", "defaultValue": "2"},
+      {"id": "ReactionQuotient", "label": "Iloraz stężeń reakcji kationowej (Q)", "unit": "-", "defaultValue": "0.01"}
+    ]
+  },
+  {
+    "id": "civ_terzaghi_bearing_capacity",
+    "title": "GEOTECHNIKA: Nośność Graniczna Gruntu Terzaghiego (Stopa)",
+    "description": "Najsłynniejsze równanie statyki w geotechnice inżynieryjnej stworzone przez ojca mechaniki gruntów Karla von Terzaghiego. Wzór wyznacza opór krytyczny, maksymalne statyczne obciążenie na metr kwadratowy powierzchni nośnej gruntu spoistego bądź sypkiego dla płytkich fundamentów pasmowych, po którego przekroczeniu następuje mechaniczne rozerwanie matrycy spójności ziarnistej gruntu i w efekcie katastrofalne zsunięcie się budynku pod ziemię po wykreślonych łukach poślizgu. Uwzględnia brutalną wytrzymałość gruntu na kohezję, tarcie wewnętrzne oraz zagłębienie bloczka pod rzędną terenu w wykopie odpychającym wypychaną masę.",
+    "formula": "(Cohesion * Nc) + (SoilDensity * 9.81 * Depth * Nq) + (0.5 * SoilDensity * 9.81 * Width * Ngamma)",
+    "unit": "Pa (Nośność w Paskalach)",
+    "variables": [
+      {"id": "Cohesion", "label": "Spójność gruntu (Kohezja gliny / iłu)", "unit": "Pa", "defaultValue": "20000"},
+      {"id": "SoilDensity", "label": "Gęstość nasypowa podłoża", "unit": "kg/m³", "defaultValue": "1800"},
+      {"id": "Depth", "label": "Głębokość posadowienia wkopu", "unit": "m", "defaultValue": "1.5"},
+      {"id": "Width", "label": "Szerokość oporowa stopy betonu", "unit": "m", "defaultValue": "2.0"},
+      {"id": "Nc", "label": "Współczynnik nośności gruntu (Nc)", "unit": "-", "defaultValue": "14"},
+      {"id": "Nq", "label": "Współczynnik głębokości (Nq)", "unit": "-", "defaultValue": "5"},
+      {"id": "Ngamma", "label": "Współczynnik szerokości (Ngamma)", "unit": "-", "defaultValue": "3"}
+    ]
+  },
+  {
+    "id": "fluid_poiseuille_resistance",
+    "title": "HYDRAULIKA: Opór Hydrauliczny Przepływu (Rura)",
+    "description": "Fizyczny opór dławienia w zamkniętym obwodzie płynu lepkiego wynikający wprost z rozszerzonej teorii Jeana Poiseuille'a. Opór ten to stosunek fizycznego spadku ciśnienia wymuszającego tłoczenie między początkiem rury a końcem do osiągniętego przepływu strugi objętościowej cieczy w mierzonym profilu kołowym. Oznacza ułomność strukturalną kapilar, w której lepkość ścinania drobin tarcia ściennego drastycznie niweczy moc pomp tłocznych wyhamowując strugi. Inżynierskim szokiem w równaniu dławiącym pozostaje element dzielenia przez promień wewnętrzny rurki uniesiony aż do straszliwej czwartej potęgi, zwiastując zawały po najdrobniejszym nawarstwieniu rdzy.",
+    "formula": "(8 * Viscosity * Length) / (3.1415926 * ((Radius / 1000) ^ 4))",
+    "unit": "Pa·s/m³ (Opór przepływu)",
+    "variables": [
+      {"id": "Viscosity", "label": "Lepkość dynamiczna substancji tłoczonej", "unit": "Pa·s", "defaultValue": "0.001"},
+      {"id": "Length", "label": "Długość węża rurociągowego", "unit": "m", "defaultValue": "10"},
+      {"id": "Radius", "label": "Wewnętrzny promień koła średnicy", "unit": "mm", "defaultValue": "10"}
+    ]
+  },
+  {
+    "id": "space_tsiolkovsky_mass_ratio",
+    "title": "ASTRONAUTYKA: Stosunek Masowy Rakietowy (Ciołkowski)",
+    "description": "Odwrócona kinetyczna funkcja absolutnego prawa silników rakietowych profesora Konstantina Ciołkowskiego obnażająca brutalną wadę i techniczny uwiąd podróży międzyplanetarnych przy użyciu chemicznych dysz spalania tlenu i metanu lub wodoru. Wylicza próg koniecznego nagromadzenia masy startowej spalin pędnych potrzebnych by potężny ułamek małej stalowej kabiny ładunku użytkowego dociągnął do granicy wymaganego rozpędu wektorowego Delta-V do podboju Księżyca lub odległego Marsa. Wykładniczy, niepowstrzymany logarytm zmusza SpaceX oraz agencje ESA i NASA do lepienia wielkich bomb rakietowych pękających w szwach zbiornikowych od ilości litrów by wystrzelić ułamek towarowy o skali 2% gabarytu.",
+    "formula": "2.7182818 ^ (DeltaV / ExhaustVelocity)",
+    "unit": "- (Krotność masy paliwa do pustej ramy)",
+    "variables": [
+      {"id": "DeltaV", "label": "Wymagany impuls całkowity misji Delta-V", "unit": "m/s", "defaultValue": "9500"},
+      {"id": "ExhaustVelocity", "label": "Efektywny ciąg prędkości ucieczki spalin silnika", "unit": "m/s", "defaultValue": "4500"}
+    ]
   }
 ]
 
